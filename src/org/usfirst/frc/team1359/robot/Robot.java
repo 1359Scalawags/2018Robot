@@ -22,6 +22,11 @@ import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
  * creating this project, you must also update the build.properties file in the
  * project.
  */
+/*
+ Author: Destin
+ Team: 1359 Scalawags
+ Date: 1/10/18
+ */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem
 			= new ExampleSubsystem();

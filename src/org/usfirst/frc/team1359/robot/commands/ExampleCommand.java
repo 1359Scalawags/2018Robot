@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1359.robot.commands;
 
+import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -16,15 +17,19 @@ import org.usfirst.frc.team1359.robot.Robot;
  * An example command.  You can replace me with your own command.
  */
 public class ExampleCommand extends Command {
+	
+	Timer m_timer;
 	public ExampleCommand() {
 		// Use requires() here to declare subsystem dependencies
 		requires(Robot.kExampleSubsystem);
+		m_timer = new Timer();
 	}
 
 	// Called just before this Command runs the first time
 	@Override
 	protected void initialize() {
 		SmartDashboard.putString("Status", "Ready to Launch");
+		m_timer.start();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
@@ -36,12 +41,18 @@ public class ExampleCommand extends Command {
 	// Make this return true when this Command no longer needs to run execute()
 	@Override
 	protected boolean isFinished() {
-		return false;
+		if(m_timer.get() > 5.0) {
+			return true;
+		}
+		else {
+			return false;
+		}
 	}
 
 	// Called once after isFinished returns true
 	@Override
 	protected void end() {
+		m_timer.stop();
 	}
 
 	// Called when another command which requires one or more of the same

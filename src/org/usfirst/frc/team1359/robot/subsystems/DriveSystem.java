@@ -4,6 +4,7 @@ import org.usfirst.frc.team1359.robot.RobotMap;
 import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
+import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -29,12 +30,17 @@ public class DriveSystem extends Subsystem {
     
     ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
     
+    Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+    
     public ADXRS450_Gyro getGyro() {
     	return Gyro;
     }
     
     public double getAngle() {
     	return Gyro.getAngle();
+    }
+    public double getEncoder() {
+    	return enc.getDistance();
     }
 
     public void initDefaultCommand() {

@@ -12,6 +12,7 @@ public class DriveWithJoysticks extends Command {
     public DriveWithJoysticks() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	super("DriveWithJoysticks");
     	requires(Robot.kDriveSystem);
     }
 

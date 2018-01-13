@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.RobotMap;
+import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
@@ -27,6 +28,7 @@ public class DriveSystem extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new DriveWithJoysticks());
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {

@@ -39,6 +39,9 @@ public class DriveSystem extends Subsystem {
     public double getAngle() {
     	return Gyro.getAngle();
     }
+    public void resetGyro() {
+    	Gyro.reset();
+    }
     public double getEncoder() {
     	return enc.getDistance();
     }

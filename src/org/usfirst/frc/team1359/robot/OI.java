@@ -49,4 +49,10 @@ public class OI {
 	public Joystick getJoystick2() {
 		return stick2;
 	}
+	public double getLeftSpeed() {
+		return stick1.getY();
+	}
+	public double getRightSpeed() {
+		return stick2.getY();
+	}
 }

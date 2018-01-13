@@ -16,10 +16,10 @@ package org.usfirst.frc.team1359.robot;
 public class RobotMap {
 	// For example to map the left and right motors, you could define the
 	// following variables to use with your drivetrain subsystem.
-	public static int frontleftMotor = 1;
-	public static int rearLeftMotor = 2;
-	public static int frontRightMotor = 3;
-	public static int rearRightMotor = 4;
+	public static int frontleftMotor = 0;
+	public static int rearLeftMotor = 1;
+	public static int frontRightMotor = 2;
+	public static int rearRightMotor = 3;
 	public static int joystick1 = 0;
 	public static int joystick2 = 1;
 

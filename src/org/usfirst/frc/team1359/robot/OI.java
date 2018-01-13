@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1359.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -50,9 +51,11 @@ public class OI {
 		return stick2;
 	}
 	public double getLeftSpeed() {
+   	SmartDashboard.putNumber("Left Motor", -stick1.getY());		
 		return stick1.getY();
 	}
 	public double getRightSpeed() {
+    	SmartDashboard.putNumber("Right Motor", -stick2.getY());		
 		return stick2.getY();
 	}
 }

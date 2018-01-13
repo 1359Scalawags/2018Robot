@@ -14,5 +14,8 @@ public class CubeShooter extends Subsystem {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
+    public void loadCube() {}
+    public void shoot() {}
+    public void reset() {}
 }
 

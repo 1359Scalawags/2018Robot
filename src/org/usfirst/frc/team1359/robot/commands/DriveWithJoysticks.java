@@ -21,7 +21,7 @@ public class DriveWithJoysticks extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	//Robot.kDriveSystem.tankDrive(OI.getLeftSpeed(), OI.getRightSpeed());
+    	Robot.kDriveSystem.tankDrive(Robot.kOI.getLeftSpeed(), Robot.kOI.getRightSpeed());
     }
 
     // Make this return true when this Command no longer needs to run execute()

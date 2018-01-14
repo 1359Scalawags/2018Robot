@@ -12,6 +12,8 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
+
+import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		kOI = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		m_chooser.addObject("Turn", new AutonomousCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		System.out.println("1359 Scalawags!");

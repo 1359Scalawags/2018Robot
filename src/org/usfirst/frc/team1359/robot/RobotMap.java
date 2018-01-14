@@ -23,6 +23,7 @@ public class RobotMap {
 	public static final int joystick1 = 0;
 	public static final int joystick2 = 1;
 	public static final int lightbutton = 3;
+	public static final int leonardo = 0;
 	
 	public static final double ROTATE_TOLERANCE = 0.5;
 

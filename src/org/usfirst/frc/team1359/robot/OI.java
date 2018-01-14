@@ -8,6 +8,8 @@
 package org.usfirst.frc.team1359.robot;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.Button;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
@@ -23,7 +25,7 @@ public class OI {
 	Joystick stick1 = new Joystick(RobotMap.joystick1);
 	Joystick stick2 = new Joystick(RobotMap.joystick2);
 	// Button button = new JoystickButton(stick, buttonNumber);
-
+	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

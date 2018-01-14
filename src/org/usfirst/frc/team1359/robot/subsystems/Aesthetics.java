@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1359.robot.subsystems;
 
+import org.usfirst.frc.team1359.robot.commands.LeonardoControll;
+
 import edu.wpi.first.wpilibj.command.Subsystem;
 
 /**
@@ -13,6 +15,7 @@ public class Aesthetics extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    	setDefaultCommand(new LeonardoControll());
     }
 }
 

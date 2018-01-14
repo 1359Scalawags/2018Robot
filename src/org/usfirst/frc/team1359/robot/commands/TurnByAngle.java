@@ -5,6 +5,7 @@ import org.usfirst.frc.team1359.robot.RobotMap;
 import org.usfirst.frc.team1359.robot.Utilities;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -35,7 +36,7 @@ public class TurnByAngle extends Command {
     	double turnSpeed = Math.max(-0.5, Math.min(0.5, 0.025 * -m_angleRemaining));
     	
     	Robot.kDriveSystem.arcadeDrive(.01, turnSpeed);
-
+    	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
 
     	
     }

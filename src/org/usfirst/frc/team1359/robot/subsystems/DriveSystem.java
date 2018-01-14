@@ -44,6 +44,9 @@ public class DriveSystem extends Subsystem {
     public void resetGyro() {
     	m_Gyro.reset();
     }
+    public double getGyroRate() {
+    	return m_Gyro.getRate();
+    }
     public double getLeftEncoder() {
     	return leftEncoder.getDistance();
     }
@@ -74,4 +77,3 @@ public class DriveSystem extends Subsystem {
     }
     
 }
-

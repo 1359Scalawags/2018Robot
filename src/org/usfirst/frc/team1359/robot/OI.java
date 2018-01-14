@@ -24,6 +24,7 @@ public class OI {
 	// number it is.
 	Joystick stick1 = new Joystick(RobotMap.joystick1);
 	Joystick stick2 = new Joystick(RobotMap.joystick2);
+	
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	

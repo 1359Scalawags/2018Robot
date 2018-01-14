@@ -9,12 +9,14 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class turnByAngle extends Command {
+public class TurnByAngle extends Command {
 	private double m_startAngle;
 	private double m_deltaAngle;
-    public turnByAngle(double angle) {
+	private double m_angleRemaining;
+	
+    public TurnByAngle(double angle) {
     	
-    	super("turnByAngle");
+    	super("TurnByAngle");
     	requires(Robot.kDriveSystem);
     	m_deltaAngle = angle;
     	
@@ -29,25 +31,29 @@ public class turnByAngle extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double angleRemaining = m_deltaAngle - Utilities.NormalizeAngle(Robot.kDriveSystem.getAngle() - m_startAngle);
-    	double turnSpeed = Math.max(-0.5, Math.min(0.5, 0.025 * -angleRemaining));
+    	m_angleRemaining = m_deltaAngle - Utilities.NormalizeAngle(Robot.kDriveSystem.getAngle() - m_startAngle);
+    	double turnSpeed = Math.max(-0.5, Math.min(0.5, 0.025 * -m_angleRemaining));
     	
     	Robot.kDriveSystem.arcadeDrive(.01, turnSpeed);
 
-		if(Math.abs(angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kDriveSystem.getGyroRate()) < 5){
-			end();
-		}
+
     	
     }
     
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+		if(Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kDriveSystem.getGyroRate()) < 5){
+			return true;
+		}else {
+			return false;
+		}
+
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.kDriveSystem.arcadeDrive(0, 0);
     }
 
     // Called when another command which requires one or more of the same

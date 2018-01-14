@@ -28,24 +28,31 @@ public class DriveSystem extends Subsystem {
 
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
     
-    ADXRS450_Gyro Gyro = new ADXRS450_Gyro();
+    ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
     
-    Encoder enc = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-    
+    Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+
+    Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+
     public ADXRS450_Gyro getGyro() {
-    	return Gyro;
+    	return m_Gyro;
     }
     
     public double getAngle() {
-    	return Gyro.getAngle();
+    	return m_Gyro.getAngle();
     }
     public void resetGyro() {
-    	Gyro.reset();
+    	m_Gyro.reset();
     }
-    public double getEncoder() {
-    	return enc.getDistance();
+    public double getLeftEncoder() {
+    	return leftEncoder.getDistance();
     }
 
+    public double getRightEncoder() {
+    	return rightEncoder.getDistance();
+    }
+
+    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
@@ -56,10 +63,15 @@ public class DriveSystem extends Subsystem {
     public void tankDrive(double leftSpeed, double rightSpeed) {
     	
     	m_drive.tankDrive(leftSpeed, rightSpeed);
-
-    	
     	
     	
     }
+    
+    public void arcadeDrive(double moveSpeed, double turnSpeed) {
+    	
+    	m_drive.arcadeDrive(moveSpeed, turnSpeed);
+
+    }
+    
 }
 

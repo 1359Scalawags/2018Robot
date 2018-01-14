@@ -28,6 +28,7 @@ public class TurnByAngle extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     m_startAngle = Robot.kDriveSystem.getAngle();
+	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
     }
     
     // Called repeatedly when this Command is scheduled to run

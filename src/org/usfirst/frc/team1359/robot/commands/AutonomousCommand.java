@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands;
 
+import org.usfirst.frc.team1359.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -8,11 +10,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousCommand extends CommandGroup {
 
     public AutonomousCommand() {
+    	super("AutonomousCommand");
+    	requires(Robot.kDriveSystem);
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new TurnByAngle(10));
+    	addSequential(new TurnByAngle(90));
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

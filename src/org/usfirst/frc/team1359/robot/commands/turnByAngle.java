@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.RobotMap;
+import org.usfirst.frc.team1359.robot.Utilities;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -27,21 +29,13 @@ public class turnByAngle extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double angleRemaining = m_deltaAngle - Utilities.NormalizeAngle(Robot.kDriveSystem.getAngle() - m_startAngle);
+    	double turnSpeed = Math.max(-0.5, Math.min(0.5, 0.025 * -angleRemaining));
     	
     	Robot.kDriveSystem.arcadeDrive(.01, turnSpeed);
-    	
-    	float angle = NormalizeAngle(PullGyroAngle() - m_startAngle);
 
-		ArcadeDrive(0.0f, std::max(-0.5, std::min(0.5, 0.025 * -angle)));
-
-		if(abs(angle) < ROTATE_TOLERANCE && abs(Gyro.GetRate()) < 5){
-
-			return true;
-
-		}else{
-
-			return false;
-
+		if(Math.abs(angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kDriveSystem.getGyroRate()) < 5){
+			end();
 		}
     	
     }

@@ -14,6 +14,9 @@ public class TurnByAngle extends Command {
 	private double m_startAngle;
 	private double m_deltaAngle;
 	private double m_angleRemaining;
+	private final double m_turnRateMultiplier = 0.5;
+	private final double m_maxTurnRate = 0.55;
+	private double m_MotorSpeed = 0;
 	
     public TurnByAngle(double angle) {
     	
@@ -29,15 +32,35 @@ public class TurnByAngle extends Command {
     protected void initialize() {
     m_startAngle = Robot.kDriveSystem.getAngle();
 	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
+	
     }
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	m_angleRemaining = m_deltaAngle - Utilities.NormalizeAngle(Robot.kDriveSystem.getAngle() - m_startAngle);
-    	double turnSpeed = Math.max(-0.5, Math.min(0.5, 0.025 * -m_angleRemaining));
+    	m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kDriveSystem.getAngle() - m_startAngle));
+    	//double turnSpeed = Math.max(-m_maxTurnRate, Math.min(m_maxTurnRate, m_turnRateMultiplier * -Math.pow(m_angleRemaining, .333)));
     	
-    	Robot.kDriveSystem.arcadeDrive(.01, turnSpeed);
+    	if(this.m_angleRemaining > RobotMap.ROTATE_TOLERANCE) {
+	    	if(Robot.kDriveSystem.getGyroRate() < 20) {
+	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
+	    	}else if(Robot.kDriveSystem.getGyroRate() > 40) {
+	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
+	    	}    		
+    	}else if(this.m_angleRemaining < RobotMap.ROTATE_TOLERANCE){
+	    	if(Robot.kDriveSystem.getGyroRate() < -20) {
+	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
+	    	}else if(Robot.kDriveSystem.getGyroRate() > -40) {
+	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
+	    	}    		
+    	}else {
+    		this.m_MotorSpeed = 0;
+    	}
+    	
+    	m_MotorSpeed = Math.max(-.5, Math.min(.5, m_MotorSpeed));
+    	
+    	Robot.kDriveSystem.arcadeDrive(.01, this.m_MotorSpeed);
     	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
+    	SmartDashboard.putNumber("GyroRate", Robot.kDriveSystem.getGyroRate());
 
     	
     }

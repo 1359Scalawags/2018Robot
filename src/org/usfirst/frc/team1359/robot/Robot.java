@@ -51,7 +51,7 @@ public class Robot extends TimedRobot {
 		m_chooser.addObject("Turn", new AutonomousCommand());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
-		System.out.println("1359 Scalawags!");
+		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 	}
 
 	/**

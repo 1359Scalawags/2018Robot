@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
+
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
@@ -17,6 +19,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	
 	//// CREATING BUTTONS
 	// One type of button is a joystick button which is any button on a
 	//// joystick.
@@ -27,6 +30,7 @@ public class OI {
 	
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
+	Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
 	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -47,6 +51,10 @@ public class OI {
 	// Start the command when the button is released and let it run the command
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
+	public OI() {
+		turnButton.whenPressed(new TurnByAngle(90));
+		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
+	}
 	public Joystick getJoystick1() {
 		return stick1;
 	}

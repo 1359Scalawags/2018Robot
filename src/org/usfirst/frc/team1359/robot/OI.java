@@ -7,6 +7,8 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
+import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -58,6 +60,10 @@ public class OI {
 	public OI() {
 		turnButton.whenPressed(new TurnByAngle(90));
 		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
+		
+		
+		extendClimberButton.whenPressed(new ExtendClimberArm());
+		retractClimberButton.whenPressed(new RetractClimberArm());
 	}
 	public Joystick getJoystick1() {
 		return stick1;

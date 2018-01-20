@@ -22,7 +22,14 @@ public class RobotMap {
 	public static final int frontRightMotor = 2;
 	public static final int rearRightMotor = 3;
 	
+	public static final int climbMotor = 4;
+	public static final int elevatorMotor = 0;
+	public static final int lowerLimit = 0;
+	public static final int upperLimit = 1;
+	public static final int rocker = 0;
 	//Control
+	
+	
 	
 	//JoyStick1
 	public static final int joystick1 = 0;
@@ -43,6 +50,9 @@ public class RobotMap {
 	
 	public static final boolean pressed=true;
 	public static final boolean notPressed=true;
+	
+	//Pneumatics
+	public static final int compressor = 0;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

@@ -4,6 +4,7 @@ import org.usfirst.frc.team1359.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
+import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
 
@@ -17,9 +18,16 @@ public class Climber extends Subsystem {
 	DigitalInput lowerLimit, upperLimit;
 	Talon climbMotor;
 	Relay elevatorMotor;
+	Solenoid rocker;
+	
 	
 	public Climber(){
 		
+		climbMotor = new Talon(RobotMap.climbMotor);
+		elevatorMotor = new Relay(RobotMap.elevatorMotor);
+		lowerLimit = new DigitalInput(RobotMap.lowerLimit);
+		upperLimit = new DigitalInput(RobotMap.upperLimit);
+		rocker = new Solenoid(RobotMap.rocker);
 	}
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
@@ -40,8 +48,14 @@ public class Climber extends Subsystem {
     	elevatorMotor.set(Relay.Value.kReverse);
     }
     
-    public void rockForward() {}
-    public void rockBackward() {}
+    public void rockForward() {
+    	
+    	rocker.set(true);
+    }
+    public void rockBackward() {
+    	
+    	rocker.set(false);
+    }
    
     public void climb(double speed) {
     	

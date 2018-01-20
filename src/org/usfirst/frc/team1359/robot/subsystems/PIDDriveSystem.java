@@ -34,7 +34,9 @@ public class PIDDriveSystem extends Subsystem {
 
     Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
     
-    PIDControl leftControl = new PIDControl(1.0, 0.1, 0.001);
+    PIDControl leftControl = new PIDControl(1.0, 1.0, 0.1);
+    PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);
+    PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
     
 
     public ADXRS450_Gyro getGyro() {
@@ -67,16 +69,21 @@ public class PIDDriveSystem extends Subsystem {
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
+    	
     	// get the encoder input
+    	double leftInput = leftEncoder.getRate();
+    	double rightInput = rightEncoder.getRate();
     	
     	// set the target point
+    	leftControl.SetPoint(leftSpeed);
+    	rightControl.SetPoint(rightSpeed);
     	
     	// compute the output that gives us that target
+    	double leftOutput = leftControl.Compute(leftInput);
+    	double rightOutput = rightControl.Compute(rightInput);
     	
     	// run the tank drive
-
-    	m_drive.tankDrive(leftSpeed, rightSpeed);
-    	
+    	m_drive.tankDrive(leftOutput, rightOutput);   	
     	
     }
     

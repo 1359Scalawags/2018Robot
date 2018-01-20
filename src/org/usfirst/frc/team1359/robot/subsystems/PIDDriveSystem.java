@@ -5,47 +5,19 @@ import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
-import edu.wpi.first.wpilibj.PIDController;
-import edu.wpi.first.wpilibj.SpeedController;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
 import edu.wpi.first.wpilibj.Talon;
-import edu.wpi.first.wpilibj.command.PIDSubsystem;
+import edu.wpi.first.wpilibj.command.Subsystem;
 import edu.wpi.first.wpilibj.drive.DifferentialDrive;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class PIDDriveSystem extends PIDSubsystem {
-	
-	SpeedController leftMotor = new Talon(1);
-	SpeedController rightMotor = new Talon(2);
-	 
-    // Initialize your subsystem here
-    public PIDDriveSystem() {
-    	super("PIDDriveSystem", 1.0, .01, 0.0); // change these values (P, I, D)
-    	setAbsoluteTolerance(.05);
-    	PIDController p = getPIDController();
-    	p.setContinuous(false);
-    	
-    	// Use these to get going:
-        // setSetpoint() -  Sets where the PID controller should move the system
-        //                  to
-        // enable() - Enables the PID controller.
-    }
+public class PIDDriveSystem extends Subsystem {
 
-
-    protected double returnPIDInput() {
-        // Return your input value for the PID loop
-        // e.g. a sensor, like a potentiometer:
-        // yourPot.getAverageVoltage() / kYourMaxVoltage;
-        return 0.0;
-    }
-
-    protected void usePIDOutput(double output) {
-        // Use output to drive your system, like a motor
-        // e.g. yourMotor.set(output);
-    }
-
+    // Put methods for controlling this subsystem
+    // here. Call these from Commands.
 	Talon m_frontLeft = new Talon(RobotMap.frontleftMotor);
 	Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
     SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
@@ -59,8 +31,12 @@ public class PIDDriveSystem extends PIDSubsystem {
     ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
     
     Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
+
     Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 
+    public ADXRS450_Gyro getGyro() {
+    	return m_Gyro;
+    }
     
     public double getAngle() {
     	return m_Gyro.getAngle();
@@ -99,7 +75,7 @@ public class PIDDriveSystem extends PIDSubsystem {
     	m_drive.arcadeDrive(moveSpeed, turnSpeed);
 
     }
-	
-	
-
+    
+   
+    
 }

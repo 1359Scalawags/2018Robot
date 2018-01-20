@@ -27,6 +27,8 @@ public class OI {
 	// number it is.
 	Joystick stick1 = new Joystick(RobotMap.joystick1);
 	Joystick stick2 = new Joystick(RobotMap.joystick2);
+	Joystick stick3 = new Joystick(RobotMap.joystick3);
+	
 	
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
@@ -60,6 +62,9 @@ public class OI {
 	}
 	public Joystick getJoystick2() {
 		return stick2;
+	}
+	public Joystick getJoystick3() {
+		return stick3;
 	}
 	public double getLeftSpeed() {
    	SmartDashboard.putNumber("Left Motor", -stick1.getY());		

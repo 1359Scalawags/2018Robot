@@ -25,12 +25,16 @@ public class RobotMap {
 	//Controlls
 	public static final int joystick1 = 0;
 	public static final int joystick2 = 1;
+	public static final int joystick3 = 2;
 	public static final int lightbutton = 3;
 	public static final int turnbutton = 3;
 	
 	//Extra
 	public static final int leonardo = 0;
 	public static final double ROTATE_TOLERANCE = 0.5;
+	
+	public static final boolean pressed=true;
+	public static final boolean notPressed=true;
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

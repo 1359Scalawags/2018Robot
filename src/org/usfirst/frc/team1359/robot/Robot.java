@@ -16,6 +16,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
+import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
 
@@ -36,6 +37,8 @@ public class Robot extends TimedRobot {
 	public static final DriveSystem kDriveSystem = new DriveSystem();
 	public static final Aesthetics kAesthetics = new Aesthetics();
 	public static OI kOI;
+	public static final Climber kClimber = new Climber();
+	
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();

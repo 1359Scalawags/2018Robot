@@ -22,12 +22,20 @@ public class RobotMap {
 	public static final int frontRightMotor = 2;
 	public static final int rearRightMotor = 3;
 	
-	//Controlls
+	//Control
+	
+	//JoyStick1
 	public static final int joystick1 = 0;
-	public static final int joystick2 = 1;
-	public static final int joystick3 = 2;
-	public static final int lightbutton = 3;
 	public static final int turnbutton = 3;
+
+	//JoyStick2
+	public static final int joystick2 = 1;
+	public static final int lightbutton = 3;
+	
+	//JoyStick3
+	public static final int joystick3 = 2;
+	public static final int extendbutton = 3;
+	public static final int retractbutton = 2;
 	
 	//Extra
 	public static final int leonardo = 0;

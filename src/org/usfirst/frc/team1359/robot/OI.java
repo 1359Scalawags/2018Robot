@@ -33,6 +33,8 @@ public class OI {
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
+	Button extendClimberButton = new JoystickButton(stick3, RobotMap.extendbutton);
+	Button retractClimberButton = new JoystickButton(stick3, RobotMap.retractbutton);
 	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to

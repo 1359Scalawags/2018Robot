@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
@@ -37,6 +38,7 @@ public class OI {
 	Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
 	Button extendClimberButton = new JoystickButton(stick3, RobotMap.extendbutton);
 	Button retractClimberButton = new JoystickButton(stick3, RobotMap.retractbutton);
+	Button enableClimberButton = new JoystickButton(stick3, RobotMap.climberbutton);
 	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
@@ -61,6 +63,7 @@ public class OI {
 		turnButton.whenPressed(new TurnByAngle(90));
 		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
 		
+		enableClimberButton.whenPressed(new ClimbCommand());
 		
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());

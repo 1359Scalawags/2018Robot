@@ -43,6 +43,7 @@ public class RobotMap {
 	public static final int joystick3 = 2;
 	public static final int extendbutton = 6;
 	public static final int retractbutton = 7;
+	public static final int climberbutton = 12;
 	
 	//Extra
 	public static final int leonardo = 0;

@@ -12,4 +12,9 @@ public class Utilities {
 		}
 		return angle;
 	}
+	
+	public double Clamp(double value, double min, double max) {
+		
+		return Math.max(min, Math.min(max, value));
+	}
 }

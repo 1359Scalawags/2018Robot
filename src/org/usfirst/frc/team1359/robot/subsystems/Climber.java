@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1359.robot.subsystems;
 
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -64,12 +65,12 @@ public class Climber extends Subsystem {
     
     public boolean isElevated() {
     	
-    	return (upperLimit.get() == RobotMap.pressed);
+    	return (upperLimit.get() == Constants.pressed);
     }
     
     public boolean isRetracted() {
     	
-    	return (lowerLimit.get() == RobotMap.pressed);
+    	return (lowerLimit.get() == Constants.pressed);
     }
 }
 

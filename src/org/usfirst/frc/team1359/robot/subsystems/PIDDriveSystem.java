@@ -89,10 +89,13 @@ public class PIDDriveSystem extends Subsystem {
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {
     	
+    	
     	m_drive.arcadeDrive(moveSpeed, turnSpeed);
 
     }
     
-   
+   public void arcadeDrive(double moveSpeed, double maxTurnSpeed, double targetAngle) {
+	   
+   }
     
 }

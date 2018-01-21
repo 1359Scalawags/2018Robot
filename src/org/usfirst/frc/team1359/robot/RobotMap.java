@@ -48,8 +48,6 @@ public class RobotMap {
 	public static final int leonardo = 0;
 	public static final double ROTATE_TOLERANCE = 0.5;
 	
-	public static final boolean pressed=true;
-	public static final boolean notPressed=true;
 	
 	//Pneumatics
 	public static final int compressor = 0;

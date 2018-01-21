@@ -2,6 +2,7 @@ package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -9,9 +10,32 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousCommand extends CommandGroup {
 
+	
+	
     public AutonomousCommand() {
     	super("AutonomousCommand");
     	requires(Robot.kDriveSystem);
+    	DriverStation driverStation = DriverStation.getInstance();
+    	
+    	if(driverStation.getLocation() == 1) {//left
+    		//get into position
+    		if(driverStation.getGameSpecificMessage().charAt(0) == 'L') {
+    			//Drop a cube
+    		}else {
+    			//Don't drop a cube
+    		}
+    	}else if(driverStation.getLocation() == 2) {//center
+    		//get into position
+    	}else if(driverStation.getLocation() == 3) {//right
+    		//get into position
+    		if(driverStation.getGameSpecificMessage().charAt(0) == 'R') {
+    			//Drop a cube
+    		}else {
+    			//Don't drop a cube
+    		}
+    	}else {
+    		
+    	}
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

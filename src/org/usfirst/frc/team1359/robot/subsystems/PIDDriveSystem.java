@@ -96,6 +96,14 @@ public class PIDDriveSystem extends Subsystem {
     
    public void arcadeDrive(double moveSpeed, double maxTurnSpeed, double targetAngle) {
 	   
+	   double angleInput = m_Gyro.getAngle();
+	   
+	   gyroControl.SetPoint(targetAngle);
+	   
+	   double angleOutput = gyroControl.Compute(angleInput);
+	   
+	   m_drive.arcadeDrive(angleOutput, maxTurnSpeed);
+	   
    }
     
 }

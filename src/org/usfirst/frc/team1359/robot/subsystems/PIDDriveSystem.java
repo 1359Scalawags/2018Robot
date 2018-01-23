@@ -1,6 +1,8 @@
 package org.usfirst.frc.team1359.robot.subsystems;
 
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
+import org.usfirst.frc.team1359.robot.Utilities;
 import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
@@ -16,22 +18,20 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class PIDDriveSystem extends Subsystem {
 
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	// left side
 	Talon m_frontLeft = new Talon(RobotMap.frontleftMotor);
 	Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
     SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
 
+    // right side
     Talon m_frontRight = new Talon(RobotMap.frontRightMotor);
     Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
     SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
 
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
-    
-    ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
-    
-    Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 
+    ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
+    Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
     Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
     
     PIDControl leftControl = new PIDControl(1.0, 1.0, 0.1);
@@ -39,8 +39,8 @@ public class PIDDriveSystem extends Subsystem {
     PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
     
 
-    public ADXRS450_Gyro getGyro() {
-    	return m_Gyro;
+    public PIDDriveSystem( ) {
+    	leftEncoder.setDistancePerPulse(Constants.FEET_PER_PULSE);
     }
     
     public double getAngle() {
@@ -52,20 +52,16 @@ public class PIDDriveSystem extends Subsystem {
     public double getGyroRate() {
     	return m_Gyro.getRate();
     }
-    public double getLeftEncoder() {
+    
+    public double getLeftDistance() {
     	return leftEncoder.getDistance();
     }
-
-    public double getRightEncoder() {
+    public double getRightDistance() {
     	return rightEncoder.getDistance();
     }
 
-    
     public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveWithJoysticks());
-    	
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
@@ -78,9 +74,10 @@ public class PIDDriveSystem extends Subsystem {
     	leftControl.SetPoint(leftSpeed);
     	rightControl.SetPoint(rightSpeed);
     	
-    	// compute the output that gives us that target
-    	double leftOutput = leftControl.Compute(leftInput);
-    	double rightOutput = rightControl.Compute(rightInput);
+    	// compute the output that gives us that target...clamp values
+    	double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
+    	double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
+    	
     	
     	// run the tank drive
     	m_drive.tankDrive(leftOutput, rightOutput);   	
@@ -88,10 +85,7 @@ public class PIDDriveSystem extends Subsystem {
     }
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {
-    	
-    	
     	m_drive.arcadeDrive(moveSpeed, turnSpeed);
-
     }
     
    public void arcadeDrive(double moveSpeed, double maxTurnSpeed, double targetAngle) {

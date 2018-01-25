@@ -59,6 +59,11 @@ public class PIDDriveSystem extends Subsystem {
     public double getRightDistance() {
     	return rightEncoder.getDistance();
     }
+    
+    public double getAverageDistance() {
+    	
+    	return (getRightDistance() + getLeftDistance()) / 2;
+    }
 
     public void initDefaultCommand() {
     	setDefaultCommand(new DriveWithJoysticks());

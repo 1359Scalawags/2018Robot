@@ -19,6 +19,7 @@ import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
+import org.usfirst.frc.team1359.robot.subsystems.PIDDriveSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -35,6 +36,7 @@ import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveSystem kDriveSystem = new DriveSystem();
+	public static final PIDDriveSystem kPIDDriveSystem = new PIDDriveSystem(); 
 	public static final Aesthetics kAesthetics = new Aesthetics();
 	public static OI kOI;
 	public static final Climber kClimber = new Climber();

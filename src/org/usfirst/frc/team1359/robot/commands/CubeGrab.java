@@ -1,5 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands;
 
+import org.usfirst.frc.team1359.robot.Robot;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
@@ -8,7 +10,9 @@ import edu.wpi.first.wpilibj.command.Command;
 public class CubeGrab extends Command {
 
     public CubeGrab() {
-    	
+    	super ("CubeGrab");
+    	requires(Robot.kCubeLoader);
+    	requires(Robot.kPneumatics);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

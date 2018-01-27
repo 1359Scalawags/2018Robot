@@ -2,20 +2,16 @@ package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LeonardoDisplayBlue extends Command {
+public class CubeRealease extends Command {
 
-	private I2C i2c;
-	
-    public LeonardoDisplayBlue() {
-    	super("LeonardoDisplayBlue");
-    	requires(Robot.kAesthetics);
-    	//i2c = new I2C(I2C.Port.kOnboard, );
+    public CubeRealease() {
+    	super("CubeRealease");
+    	requires(Robot.kCubeLoader);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

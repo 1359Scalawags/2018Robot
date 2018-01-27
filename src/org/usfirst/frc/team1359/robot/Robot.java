@@ -17,9 +17,11 @@ import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
+import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team1359.robot.subsystems.PIDDriveSystem;
+import org.usfirst.frc.team1359.robot.subsystems.PneumaticsSystem;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -40,6 +42,8 @@ public class Robot extends TimedRobot {
 	public static final Aesthetics kAesthetics = new Aesthetics();
 	public static OI kOI;
 	public static final Climber kClimber = new Climber();
+	public static final CubeLoader kCubeLoader = new CubeLoader();
+	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	
 
 	Command m_autonomousCommand;

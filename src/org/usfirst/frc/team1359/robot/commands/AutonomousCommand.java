@@ -4,32 +4,48 @@ import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class AutonomousCommand extends CommandGroup {
 
-	
+	private char switchPosNear;
+	private char switchPosFar;
+	private char scalePos;
+	private DriverStation.Alliance alliance;
 	
     public AutonomousCommand() {
     	super("AutonomousCommand");
     	requires(Robot.kDriveSystem);
     	DriverStation driverStation = DriverStation.getInstance();
     	
+    	alliance = driverStation.getAlliance();
+    	switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
+    	switchPosFar = driverStation.getGameSpecificMessage().charAt(2);
+    	scalePos = driverStation.getGameSpecificMessage().charAt(1);
+    	
+    	SmartDashboard.putString("Alliance", alliance.toString());
+    	
     	if(driverStation.getLocation() == 1) {//left
     		//get into position
-    		if(driverStation.getGameSpecificMessage().charAt(0) == 'L') {
+    		SmartDashboard.putString("Location", "Left");
+    		if(switchPosNear == 'L') {
     			//Drop a cube
+    			SmartDashboard.putString("Close Switch", "Left");
     		}else {
     			//Don't drop a cube
     		}
     	}else if(driverStation.getLocation() == 2) {//center
     		//get into position
+    		SmartDashboard.putString("Location", "Center");
     	}else if(driverStation.getLocation() == 3) {//right
     		//get into position
-    		if(driverStation.getGameSpecificMessage().charAt(0) == 'R') {
+    		SmartDashboard.putString("Location", "Right");
+    		if(switchPosNear == 'R') {
     			//Drop a cube
+    			SmartDashboard.putString("Close Switch", "Right");
     		}else {
     			//Don't drop a cube
     		}

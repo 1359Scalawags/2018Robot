@@ -12,5 +12,6 @@ public class Constants {
      */
 	public static final double FEET_PER_PULSE = 0.01;
 	public static final double MAX_MOTOR_SPEED = 0.95;
-
+	
+	public static final double cubeArmSpeed = 25;
 }

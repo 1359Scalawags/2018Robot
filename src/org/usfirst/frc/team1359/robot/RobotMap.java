@@ -23,10 +23,16 @@ public class RobotMap {
 	public static final int rearRightMotor = 3;
 	
 	public static final int climbMotor = 4;
-	public static final int elevatorMotor = 0;
+	public static final int elevatorMotor = 0; //relay
 	public static final int lowerLimit = 0;
 	public static final int upperLimit = 1;
-	public static final int rocker = 0;
+	public static final int rocker = 0; //solenoid
+	
+	public static final int liftMotor = 5;
+	public static final int cubeClamp = 1; //spike relay
+	public static final int bottomLimit = 2;
+	public static final int topLimit = 3;
+	public static final int armValve = 1; //solenoid
 	//Control
 	
 	

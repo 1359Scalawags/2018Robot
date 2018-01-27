@@ -16,4 +16,10 @@ public class Utilities {
 	public static double Clamp(double value, double min, double max) {
 		return Math.max(min, Math.min(max, value));
 	}
+	
+	//public static double normalizeDistance(double distance) {
+		
+		
+		//return distance;
+	//}
 }

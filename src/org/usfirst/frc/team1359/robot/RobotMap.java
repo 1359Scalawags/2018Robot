@@ -28,8 +28,8 @@ public class RobotMap {
 	public static final int upperLimit = 1;
 	public static final int rocker = 0; //solenoid
 	
-	public static final int liftMotor = 5;
-	public static final int cubeClamp = 1; //spike relay
+	 public static final int liftMotor = 5;
+	public static final int cubeClamp = 1; // relay
 	public static final int bottomLimit = 2;
 	public static final int topLimit = 3;
 	public static final int armValve = 1; //solenoid
@@ -50,6 +50,9 @@ public class RobotMap {
 	public static final int extendbutton = 6;
 	public static final int retractbutton = 7;
 	public static final int climberbutton = 12;
+	
+	public static final int grabcube = 4;
+	public static final int releasecube = 5;
 	
 	//Extra
 	public static final int leonardo = 0;

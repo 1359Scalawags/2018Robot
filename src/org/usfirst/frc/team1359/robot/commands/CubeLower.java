@@ -13,7 +13,7 @@ public class CubeLower extends Command {
     	super("CubeLower");
     	requires(Robot.kCubeLoader);
         // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+        // eg. requires(chassis); legalize awoo
     }
 
     // Called just before this Command runs the first time

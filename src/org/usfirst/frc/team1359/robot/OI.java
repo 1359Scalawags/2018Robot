@@ -39,7 +39,11 @@ public class OI {
 	Button extendClimberButton = new JoystickButton(stick3, RobotMap.extendbutton);
 	Button retractClimberButton = new JoystickButton(stick3, RobotMap.retractbutton);
 	Button enableClimberButton = new JoystickButton(stick3, RobotMap.climberbutton);
-	
+	Button grabCubeButton = new JoystickButton(stick3, RobotMap.grabcube);
+	Button releaseCubeButton = new JoystickButton(stick3, RobotMap.releasecube);
+	Button liftCube90Button = new JoystickButton(stick3, RobotMap.liftcube90);
+	Button liftCube180Button = new JoystickButton(stick3, RobotMap.liftcube180);
+	Button lowerCubeButton = new JoystickButton(stick3, RobotMap.lowercube);
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -62,6 +66,8 @@ public class OI {
 	public OI() {
 		turnButton.whenPressed(new TurnByAngle(90));
 		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
+		
+		
 		
 		enableClimberButton.whenPressed(new ClimbCommand());
 		

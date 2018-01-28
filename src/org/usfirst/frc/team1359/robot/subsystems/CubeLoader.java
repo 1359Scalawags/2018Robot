@@ -22,11 +22,16 @@ public class CubeLoader extends Subsystem {
 	Solenoid armValve;
 	
 	 Potentiometer pot = new AnalogPotentiometer(0, 180, 0);
+	 
+	public enum ArmPosition {
+		Top,
+		Middle,
+		Bottom
+	}
+	
+	ArmPosition armposition;
 	
 	public CubeLoader(){
-		
-	    
-
 		
 		bottomLimit = new DigitalInput(RobotMap.bottomLimit);
 		topLimit = new DigitalInput(RobotMap.topLimit);
@@ -53,9 +58,9 @@ public class CubeLoader extends Subsystem {
 		liftMotor.set(Constants.cubeArmSpeed);
 	}
 	
-	public void lower(double speed) {
+	public void lower() {
 		
-		
+		liftMotor.set(-(Constants.cubeArmSpeed));
 	}
 	
 	public void stop() {
@@ -63,14 +68,33 @@ public class CubeLoader extends Subsystem {
 		liftMotor.set(0);
 	}
 	
-	public boolean isLifted(){
-		
+	public boolean isLifted90(){
+		if(pot.get() > 89.0 && armposition == ArmPosition.Top) {
+			return true;
+		}
+		else {
 		return (topLimit.get() == Constants.pressed);
+		}
+		}
+	
+	public boolean isLifted180() {
+		if(pot.get() > 179.0 && armposition == ArmPosition.Top) {
+			return true;
+		}
+		else {
+			return (topLimit.get() == Constants.pressed);
+		}
 	}
+		
 	
 	public boolean isLowered() {
+		if(pot.get() < .1 && armposition == ArmPosition.Bottom) {
+			return true;
+		}
+		else {
 		return (bottomLimit.get() == Constants.notPressed);
-	}
+		}
+		}
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
 

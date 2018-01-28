@@ -24,7 +24,7 @@ public class CubeGrab extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     
-    	Robot.kCubeLoader.grabCube();
+    Robot.kCubeLoader.grab();
     }
     
 

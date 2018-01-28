@@ -69,11 +69,11 @@ public class CubeLoader extends Subsystem {
 	}
 	
 	public boolean isLifted90(){
-		if(pot.get() > 89.0 && armposition == ArmPosition.Top) {
+		if(pot.get() > 89.0 && armposition == ArmPosition.Middle) {
 			return true;
 		}
 		else {
-		return (topLimit.get() == Constants.pressed);
+		return (topLimit.get() == Constants.notPressed);
 		}
 		}
 	
@@ -82,7 +82,7 @@ public class CubeLoader extends Subsystem {
 			return true;
 		}
 		else {
-			return (topLimit.get() == Constants.pressed);
+			return (topLimit.get() == Constants.notPressed);
 		}
 	}
 		

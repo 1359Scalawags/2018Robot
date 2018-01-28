@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CubeRealease extends Command {
+public class CubeRelease extends Command {
 
-    public CubeRealease() {
+    public CubeRelease() {
     	super("CubeRealease");
     	requires(Robot.kCubeLoader);
         // Use requires() here to declare subsystem dependencies
@@ -22,6 +22,8 @@ public class CubeRealease extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    
+    Robot.kCubeLoader.release();
     }
 
     // Make this return true when this Command no longer needs to run execute()

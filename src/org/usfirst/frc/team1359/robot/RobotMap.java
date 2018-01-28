@@ -23,17 +23,19 @@ public class RobotMap {
 	public static final int rearRightMotor = 3;
 	
 	public static final int climbMotor = 4;
-	public static final int elevatorMotor = 0; //relay
-	public static final int lowerLimit = 0;
-	public static final int upperLimit = 1;
-	public static final int rocker = 0; //solenoid
-	
-	 public static final int liftMotor = 5;
-	public static final int cubeClamp = 1; // relay
-	public static final int bottomLimit = 2;
-	public static final int topLimit = 3;
-	public static final int armValve = 1; //solenoid
+	public static final int liftMotor = 5;
+	public static final int shooterPull = 6;
 			
+	public static final int elevatorMotor = 0; //relay
+	public static final int cubeClamp = 1; // relay
+	
+	//Limit Switches
+	public static final int lowerLimit = 0; //cube arm
+	public static final int upperLimit = 1; //cube arm	
+	public static final int bottomLimit = 2; //climb arm
+	public static final int topLimit = 3;	//climb arm
+	public static final int shooterDownLimit = 4; //limit
+	
 	//JoyStick1
 	public static final int joystick1 = 0;
 	public static final int turnbutton = 3;
@@ -44,15 +46,21 @@ public class RobotMap {
 	
 	//JoyStick3
 	public static final int joystick3 = 2;
+	
+	public static final int drawShooter = 2;
+	public static final int grabcube = 4;
+	public static final int releasecube = 5;	
 	public static final int extendbutton = 6;
 	public static final int retractbutton = 7;
-	public static final int climberbutton = 12;
-	
-	public static final int grabcube = 4;
-	public static final int releasecube = 5;
+	public static final int lowercube = 8;	
+	public static final int climberbutton = 9;
 	public static final int liftcube90 = 10;
-	public static final int liftcube180 = 11;
-	public static final int lowercube = 9;
+	public static final int liftcube180 = 11;	
+	
+	
+
+
+
 	
 	
 	//Extra
@@ -63,6 +71,9 @@ public class RobotMap {
 	
 	//Pneumatics
 	public static final int compressor = 0;
+	public static final int shooterLock = 2; //solenoid
+	public static final int armValve = 1; //solenoid
+	public static final int rocker = 0; //solenoid
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

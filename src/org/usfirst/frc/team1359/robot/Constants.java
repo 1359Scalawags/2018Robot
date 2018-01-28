@@ -14,4 +14,5 @@ public class Constants {
 	public static final double MAX_MOTOR_SPEED = 0.95;
 	
 	public static final double cubeArmSpeed = 25;
+	public static final double shooterArmSpeed = 25;
 }

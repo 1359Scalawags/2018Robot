@@ -9,6 +9,7 @@ package org.usfirst.frc.team1359.robot;
 
 import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
+import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
@@ -44,6 +45,7 @@ public class OI {
 	Button liftCube90Button = new JoystickButton(stick3, RobotMap.liftcube90);
 	Button liftCube180Button = new JoystickButton(stick3, RobotMap.liftcube180);
 	Button lowerCubeButton = new JoystickButton(stick3, RobotMap.lowercube);
+	Button drawShooter = new JoystickButton(stick3, RobotMap.drawShooter);
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -73,6 +75,7 @@ public class OI {
 		
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());
+		drawShooter.whenPressed(new PullShooter());
 	}
 	public Joystick getJoystick1() {
 		return stick1;

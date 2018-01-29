@@ -39,15 +39,18 @@ import org.usfirst.frc.team1359.robot.subsystems.PneumaticsSystem;
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveSystem kDriveSystem = new DriveSystem();
-	public static final PIDDriveSystem kPIDDriveSystem = new PIDDriveSystem(); 
 	public static final Aesthetics kAesthetics = new Aesthetics();
 	public static OI kOI;
-	public static final Climber kClimber = new Climber();
-	public static final CubeLoader kCubeLoader = new CubeLoader();
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	
-
+	
+	//public static final CubeLoader kCubeLoader = new CubeLoader();
+	//public static final PIDDriveSystem kPIDDriveSystem = new PIDDriveSystem(); 
+	//public static final Climber kClimber = new Climber();
+	//+AutonomousCommand Angered the FRC gods
+	
+	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
@@ -138,6 +141,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putData("Pnumatics Shutoff", data);
 	}
 
 	/**

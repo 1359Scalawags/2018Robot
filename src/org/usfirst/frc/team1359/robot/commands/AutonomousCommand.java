@@ -21,37 +21,37 @@ public class AutonomousCommand extends CommandGroup {
     	requires(Robot.kDriveSystem);
     	DriverStation driverStation = DriverStation.getInstance();
     	
-    	alliance = driverStation.getAlliance();
-    	switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
-    	switchPosFar = driverStation.getGameSpecificMessage().charAt(2);
-    	scalePos = driverStation.getGameSpecificMessage().charAt(1);
+    	//alliance = driverStation.getAlliance();
+    	//switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
+    	//switchPosFar = driverStation.getGameSpecificMessage().charAt(2);
+    	//scalePos = driverStation.getGameSpecificMessage().charAt(1);
     	
-    	SmartDashboard.putString("Alliance", alliance.toString());
+    	//SmartDashboard.putString("Alliance", alliance.toString());
     	
-    	if(driverStation.getLocation() == 1) {//left
-    		//get into position
-    		SmartDashboard.putString("Location", "Left");
-    		if(switchPosNear == 'L') {
-    			//Drop a cube
-    			SmartDashboard.putString("Close Switch", "Left");
-    		}else {
-    			//Don't drop a cube
-    		}
-    	}else if(driverStation.getLocation() == 2) {//center
-    		//get into position
-    		SmartDashboard.putString("Location", "Center");
-    	}else if(driverStation.getLocation() == 3) {//right
-    		//get into position
-    		SmartDashboard.putString("Location", "Right");
-    		if(switchPosNear == 'R') {
-    			//Drop a cube
-    			SmartDashboard.putString("Close Switch", "Right");
-    		}else {
-    			//Don't drop a cube
-    		}
-    	}else {
-    		
-    	}
+//    	if(driverStation.getLocation() == 1) {//left
+//    		//get into position
+//    		SmartDashboard.putString("Location", "Left");
+//    		if(switchPosNear == 'L') {
+//    			//Drop a cube
+//    			SmartDashboard.putString("Close Switch", "Left");
+//    		}else {
+//    			//Don't drop a cube
+//    		}
+//    	}else if(driverStation.getLocation() == 2) {//center
+//    		//get into position
+//    		SmartDashboard.putString("Location", "Center");
+//    	}else if(driverStation.getLocation() == 3) {//right
+//    		//get into position
+//    		SmartDashboard.putString("Location", "Right");
+//    		if(switchPosNear == 'R') {
+//    			//Drop a cube
+//    			SmartDashboard.putString("Close Switch", "Right");
+//    		}else {
+//    			//Don't drop a cube
+//    		}
+//    	}else {
+//    		
+//    	}
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

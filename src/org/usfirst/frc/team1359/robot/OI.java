@@ -7,12 +7,12 @@
 
 package org.usfirst.frc.team1359.robot;
 
-import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
+//import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
 import org.usfirst.frc.team1359.robot.commands.CubeShooterCommandGroup;
-import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
+//import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
-import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
+//import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -74,10 +74,10 @@ public class OI {
 		
 		
 		
-		enableClimberButton.whenPressed(new ClimbCommand());
+		//enableClimberButton.whenPressed(new ClimbCommand());
 		
-		extendClimberButton.whenPressed(new ExtendClimberArm());
-		retractClimberButton.whenPressed(new RetractClimberArm());
+		//extendClimberButton.whenPressed(new ExtendClimberArm());
+		//retractClimberButton.whenPressed(new RetractClimberArm());
 		drawShooter.whenPressed(new CubeShooterCommandGroup());
 		releaseShooter.whenPressed(new ReleaseShooter());
 	}

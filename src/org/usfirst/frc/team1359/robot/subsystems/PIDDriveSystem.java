@@ -40,8 +40,9 @@ public class PIDDriveSystem extends Subsystem {
     PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);
     PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
     
-    public PIDDriveSystem( ) {
-    	leftEncoder.setDistancePerPulse(Constants.FEET_PER_PULSE);
+    public PIDDriveSystem() {
+    	leftEncoder.setDistancePerPulse(Constants.feetPerPulse);
+    	rightEncoder.setDistancePerPulse(Constants.feetPerPulse);
     }
     
     public double getAngle() {
@@ -93,18 +94,23 @@ public class PIDDriveSystem extends Subsystem {
     	rightControl.SetPoint(convertToEncoderRate(rightSpeed));
     	
     	// compute the output that gives us that target...clamp values
-    	double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
-    	double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
+    	double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
+    	double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
     	
     	
     	// run the tank drive
     	m_drive.tankDrive(leftOutput, rightOutput);   	
     	
     }
-        
+    
+    public double convertToFeetPerSecond(double originalValue) {
+    	
+    	return originalValue * Constants.fullDriveSpeed;
+    }
+    
     public double convertToEncoderRate(double motorSpeed) {
     	
-    	return Constants.PowerToEncoder * motorSpeed;
+    	return Constants.powerToEncoder * motorSpeed;
     }
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {
@@ -119,7 +125,7 @@ public class PIDDriveSystem extends Subsystem {
 	   
 	   double angleOutput = gyroControl.Compute(angleInput);
 	   
-	   m_drive.arcadeDrive(moveSpeed, angleOutput);  //this won't work correctly
+	   m_drive.arcadeDrive(moveSpeed, angleOutput);  
 	   
    }
     

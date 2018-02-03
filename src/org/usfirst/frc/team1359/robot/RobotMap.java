@@ -36,6 +36,9 @@ public class RobotMap {
 	public static final int topLimit = 3;	//climb arm
 	public static final int shooterDownLimit = 4; //limit
 	
+	//gameController
+	public static final int gameController = 3;
+	
 	//JoyStick1
 	public static final int joystick1 = 0;
 	public static final int turnbutton = 3;
@@ -68,6 +71,7 @@ public class RobotMap {
 	public static final int leonardo = 0;
 	public static final double ROTATE_TOLERANCE = 0.5;
 	public static final float cubeloaderpot = 0; //potentiometer
+	public static final int leonardoI2CAdress = 0xA0;
 	
 	
 	//Pneumatics

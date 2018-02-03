@@ -9,9 +9,12 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class LeonardoDisplayIdle extends Command {
 
+	private boolean isDone;
+	
     public LeonardoDisplayIdle() {
     	super("LeonardoDisplayIdle");
     	requires(Robot.kAesthetics);
+    	isDone = false;
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -22,11 +25,13 @@ public class LeonardoDisplayIdle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.kAesthetics.testSend();
+    	isDone = true;
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return isDone;
     }
 
     // Called once after isFinished returns true

@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -15,7 +16,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
+import org.usfirst.frc.team1359.robot.commands.LeonardoDisplayBlue;
+import org.usfirst.frc.team1359.robot.commands.LeonardoDisplayIdle;
+import org.usfirst.frc.team1359.robot.commands.StartCamera;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
+import org.usfirst.frc.team1359.robot.subsystems.Camera;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 import org.usfirst.frc.team1359.robot.subsystems.CubeShooter;
@@ -43,6 +48,7 @@ public class Robot extends TimedRobot {
 	public static OI kOI;
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
+	public static final Camera kcamera = new Camera();
 	
 	
 	//public static final CubeLoader kCubeLoader = new CubeLoader();
@@ -53,10 +59,13 @@ public class Robot extends TimedRobot {
 	
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	
+	
 
 	public Robot() {
 		super();
 		this.setPeriod(.025);
+		
 	}
 	
 	/**
@@ -71,8 +80,12 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
+		//StartCamera cam = new StartCamera();
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
+	
+	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when
@@ -80,7 +93,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void disabledInit() {
-
+		SmartDashboard.putString("Sending Data", "Null");
 	}
 
 	@Override
@@ -133,6 +146,8 @@ public class Robot extends TimedRobot {
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}
+		
+		
 	}
 
 	/**

@@ -9,13 +9,16 @@ package org.usfirst.frc.team1359.robot;
 
 //import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
 import org.usfirst.frc.team1359.robot.commands.CubeShooterCommandGroup;
+import org.usfirst.frc.team1359.robot.commands.LeonardoDisplayIdle;
 //import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
 //import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -35,6 +38,8 @@ public class OI {
 	Joystick stick2 = new Joystick(RobotMap.joystick2);
 	Joystick stick3 = new Joystick(RobotMap.joystick3);
 	
+	XboxController gamepad = new XboxController(RobotMap.gameController);
+	
 	
 	// Button button = new JoystickButton(stick, buttonNumber);
 	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
@@ -49,6 +54,7 @@ public class OI {
 	Button lowerCubeButton = new JoystickButton(stick3, RobotMap.lowercube);
 	Button drawShooter = new JoystickButton(stick3, RobotMap.drawShooter);
 	Button releaseShooter = new JoystickButton(stick3, RobotMap.releaseShooter);
+	
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -80,7 +86,22 @@ public class OI {
 		//retractClimberButton.whenPressed(new RetractClimberArm());
 		drawShooter.whenPressed(new CubeShooterCommandGroup());
 		releaseShooter.whenPressed(new ReleaseShooter());
+		
+		lightButton.whenPressed(new LeonardoDisplayIdle());
 	}
+	
+	public double getLStickY() {
+		return gamepad.getY(Hand.kLeft) * (0.5 * getTrigger() + 0.5);
+	}
+	
+	public double getRStickY() {
+		return gamepad.getY(Hand.kRight) * (0.5 * getTrigger() + 0.5);
+	}
+	
+	public double getTrigger() {
+		return Math.max(gamepad.getTriggerAxis(Hand.kLeft), gamepad.getTriggerAxis(Hand.kRight));
+	}
+	
 	public Joystick getJoystick1() {
 		return stick1;
 	}

@@ -2,36 +2,31 @@ package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
-import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class LeonardoDisplayBlue extends Command {
+public class StartCamera extends Command {
 
-	
-    public LeonardoDisplayBlue() {
-    	super("LeonardoDisplayBlue");
-    	requires(Robot.kAesthetics);
-    	//i2c = new I2C(I2C.Port.kOnboard, );
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
+    public StartCamera() {
+        super("StartCamera");
+        requires(Robot.kcamera);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.kcamera.start();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	SmartDashboard.putString("All good bro", "its cool");
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.kcamera.isStarted();
     }
 
     // Called once after isFinished returns true

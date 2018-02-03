@@ -26,6 +26,8 @@ public class DriveSystem extends Subsystem {
     Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
     SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
 
+    //DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+    
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
     
     ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
@@ -66,7 +68,7 @@ public class DriveSystem extends Subsystem {
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
     	
-    	m_drive.tankDrive(leftSpeed, rightSpeed);
+    	m_drive.tankDrive(leftSpeed, rightSpeed, true);
     	
     	
     }

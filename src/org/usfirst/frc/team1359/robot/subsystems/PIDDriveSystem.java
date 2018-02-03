@@ -40,7 +40,6 @@ public class PIDDriveSystem extends Subsystem {
     PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);
     PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
     
-
     public PIDDriveSystem( ) {
     	leftEncoder.setDistancePerPulse(Constants.FEET_PER_PULSE);
     }
@@ -57,25 +56,25 @@ public class PIDDriveSystem extends Subsystem {
     	return m_Gyro.getRate();
     }
     
-    public double getLeftDistance() {
+    public double getDistanceLeft() {
     	return leftEncoder.getDistance();
     }
     
-    public double getLeftRate() {
+    public double getRateLeft() {
     	return leftEncoder.getRate();
     }
     
-    public double getRightDistance() {
+    public double getDistanceRight() {
     	return rightEncoder.getDistance();
     }
     
-    public double getRightRate() {
+    public double getRateRight() {
     	return rightEncoder.getRate();
     }
     
     public double getAverageDistance() {
     	
-    	return (getRightDistance() + getLeftDistance()) / 2;
+    	return (getDistanceRight() + getDistanceLeft()) / 2;
     }
 
     public void initDefaultCommand() {

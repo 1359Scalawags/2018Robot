@@ -45,12 +45,13 @@ public class PIDSampleSystem extends PIDSubsystem {
         // Return your input value for the PID loop
         // e.g. a sensor, like a potentiometer:
         // yourPot.getAverageVoltage() / kYourMaxVoltage;
-    	if(Robot.kOI.getJoystick1().getX() > 0) {
-    		return pot.get();
-    	}
-    	else {
-    		return 0.0;
-    	}
+//    	if(Robot.kOI.getJoystick1().getX() > 0) {
+//    		return pot.get();
+//    	}
+//    	else {
+//    		return 0.0;
+//    	}
+    	return 1;
     }
 
     protected void usePIDOutput(double output) {

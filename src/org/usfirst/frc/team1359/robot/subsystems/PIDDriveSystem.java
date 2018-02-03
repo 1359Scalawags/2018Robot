@@ -83,6 +83,7 @@ public class PIDDriveSystem extends Subsystem {
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
     	
+    	//TODO: Ensure that input and setpoint are measured in the same units
     	// get the encoder input
     	double leftInput = leftEncoder.getRate();
     	double rightInput = rightEncoder.getRate();
@@ -113,7 +114,8 @@ public class PIDDriveSystem extends Subsystem {
 	   
 	   double angleOutput = gyroControl.Compute(angleInput);
 	   
-	   m_drive.arcadeDrive(angleOutput, maxTurnSpeed);
+	   //TODO: This doesn't do what you want
+	   m_drive.arcadeDrive(angleOutput, maxTurnSpeed);  //this won't work correctly
 	   
    }
     

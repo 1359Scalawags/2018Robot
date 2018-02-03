@@ -16,6 +16,16 @@ public class AutonomousCommand extends CommandGroup {
 	private char scalePos;
 	private DriverStation.Alliance alliance;
 	
+	public enum AutoStates{
+		GoPastLineLeft,
+		GoPastLineRight,
+		GoPastLineCenter,
+		DropCubeSwitchLeft,
+		DropCubeSwitchRight,
+		DropCubeScaleLeft,
+		DropCubeScaleright
+	}
+	
     public AutonomousCommand() {
     	super("AutonomousCommand");
     	requires(Robot.kDriveSystem);
@@ -27,6 +37,9 @@ public class AutonomousCommand extends CommandGroup {
     	scalePos = driverStation.getGameSpecificMessage().charAt(1);
     	
     	SmartDashboard.putString("Alliance", alliance.toString());
+    	
+    	
+    	
     	
     	if(driverStation.getLocation() == 1) {//left
     		//get into position

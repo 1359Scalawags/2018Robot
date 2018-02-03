@@ -37,7 +37,8 @@ public class RobotMap {
 	public static final int shooterDownLimit = 4; //limit
 	
 	//gameController
-	public static final int gameController = 3;
+	public static final int mainController = 0;
+	public static final int assistController = 1;
 	
 	//JoyStick1
 	public static final int joystick1 = 0;

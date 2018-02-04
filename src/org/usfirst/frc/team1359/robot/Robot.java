@@ -8,6 +8,7 @@
 package org.usfirst.frc.team1359.robot;
 
 import edu.wpi.first.wpilibj.CameraServer;
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -49,6 +50,7 @@ public class Robot extends TimedRobot {
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	public static final Camera kcamera = new Camera();
+	DriverStation driverStation;
 	
 	
 	//public static final CubeLoader kCubeLoader = new CubeLoader();
@@ -82,9 +84,13 @@ public class Robot extends TimedRobot {
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		//StartCamera cam = new StartCamera();
 		CameraServer.getInstance().startAutomaticCapture();
+		driverStation = DriverStation.getInstance();
 	}
 
-	
+	@Override
+	public void robotPeriodic() {
+		SmartDashboard.putNumber("MatchTime", driverStation.getMatchTime());
+	}
 	
 	/**
 	 * This function is called once each time the robot enters Disabled mode.

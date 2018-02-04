@@ -21,6 +21,8 @@ public class AutonomousCommand extends CommandGroup {
     	requires(Robot.kDriveSystem);
     	DriverStation driverStation = DriverStation.getInstance();
     	
+
+    	
     	//alliance = driverStation.getAlliance();
     	//switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
     	//switchPosFar = driverStation.getGameSpecificMessage().charAt(2);

@@ -40,6 +40,15 @@ public class OI {
 	
 	XboxController mainPad = new XboxController(RobotMap.mainController);
 	XboxController assistPad = new XboxController(RobotMap.assistController);
+
+	Button grabCubeButton = new JoystickButton(assistPad, RobotMap.xboxX);
+	Button releaseCubeButton = new JoystickButton(assistPad, RobotMap.xboxB);
+	Button liftCube90Button = new JoystickButton(assistPad, RobotMap.xboxA);
+	Button liftCube180Button = new JoystickButton(assistPad, RobotMap.xboxY);
+	Button lowerCubeButton = new JoystickButton(assistPad, RobotMap.startBtn);
+	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumper);
+	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumper);
+	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
 	
 	// Button button = new JoystickButton(stick, buttonNumber);
 //	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
@@ -91,59 +100,77 @@ public class OI {
 	}
 	
 	public double getLStickY() {
-		return mainPad.getY(Hand.kLeft) * (0.5 * getTrigger() + 0.5);
+		if(Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
+			return mainPad.getY(Hand.kLeft) * (0.5 * getTrigger() + 0.5);
+		}else {
+			return 0;
+		}
+		
 	}
 	
 	public double getRStickY() {
-		return mainPad.getY(Hand.kRight) * (0.5 * getTrigger() + 0.5);
+		if(Math.abs(mainPad.getY(Hand.kRight)) > Constants.controllerDeadZone) {
+			return mainPad.getY(Hand.kRight) * (0.5 * getTrigger() + 0.5);
+		}else {
+			return 0;
+		}
+		
+	}
+	
+	public double getRStickX() {
+		return mainPad.getX(Hand.kRight);
+	}
+	
+	public double getArmStick() {
+		return assistPad.getY(Hand.kLeft);
 	}
 	
 	public double getTrigger() {
 		return Math.max(mainPad.getTriggerAxis(Hand.kLeft), mainPad.getTriggerAxis(Hand.kRight));
 	}
 	
-	public boolean drawShooter() {
-		return assistPad.getBumper(Hand.kLeft); //change to same button as fire shooter i.e one press draw shooter second press fire
-	}
-	
-	public boolean fireShooter() {
-		return assistPad.getBumper(Hand.kRight);
-	}
-	
-	public boolean grabCube() {
-		return assistPad.getXButton();
-	}
-	
-	public boolean releaseCube() {
-		return assistPad.getBButton();
-	}
-	
-	public boolean lowerCube() {
-		if(assistPad.getPOV() == 0) {
-			return true;
-		}else {
-			return false;
-		}		
-	}
-	public boolean liftCube90() {
-		if(assistPad.getPOV() == 90) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public boolean liftCube180() {
-		if(assistPad.getPOV() == 180) {
-			return true;
-		}else {
-			return false;
-		}
-	}
-	
-	public boolean climb() {
-		return assistPad.getYButton();
-	}
+//	public boolean drawShooter() {
+//		return assistPad.getBumper(Hand.kLeft); //change to same button as fire shooter i.e one press draw shooter second press fire
+//	}
+//	
+//	public boolean fireShooter() {
+//		return assistPad.getBumper(Hand.kRight);
+//	}
+//	
+//	public boolean grabCube() {
+//		return assistPad.getXButton();
+//	}
+//	
+//	public boolean releaseCube() {
+//		return assistPad.getBButton();
+//	}
+//	
+//	public boolean lowerCube() {
+//		if(assistPad.getPOV() == 0) {
+//			return true;
+//		}else {
+//			return false;
+//		}		
+//	}
+//	public boolean liftCube90() {
+//		if(assistPad.getPOV() == 90) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//	}
+//	
+//	public boolean liftCube180() {
+//		if(assistPad.getPOV() == 180) {
+//			return true;
+//		}else {
+//			return false;
+//		}
+//	}
+//	
+//	public boolean climb() {
+//		return assistPad.getYButton();
+//	}
 	
 //	public Joystick getJoystick1() {
 //		return stick1;

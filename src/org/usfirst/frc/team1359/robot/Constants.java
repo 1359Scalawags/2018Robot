@@ -15,4 +15,6 @@ public class Constants {
 	
 	public static final double cubeArmSpeed = 25;
 	public static final double shooterArmSpeed = 25;
+	
+	public static final double controllerDeadZone = 0.05;
 }

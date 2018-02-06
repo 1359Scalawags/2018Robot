@@ -40,35 +40,42 @@ public class PIDDriveSystem extends Subsystem {
     PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);
     PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
     
-
-    
-
-    public PIDDriveSystem( ) {
-    	leftEncoder.setDistancePerPulse(Constants.FEET_PER_PULSE);
+    public PIDDriveSystem() {
+    	leftEncoder.setDistancePerPulse(Constants.feetPerPulse);
+    	rightEncoder.setDistancePerPulse(Constants.feetPerPulse);
     }
-    
- 
     
     public double getAngle() {
     	return m_Gyro.getAngle();
     }
+    
     public void resetGyro() {
     	m_Gyro.reset();
     }
+    
     public double getGyroRate() {
     	return m_Gyro.getRate();
     }
     
-    public double getLeftDistance() {
+    public double getDistanceLeft() {
     	return leftEncoder.getDistance();
     }
-    public double getRightDistance() {
+    
+    public double getRateLeft() {
+    	return leftEncoder.getRate();
+    }
+    
+    public double getDistanceRight() {
     	return rightEncoder.getDistance();
+    }
+    
+    public double getRateRight() {
+    	return rightEncoder.getRate();
     }
     
     public double getAverageDistance() {
     	
-    	return (getRightDistance() + getLeftDistance()) / 2;
+    	return (getDistanceRight() + getDistanceLeft()) / 2;
     }
 
     public void initDefaultCommand() {
@@ -76,23 +83,34 @@ public class PIDDriveSystem extends Subsystem {
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
+    	    	
     	
     	// get the encoder input
     	double leftInput = leftEncoder.getRate();
     	double rightInput = rightEncoder.getRate();
     	
     	// set the target point
-    	leftControl.SetPoint(leftSpeed);
-    	rightControl.SetPoint(rightSpeed);
+    	leftControl.SetPoint(convertToEncoderRate(leftSpeed));
+    	rightControl.SetPoint(convertToEncoderRate(rightSpeed));
     	
     	// compute the output that gives us that target...clamp values
-    	double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
-    	double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.MAX_MOTOR_SPEED, Constants.MAX_MOTOR_SPEED);
+    	double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
+    	double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
     	
     	
     	// run the tank drive
     	m_drive.tankDrive(leftOutput, rightOutput);   	
     	
+    }
+    
+    public double convertToFeetPerSecond(double originalValue) {
+    	
+    	return originalValue * Constants.fullDriveSpeed;
+    }
+    
+    public double convertToEncoderRate(double motorSpeed) {
+    	
+    	return Constants.powerToEncoder * motorSpeed;
     }
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {
@@ -107,7 +125,7 @@ public class PIDDriveSystem extends Subsystem {
 	   
 	   double angleOutput = gyroControl.Compute(angleInput);
 	   
-	   m_drive.arcadeDrive(angleOutput, maxTurnSpeed);
+	   m_drive.arcadeDrive(moveSpeed, angleOutput);  
 	   
    }
     

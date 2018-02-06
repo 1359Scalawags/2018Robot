@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
@@ -16,6 +17,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
+import org.usfirst.frc.team1359.robot.subsystems.Camera;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 import org.usfirst.frc.team1359.robot.subsystems.CubeShooter;
@@ -46,6 +48,7 @@ public class Robot extends TimedRobot {
 	public static final CubeLoader kCubeLoader = new CubeLoader();
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
+	public static final Camera kcamera = new Camera();
 	
 
 	Command m_autonomousCommand;
@@ -68,6 +71,7 @@ public class Robot extends TimedRobot {
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
+		CameraServer.getInstance().startAutomaticCapture();
 	}
 
 	/**

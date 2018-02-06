@@ -34,6 +34,9 @@ public class CubeShooter extends Subsystem {
     public void unlockShooter() {
     	lockValve.set(false);
     }
+    public boolean isLocked() {
+    	return lockValve.get();
+    }
     public void pullShooter() {
     	shooterPull.set(Constants.shooterArmSpeed);
     }

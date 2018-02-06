@@ -30,7 +30,7 @@ public class CubeGrab extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.kCubeLoader.isGrabed();
     }
 
     // Called once after isFinished returns true

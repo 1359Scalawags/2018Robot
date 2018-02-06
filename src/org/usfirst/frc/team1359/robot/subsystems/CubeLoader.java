@@ -103,6 +103,9 @@ public class CubeLoader extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     
+    public boolean isGrabed() {
+    	return armValve.get();
+    }
     
 }
 

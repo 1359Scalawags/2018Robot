@@ -16,6 +16,7 @@ public class CubeShooter extends Subsystem {
 	Talon shooterPull;
 	Solenoid lockValve;
 	DigitalInput shooterDownLimit;
+	DigitalInput strapUnwound;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -52,6 +53,16 @@ public class CubeShooter extends Subsystem {
     	 }
      }
     
+     public boolean shooterIsUnwound() {
+    	 return (strapUnwound.get() == Constants.pressed);
+    	 
+     }
+     
+     public void stopShooterMotor() {
+    	 shooterPull.set(0);
+    	 
+     }
+     
     public void loadCube() {}
     public void shoot() {}
     public void reset() {}

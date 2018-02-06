@@ -6,7 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team1359.robot;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
@@ -54,6 +54,8 @@ public class Robot extends TimedRobot {
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 
+	DriverStation driverStation;
+	
 	public Robot() {
 		super();
 		this.setPeriod(.025);
@@ -72,8 +74,15 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", m_chooser);
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		CameraServer.getInstance().startAutomaticCapture();
+		driverStation = DriverStation.getInstance();
+		
 	}
 
+	@Override
+	public void robotPeriodic() {
+		SmartDashboard.putNumber("Match Time!", driverStation.getMatchTime());
+		
+	}
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 * You can use it to reset any subsystem information you want to clear when

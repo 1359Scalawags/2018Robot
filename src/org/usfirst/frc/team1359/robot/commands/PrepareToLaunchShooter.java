@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 /**
  *
  */
-public class CubeShooterCommandGroup extends CommandGroup {
+public class PrepareToLaunchShooter extends CommandGroup {
 
-    public CubeShooterCommandGroup() {
+    public PrepareToLaunchShooter() {
     	super("CubeShooterCommandgroup");
     	requires(Robot.kCubeShooter);
     	addSequential(new PullShooter());
-    	addSequential(new LockShooter());
+    	//addSequential(new LockShooter());
     	addSequential(new ShooterUnwind());
         // Add Commands here:
         // e.g. addSequential(new Command1());

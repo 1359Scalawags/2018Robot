@@ -102,15 +102,9 @@ public class PIDDriveSystem extends Subsystem {
     	m_drive.tankDrive(leftOutput, rightOutput);   	
     	
     }
-    
-    public double convertToFeetPerSecond(double originalValue) {
-    	
-    	return originalValue * Constants.fullDriveSpeed;
-    }
-    
     public double convertToEncoderRate(double motorSpeed) {
     	
-    	return Constants.powerToEncoder * motorSpeed;
+    	return Constants.fullDriveSpeed * motorSpeed; // feet per second
     }
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {

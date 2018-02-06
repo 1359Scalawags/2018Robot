@@ -38,9 +38,6 @@ public class AutonomousCommand extends CommandGroup {
     	
     	SmartDashboard.putString("Alliance", alliance.toString());
     	
-    	
-    	
-    	
     	if(driverStation.getLocation() == 1) {//left
     		//get into position
     		SmartDashboard.putString("Location", "Left");

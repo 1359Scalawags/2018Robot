@@ -35,6 +35,7 @@ public class CubeGrab extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	// does the valve continue to stay true until the CubeRelease command is ran?
     }
 
     // Called when another command which requires one or more of the same

@@ -47,6 +47,7 @@ public class CubeLoader extends Subsystem {
 		
 	public void grab() {
 		armValve.set(true);
+		
 	}
 	
 	public void release() {
@@ -101,6 +102,10 @@ public class CubeLoader extends Subsystem {
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
+    }
+    
+    public boolean isGrabbed() {
+    	return armValve.get();
     }
     
     

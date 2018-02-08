@@ -35,18 +35,21 @@ public class Climber extends Subsystem {
         //setDefaultCommand(new MySpecialCommand());
     }
     public void extendArm() {
-		
-    	elevatorMotor.set(Relay.Value.kForward);
-    }
-    
-    public void stopArm() {
-    	
-    	elevatorMotor.set(Relay.Value.kOff);
+		if(!isElevated()) {
+			elevatorMotor.set(Relay.Value.kForward);
+		}
+		else {
+			elevatorMotor.set(Relay.Value.kOff);
+		}
     }
     
     public void retractArm() {
-    	
-    	elevatorMotor.set(Relay.Value.kReverse);
+    	if(!isRetracted()) {
+        	elevatorMotor.set(Relay.Value.kReverse); 		
+    	}
+    	else {
+    		elevatorMotor.set(Relay.Value.kOff);
+    	}
     }
     
     public void rockForward() {
@@ -59,8 +62,12 @@ public class Climber extends Subsystem {
     }
    
     public void climb(double speed) {
-    	
+    	// warning: this motor is under user control...no protections at this point
     	climbMotor.set(speed);
+    }
+    
+    public void stopElevator() {
+    	elevatorMotor.set(Relay.Value.kOff);
     }
     
     public boolean isElevated() {

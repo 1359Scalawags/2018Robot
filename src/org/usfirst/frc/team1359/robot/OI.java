@@ -8,7 +8,7 @@
 package org.usfirst.frc.team1359.robot;
 
 import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
-import org.usfirst.frc.team1359.robot.commands.CubeShooterCommandGroup;
+import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
@@ -78,7 +78,7 @@ public class OI {
 		
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());
-		drawShooter.whenPressed(new CubeShooterCommandGroup());
+		drawShooter.whenPressed(new PrepareToLaunchShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
 	}
 	public Joystick getJoystick1() {

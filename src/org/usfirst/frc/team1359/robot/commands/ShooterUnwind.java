@@ -27,11 +27,12 @@ public class ShooterUnwind extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.kCubeShooter.shooterIsUnwound();
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	Robot.kCubeShooter.stopShooterMotor();
     }
 
     // Called when another command which requires one or more of the same

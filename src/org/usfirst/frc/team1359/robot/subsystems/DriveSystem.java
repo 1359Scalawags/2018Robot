@@ -2,7 +2,6 @@ package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.RobotMap;
 import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
-
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.Encoder;
 import edu.wpi.first.wpilibj.SpeedControllerGroup;
@@ -25,13 +24,10 @@ public class DriveSystem extends Subsystem {
     Talon m_frontRight = new Talon(RobotMap.frontRightMotor);
     Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
     SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-
     DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
     
     ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
-    
     Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-
     Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
 
     public ADXRS450_Gyro getGyro() {
@@ -41,12 +37,15 @@ public class DriveSystem extends Subsystem {
     public double getAngle() {
     	return m_Gyro.getAngle();
     }
+    
     public void resetGyro() {
     	m_Gyro.reset();
     }
+    
     public double getGyroRate() {
     	return m_Gyro.getRate();
     }
+    
     public double getLeftEncoder() {
     	return leftEncoder.getDistance();
     }
@@ -55,26 +54,18 @@ public class DriveSystem extends Subsystem {
     	return rightEncoder.getDistance();
     }
     
-
-    
     public void initDefaultCommand() {
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     	setDefaultCommand(new DriveWithJoysticks());
-    	
     }
     
     public void tankDrive(double leftSpeed, double rightSpeed) {
-    	
     	m_drive.tankDrive(leftSpeed, rightSpeed);
-    	
-    	
     }
     
     public void arcadeDrive(double moveSpeed, double turnSpeed) {
-    	
     	m_drive.arcadeDrive(moveSpeed, turnSpeed);
-
     }
     
 }

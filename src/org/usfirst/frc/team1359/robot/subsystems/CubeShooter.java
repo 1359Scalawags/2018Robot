@@ -31,11 +31,12 @@ public class CubeShooter extends Subsystem {
     }
     
     public void lockShooter() {
-    	lockValve.set(true);
+    	lockValve.set(Constants.locked);
     }
     public void unlockShooter() {
+
     	if(shooterIsDown()) {
-    	lockValve.set(false);
+    	lockValve.set(Constants.unLocked);
     	}
     	else {
     		lockShooter();
@@ -61,8 +62,7 @@ public class CubeShooter extends Subsystem {
     	}
     	}
     	
-    
-     public boolean shooterIsDown() {
+         public boolean shooterIsDown() {
     	 if(shooterDownLimit.get() == Constants.pressed) {
     		 return true;
     	 }else {
@@ -81,5 +81,6 @@ public class CubeShooter extends Subsystem {
      }
      
      
+
 }
 

@@ -49,10 +49,12 @@ public class Robot extends TimedRobot {
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	public static final Camera kcamera = new Camera();
+	public static String AutonomousPriority = "None";
 	
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	SendableChooser<String> m_priority = new SendableChooser<String>();
 
 	DriverStation driverStation;
 	
@@ -70,8 +72,13 @@ public class Robot extends TimedRobot {
 		kOI = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		m_chooser.addObject("Turn", new AutonomousCommandDispatch());
+		
+		m_priority.addDefault("Switch", "Switch");
+		m_priority.addObject("Scale", "Scale");
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
+		SmartDashboard.putData("Auto priority", m_priority);
+
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
@@ -80,7 +87,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void robotPeriodic() {
-		SmartDashboard.putNumber("Match Time!", driverStation.getMatchTime());
+		SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
 		
 	}
 	/**
@@ -112,6 +119,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
+		this.AutonomousPriority = m_priority.getSelected();
 
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",

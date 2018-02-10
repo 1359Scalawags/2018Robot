@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
 public class AutonomousRightPosition extends CommandGroup {
 
     public AutonomousRightPosition() {
-    	super("AutonomousRightPosition");
+    	super("AutonomousRightPositionCommandGroup");
     	requires(Robot.kPIDDriveSystem);
         // Add Commands here:
         // e.g. addSequential(new Command1());

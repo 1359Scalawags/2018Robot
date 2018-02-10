@@ -24,7 +24,9 @@ public class CubeLoader extends Subsystem {
 	Potentiometer pot = new AnalogPotentiometer(0, 180, 0);
 
 	public enum ArmPosition {
-		Top, Middle, Bottom
+		TOP, 
+		MIDDLE, 
+		BOTTOM
 	}
 
 	ArmPosition armposition;
@@ -53,11 +55,11 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public void move(ArmPosition pos) {
-		if (pos == ArmPosition.Bottom) {
+		if (pos == ArmPosition.BOTTOM) {
 			goToBottom();
-		} else if (pos == ArmPosition.Middle) {
+		} else if (pos == ArmPosition.MIDDLE) {
 			goToMiddle();
-		} else if (pos == ArmPosition.Top) {
+		} else if (pos == ArmPosition.TOP) {
 			goToTop();
 		} else {
 			stop();
@@ -65,21 +67,34 @@ public class CubeLoader extends Subsystem {
 	}
 
 	private void goToBottom() {
-		lower();
-	}
-
-	private void goToMiddle() {
-		if (!isLiftedMiddle()) {
-			lift();
+		if(!isAtBottom()) {
+			lower();
 		} else {
 			stop();
+			armposition = ArmPosition.BOTTOM;
+		}
+	}
+	
+	private void goToMiddle() {
+		if(!isAtMiddle()) {
+			if(getLiftAngle() < 90) {
+				lift();
+			}
+			else if(getLiftAngle() > 90) {
+				lower();
+			}
+		}
+		 else {
+			stop();
+			armposition = ArmPosition.MIDDLE;
 		}
 	}
 
 	private void goToTop() {
-		if (!isLiftedTop()) {
+		if (!isAtTop()) {
 			lift();
 		} else {
+			armposition = ArmPosition.TOP;
 			stop();
 		}
 	}
@@ -97,8 +112,8 @@ public class CubeLoader extends Subsystem {
 		liftMotor.set(0);
 	}
 
-	public boolean isLiftedMiddle() {
-		if (getLiftAngle() > 89.0 && armposition == ArmPosition.Middle) {
+	public boolean isAtMiddle() {
+		if (armposition == ArmPosition.MIDDLE) {
 			return true;
 		} else {
 			return (topLimit.get() == Constants.notPressed);
@@ -109,16 +124,16 @@ public class CubeLoader extends Subsystem {
 		return pot.get() * Constants.anglePerValue;
 	}
 
-	public boolean isLiftedTop() {
-		if (getLiftAngle() > 179.0 && armposition == ArmPosition.Top) {
+	public boolean isAtTop() {
+		if (getLiftAngle() > 179.0 && armposition == ArmPosition.TOP) {
 			return true;
 		} else {
 			return (topLimit.get() == Constants.notPressed);
 		}
 	}
 
-	public boolean isLowered() {
-		if (getLiftAngle() < .1 && armposition == ArmPosition.Bottom) {
+	public boolean isAtBottom() {
+		if (getLiftAngle() < .1 && armposition == ArmPosition.BOTTOM) {
 			return true;
 		} else {
 			return (bottomLimit.get() == Constants.notPressed);

@@ -1,22 +1,55 @@
 package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
-
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
 public class AutonomousLeftPosition extends CommandGroup {
-
+	
+	private char switchPosNear;
+	private char scalePos;
     public AutonomousLeftPosition() {
-    	super("AoutonomousLeftPosition");
+    	super("AutonomousLeftPositionCommandGroup");
     	requires(Robot.kPIDDriveSystem);
+    	requires(Robot.kCubeLoader);
+    	requires(Robot.kCubeShooter);
+    
+    	DriverStation driverStation = DriverStation.getInstance();
+    	switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
+    	scalePos = driverStation.getGameSpecificMessage().charAt(1);
+
+
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
-        // these will run in order.
-
+        // these will run in order.   
+    	if(switchPosNear == 'L' && scalePos == 'R') { //Drop cube in switch
+        	addSequential(new MoveForward(10)); //random value in MoveForward()
+        	addSequential(new TurnByAngle(90));
+        	addSequential(new CubeGrab());
+        	addSequential(new CubeAtMiddle());
+        	addSequential(new CubeRelease());
+			SmartDashboard.putString("Close Switch", "Left");
+		}
+    	else if (scalePos == 'L' && switchPosNear == 'R') { //drop cube in scale
+    		addSequential(new MoveForward(20)); //random value in MoveForward()
+    		addSequential(new TurnByAngle(90));
+    		addSequential(new MoveForward(-5)); //random value in MoveForward()
+    		addSequential(new ReleaseShooter()); //assuming PrepareToLaunchShooter was already ran
+    		SmartDashboard.putString("Close Scale", "Left");
+    	}
+    	else if (scalePos == 'L' && switchPosNear == 'L') {
+    		
+    		
+    	}
+    	else { // cross line, don't drop cube
+    		addSequential(new MoveForward(10)); //random value in MoveForward()
+    	}
+    	}
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());
@@ -29,4 +62,4 @@ public class AutonomousLeftPosition extends CommandGroup {
         // a CommandGroup containing them would require both the chassis and the
         // arm.
     }
-}
+

@@ -8,9 +8,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CubeLoweredBottom extends Command {
+public class CubeAtBottom extends Command {
 
-	public CubeLoweredBottom() {
+	public CubeAtBottom() {
 		super("CubeLoweredBottom");
 		requires(Robot.kCubeLoader);
 		// Use requires() here to declare subsystem dependencies
@@ -24,12 +24,12 @@ public class CubeLoweredBottom extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 
-		Robot.kCubeLoader.move(CubeLoader.ArmPosition.Bottom);
+		Robot.kCubeLoader.move(CubeLoader.ArmPosition.BOTTOM);
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.kCubeLoader.isLowered();
+		return Robot.kCubeLoader.isAtBottom();
 	}
 
 	// Called once after isFinished returns true

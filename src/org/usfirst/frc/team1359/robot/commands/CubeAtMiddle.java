@@ -8,12 +8,24 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CubeLiftedTop extends Command {
+public class CubeAtMiddle extends Command {
 
-	public CubeLiftedTop() {
-		super("CubeLiftedTop");
+	// public enum DaysOfWeek {
+	// Saturday,
+	// Sunday,
+	// Monday,
+	// Tuesday
+	// }
+	//
+	// DaysOfWeek day = DaysOfWeek.Monday;
+	//
+	// public void setDay(DaysOfWeek day) {
+	// this.day = day;
+	// }
+
+	public CubeAtMiddle() {
+		super("CubeLiftedMiddle");
 		requires(Robot.kCubeLoader);
-
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 	}
@@ -24,13 +36,14 @@ public class CubeLiftedTop extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
+		Robot.kCubeLoader.move(CubeLoader.ArmPosition.MIDDLE);
 
-		Robot.kCubeLoader.move(CubeLoader.ArmPosition.Top);
+		// Robot.kCubeLoader.liftCube(Robot.kOI.getJoystick3().getX());
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.kCubeLoader.isLiftedTop();
+		return Robot.kCubeLoader.isAtMiddle();
 	}
 
 	// Called once after isFinished returns true

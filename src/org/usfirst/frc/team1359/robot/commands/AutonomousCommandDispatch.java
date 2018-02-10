@@ -15,6 +15,7 @@ public class AutonomousCommandDispatch extends CommandGroup {
 	private char switchPosFar;
 	private char scalePos;
 	private DriverStation.Alliance alliance;
+	private String userPriority;
 	
 	public enum AutoStates{
 		GoPastLineLeft,
@@ -37,16 +38,16 @@ public class AutonomousCommandDispatch extends CommandGroup {
     	scalePos = driverStation.getGameSpecificMessage().charAt(1);
     	
     	SmartDashboard.putString("Alliance", alliance.toString());
-    	
-    	if(driverStation.getLocation() == 1) {//left
-    		//get into position
+  
+    	if(driverStation.getLocation() == 1) { //left
+    		addSequential(new AutonomousLeftPosition()); //get into position
     		SmartDashboard.putString("Location", "Left");
-    		if(switchPosNear == 'L') {
-    			//Drop a cube
-    			SmartDashboard.putString("Close Switch", "Left");
-    		}else {
-    			//Don't drop a cube
-    		}
+//    		if(switchPosNear == 'L') {
+//    			//Drop a cube
+//    			SmartDashboard.putString("Close Switch", "Left");
+//    		}else {
+//    			//Don't drop a cube
+//    		}
     	}else if(driverStation.getLocation() == 2) {//center
     		//get into position
     		SmartDashboard.putString("Location", "Center");

@@ -35,6 +35,7 @@ public class RobotMap {
 	public static final int bottomLimit = 2; //climb arm
 	public static final int topLimit = 3;	//climb arm
 	public static final int shooterDownLimit = 4; //limit
+	public static final int strapunwoundlimit = 5; //limit
 	
 	//JoyStick1
 	public static final int joystick1 = 0;

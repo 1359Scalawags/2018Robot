@@ -66,7 +66,7 @@ public class Climber extends Subsystem {
     	climbMotor.set(speed);
     }
     
-    public void stopElevator() {
+    public void stopArm() {
     	elevatorMotor.set(Relay.Value.kOff);
     }
     

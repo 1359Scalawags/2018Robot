@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -23,7 +24,7 @@ public class CubeLowered extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	
-    	Robot.kCubeLoader.lower();
+    	Robot.kCubeLoader.move(CubeLoader.ArmPosition.Bottom);
     }
 
     // Make this return true when this Command no longer needs to run execute()

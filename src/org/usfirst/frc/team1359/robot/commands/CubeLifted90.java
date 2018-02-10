@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -35,7 +36,7 @@ public class CubeLifted90 extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kCubeLoader.lift();
+    	Robot.kCubeLoader.move(CubeLoader.ArmPosition.Middle);
     
     	//Robot.kCubeLoader.liftCube(Robot.kOI.getJoystick3().getX());
     }

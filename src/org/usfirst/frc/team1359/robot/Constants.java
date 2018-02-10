@@ -17,4 +17,7 @@ public class Constants {
 		
 	public static final double cubeArmSpeed = 25;
 	public static final double shooterArmSpeed = 25;
+	
+	// conversion for potentiometer angles
+	public static final double anglePerValue = 200; //this is a random guess
 }

@@ -54,13 +54,46 @@ public class CubeLoader extends Subsystem {
 		armValve.set(false);
 	}
 	
-	public void lift() {
-		
+	public void move(ArmPosition pos) {
+		if(pos == ArmPosition.Bottom) {
+			goToBottom();
+		}
+		else if(pos == ArmPosition.Middle) {
+				goToMiddle();
+				}
+		else if(pos == ArmPosition.Top) {
+			goToTop();
+		}
+		else {
+			stop();
+		}
+	}
+	
+	private void goToBottom() {
+		lower();
+	}
+	private void goToMiddle() {
+		if(!isLifted90()) {
+			lift();
+			}
+			else {
+				stop();
+			}
+	}
+	private void goToTop() {
+		if(!isLifted180()) {
+			lift();
+		}
+		else {
+			stop();
+		}
+	}
+	
+	private void lift() {
 		liftMotor.set(Constants.cubeArmSpeed);
 	}
 	
-	public void lower() {
-		
+	private void lower() {
 		liftMotor.set(-(Constants.cubeArmSpeed));
 	}
 	
@@ -70,16 +103,20 @@ public class CubeLoader extends Subsystem {
 	}
 	
 	public boolean isLifted90(){
-		if(pot.get() > 89.0 && armposition == ArmPosition.Middle) {
+		if(getLiftAngle() > 89.0 && armposition == ArmPosition.Middle) {
 			return true;
 		}
 		else {
 		return (topLimit.get() == Constants.notPressed);
 		}
-		}
+	}
+	
+	public double getLiftAngle() {
+		return pot.get() * Constants.anglePerValue;
+	}
 	
 	public boolean isLifted180() {
-		if(pot.get() > 179.0 && armposition == ArmPosition.Top) {
+		if(getLiftAngle() > 179.0 && armposition == ArmPosition.Top) {
 			return true;
 		}
 		else {
@@ -89,7 +126,7 @@ public class CubeLoader extends Subsystem {
 		
 	
 	public boolean isLowered() {
-		if(pot.get() < .1 && armposition == ArmPosition.Bottom) {
+		if(getLiftAngle() < .1 && armposition == ArmPosition.Bottom) {
 			return true;
 		}
 		else {

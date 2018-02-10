@@ -13,7 +13,7 @@ public class PrepareToLaunchShooter extends CommandGroup {
     	super("CubeShooterCommandgroup");
     	requires(Robot.kCubeShooter);
     	addSequential(new PullShooter());
-    	//addSequential(new LockShooter());
+    	//addSequential(new LockShooter()); Do not need this command
     	addSequential(new ShooterUnwind());
         // Add Commands here:
         // e.g. addSequential(new Command1());

@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -25,7 +26,7 @@ public class CubeLifted180 extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     
-    Robot.kCubeLoader.lift();
+    Robot.kCubeLoader.move(CubeLoader.ArmPosition.Top);
     }
 
     // Make this return true when this Command no longer needs to run execute()

@@ -16,7 +16,7 @@ public class CubeShooter extends Subsystem {
 	Talon shooterPull;
 	Solenoid lockValve;
 	DigitalInput shooterDownLimit;
-	DigitalInput strapUnwound;
+	DigitalInput strapUnwoundLimit;
 
     // Put methods for controlling this subsystem
     // here. Call these from Commands.
@@ -25,6 +25,7 @@ public class CubeShooter extends Subsystem {
     	shooterPull = new Talon(RobotMap.shooterPull);
     	lockValve = new Solenoid(RobotMap.shooterLock);
     	shooterDownLimit = new DigitalInput(RobotMap.shooterDownLimit);
+    	strapUnwoundLimit = new DigitalInput(RobotMap.strapunwoundlimit);
         // Set the default command for a subsystem here.
         //setDefaultCommand(new MySpecialCommand());
     }
@@ -33,17 +34,33 @@ public class CubeShooter extends Subsystem {
     	lockValve.set(true);
     }
     public void unlockShooter() {
+    	if(shooterIsDown()) {
     	lockValve.set(false);
+    	}
+    	else {
+    		lockShooter();
+    	}
     }
     public boolean isLocked() {
     	return lockValve.get();
     }
     public void pullShooter() {
-    	shooterPull.set(Constants.shooterArmSpeed);
+    	if(!shooterIsDown()) {
+        	shooterPull.set(Constants.shooterArmSpeed);
+    	}
+    	else {
+    		stopShooterMotor();
+    	}
     }
     public void unwindShooter() {
+    	if(!shooterIsUnwound()) {
     	shooterPull.set(-(Constants.shooterArmSpeed));
-    }
+    	}
+    	else {
+    		stopShooterMotor();
+    	}
+    	}
+    	
     
      public boolean shooterIsDown() {
     	 if(shooterDownLimit.get() == Constants.pressed) {
@@ -54,7 +71,7 @@ public class CubeShooter extends Subsystem {
      }
     
      public boolean shooterIsUnwound() {
-    	 return (strapUnwound.get() == Constants.pressed);
+    	 return (strapUnwoundLimit.get() == Constants.pressed);
     	 
      }
      
@@ -63,8 +80,6 @@ public class CubeShooter extends Subsystem {
     	 
      }
      
-    public void loadCube() {}
-    public void shoot() {}
-    public void reset() {}
+     
 }
 

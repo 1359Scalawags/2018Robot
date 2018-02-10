@@ -28,7 +28,7 @@ public class CubeRelease extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.kCubeLoader.isGrabed();
+        return !Robot.kCubeLoader.isGrabbed();
     }
 
     // Called once after isFinished returns true

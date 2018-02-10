@@ -118,7 +118,7 @@ public class PIDDriveSystem extends Subsystem {
 	   
 	   gyroControl.SetPoint(targetAngle);
 	   
-	   double angleOutput = gyroControl.Compute(angleInput);
+	   double angleOutput = Utilities.Clamp(gyroControl.Compute(angleInput), -maxTurnSpeed, maxTurnSpeed);
 	   
 	   m_drive.arcadeDrive(moveSpeed, angleOutput);  
 	   

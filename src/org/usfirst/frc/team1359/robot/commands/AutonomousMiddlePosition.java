@@ -20,7 +20,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		switchPos = driverStation.getGameSpecificMessage().charAt(0);
 
-		if (switchPos == 'L') {
+		if (switchPos == 'L') { // left switch
 			addSequential(new CubeGrab());
 			addSequential(new MoveForward(10));
 			addSequential(new TurnByAngle(-45));
@@ -34,7 +34,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 			}
 
-		} else {
+		} else { // right switchS
 			addSequential(new CubeGrab());
 			addSequential(new MoveForward(10));
 			addSequential(new TurnByAngle(45));

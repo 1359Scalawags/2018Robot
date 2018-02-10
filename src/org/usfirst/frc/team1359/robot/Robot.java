@@ -79,7 +79,7 @@ public class Robot extends TimedRobot {
 		m_priority.addObject("Scale", "Scale");
 		
 		m_priorityMiddle.addDefault("Drop cube", "Yes");
-		m_priority.addObject("Drop Cube", "No");
+		m_priorityMiddle.addObject("Drop Cube", "No");
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);

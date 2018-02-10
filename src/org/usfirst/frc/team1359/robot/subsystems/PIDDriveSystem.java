@@ -43,6 +43,8 @@ public class PIDDriveSystem extends Subsystem {
     public PIDDriveSystem() {
     	leftEncoder.setDistancePerPulse(Constants.feetPerPulse);
     	rightEncoder.setDistancePerPulse(Constants.feetPerPulse);
+    	leftEncoder.setSamplesToAverage(Constants.samplesToAverage);
+    	rightEncoder.setSamplesToAverage(Constants.samplesToAverage);
     }
     
     public double getAngle() {
@@ -103,7 +105,6 @@ public class PIDDriveSystem extends Subsystem {
     	
     }
     public double convertToEncoderRate(double motorSpeed) {
-    	
     	return Constants.fullDriveSpeed * motorSpeed; // feet per second
     }
     

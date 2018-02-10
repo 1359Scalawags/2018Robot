@@ -30,10 +30,10 @@ public class CubeShooter extends Subsystem {
     }
     
     public void lockShooter() {
-    	lockValve.set(true);
+    	lockValve.set(Constants.locked);
     }
     public void unlockShooter() {
-    	lockValve.set(false);
+    	lockValve.set(Constants.unLocked);
     }
     public boolean isLocked() {
     	return lockValve.get();
@@ -45,26 +45,24 @@ public class CubeShooter extends Subsystem {
     	shooterPull.set(-(Constants.shooterArmSpeed));
     }
     
-     public boolean shooterIsDown() {
-    	 if(shooterDownLimit.get() == Constants.pressed) {
-    		 return true;
-    	 }else {
-    		 return false;
-    	 }
-     }
-    
-     public boolean shooterIsUnwound() {
-    	 return (strapUnwound.get() == Constants.pressed);
-    	 
-     }
-     
-     public void stopShooterMotor() {
-    	 shooterPull.set(0);
-    	 
-     }
-     
-    public void loadCube() {}
-    public void shoot() {}
-    public void reset() {}
+	public boolean shooterIsDown() {
+		if (shooterDownLimit.get() == Constants.pressed) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public boolean shooterIsUnwound() {
+		return (strapUnwound.get() == Constants.pressed);
+	}
+
+	public void stopShooterMotor() {
+		shooterPull.set(0);
+	}
+     // TODO What are these for?
+	public void loadCube() {}
+	public void shoot() {}
+	public void reset() {}
 }
 

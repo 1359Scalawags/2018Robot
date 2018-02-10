@@ -9,36 +9,36 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class PullShooter extends Command {
 
-    public PullShooter() {
-    	super("PullShooter");
-    	requires(Robot.kCubeShooter);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    	setInterruptible(false);
-    }
+	public PullShooter() {
+		super("PullShooter");
+		requires(Robot.kCubeShooter);
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
+		setInterruptible(false);
+	}
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    	Robot.kCubeShooter.pullShooter();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
+		Robot.kCubeShooter.pullShooter();
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return Robot.kCubeShooter.shooterIsDown();
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return Robot.kCubeShooter.shooterIsDown();
+	}
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	Robot.kCubeShooter.stopShooterMotor();
-    }
+	// Called once after isFinished returns true
+	protected void end() {
+		Robot.kCubeShooter.stopShooterMotor();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    	// this command is not interruptible
-    }
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+		// this command is not interruptible
+	}
 }

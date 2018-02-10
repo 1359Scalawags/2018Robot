@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class AutonomousCommand extends CommandGroup {
+public class AutonomousCommandDispatch extends CommandGroup {
 
 	private char switchPosNear;
 	private char switchPosFar;
@@ -23,12 +23,12 @@ public class AutonomousCommand extends CommandGroup {
 		DropCubeSwitchLeft,
 		DropCubeSwitchRight,
 		DropCubeScaleLeft,
-		DropCubeScaleright
+		DropCubeScaleRight
 	}
 	
-    public AutonomousCommand() {
-    	super("AutonomousCommand");
-    	requires(Robot.kDriveSystem);
+    public AutonomousCommandDispatch() {
+    	super("AutonomousCommandDispatch");
+    	requires(Robot.kPIDDriveSystem);
     	DriverStation driverStation = DriverStation.getInstance();
     	
     	alliance = driverStation.getAlliance();

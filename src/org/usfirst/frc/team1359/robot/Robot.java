@@ -14,7 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
-import org.usfirst.frc.team1359.robot.commands.AutonomousCommand;
+import org.usfirst.frc.team1359.robot.commands.AutonomousCommandDispatch;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.Camera;
@@ -69,7 +69,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		kOI = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		m_chooser.addObject("Turn", new AutonomousCommand());
+		m_chooser.addObject("Turn", new AutonomousCommandDispatch());
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");

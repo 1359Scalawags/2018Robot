@@ -9,37 +9,36 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CubeGrab extends Command {
 
-    public CubeGrab() {
-    	super ("CubeGrab");
-    	requires(Robot.kCubeLoader);
-    	requires(Robot.kPneumatics);
-        // Use requires() here to declare subsystem dependencies
-        // eg. requires(chassis);
-    }
+	public CubeGrab() {
+		super("CubeGrab");
+		requires(Robot.kCubeLoader);
+		requires(Robot.kPneumatics);
+		// Use requires() here to declare subsystem dependencies
+		// eg. requires(chassis);
 
-    // Called just before this Command runs the first time
-    protected void initialize() {
-    }
+	}
 
-    // Called repeatedly when this Command is scheduled to run
-    protected void execute() {
-    
-    Robot.kCubeLoader.grab();
-    }
-    
+	// Called just before this Command runs the first time
+	protected void initialize() {
+	}
 
-    // Make this return true when this Command no longer needs to run execute()
-    protected boolean isFinished() {
-        return Robot.kCubeLoader.isGrabbed();
-    }
+	// Called repeatedly when this Command is scheduled to run
+	protected void execute() {
 
-    // Called once after isFinished returns true
-    protected void end() {
-    	// does the valve continue to stay true until the CubeRelease command is ran?
-    }
+		Robot.kCubeLoader.grab();
+	}
 
-    // Called when another command which requires one or more of the same
-    // subsystems is scheduled to run
-    protected void interrupted() {
-    }
+	// Make this return true when this Command no longer needs to run execute()
+	protected boolean isFinished() {
+		return Robot.kCubeLoader.isGrabbed();
+	}
+
+	// Called once after isFinished returns true
+	protected void end() {
+	}
+
+	// Called when another command which requires one or more of the same
+	// subsystems is scheduled to run
+	protected void interrupted() {
+	}
 }

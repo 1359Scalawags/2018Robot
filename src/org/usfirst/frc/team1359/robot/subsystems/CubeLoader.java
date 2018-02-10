@@ -15,136 +15,125 @@ import edu.wpi.first.wpilibj.interfaces.Potentiometer;
  *
  */
 public class CubeLoader extends Subsystem {
-	
+
 	DigitalInput bottomLimit, topLimit;
 	Talon liftMotor;
-	// Relay cubeClamp; 
+	// Relay cubeClamp;
 	Solenoid armValve;
-	
-	 Potentiometer pot = new AnalogPotentiometer(0, 180, 0);
-	 
+
+	Potentiometer pot = new AnalogPotentiometer(0, 180, 0);
+
 	public enum ArmPosition {
-		Top,
-		Middle,
-		Bottom
+		Top, Middle, Bottom
 	}
-	
+
 	ArmPosition armposition;
-	
-	public CubeLoader(){
-		
+
+	public CubeLoader() {
+
 		bottomLimit = new DigitalInput(RobotMap.bottomLimit);
 		topLimit = new DigitalInput(RobotMap.topLimit);
 		liftMotor = new Talon(RobotMap.liftMotor);
 		// cubeClamp = new Relay(RobotMap.cubeClamp);
 		armValve = new Solenoid(RobotMap.armValve);
-		
+
 	}
-	
-	   public double getPosition() {
-			return pot.get();
-		}
-		
+
+	public double getPosition() {
+		return pot.get();
+	}
+
 	public void grab() {
 		armValve.set(true);
-		
+
 	}
-	
+
 	public void release() {
 		armValve.set(false);
 	}
-	
+
 	public void move(ArmPosition pos) {
-		if(pos == ArmPosition.Bottom) {
+		if (pos == ArmPosition.Bottom) {
 			goToBottom();
-		}
-		else if(pos == ArmPosition.Middle) {
-				goToMiddle();
-				}
-		else if(pos == ArmPosition.Top) {
+		} else if (pos == ArmPosition.Middle) {
+			goToMiddle();
+		} else if (pos == ArmPosition.Top) {
 			goToTop();
-		}
-		else {
+		} else {
 			stop();
 		}
 	}
-	
+
 	private void goToBottom() {
 		lower();
 	}
+
 	private void goToMiddle() {
-		if(!isLifted90()) {
+		if (!isLiftedMiddle()) {
 			lift();
-			}
-			else {
-				stop();
-			}
-	}
-	private void goToTop() {
-		if(!isLifted180()) {
-			lift();
-		}
-		else {
+		} else {
 			stop();
 		}
 	}
-	
+
+	private void goToTop() {
+		if (!isLiftedTop()) {
+			lift();
+		} else {
+			stop();
+		}
+	}
+
 	private void lift() {
 		liftMotor.set(Constants.cubeArmSpeed);
 	}
-	
+
 	private void lower() {
 		liftMotor.set(-(Constants.cubeArmSpeed));
 	}
-	
+
 	public void stop() {
-		
+
 		liftMotor.set(0);
 	}
-	
-	public boolean isLifted90(){
-		if(getLiftAngle() > 89.0 && armposition == ArmPosition.Middle) {
+
+	public boolean isLiftedMiddle() {
+		if (getLiftAngle() > 89.0 && armposition == ArmPosition.Middle) {
 			return true;
-		}
-		else {
-		return (topLimit.get() == Constants.notPressed);
-		}
-	}
-	
-	public double getLiftAngle() {
-		return pot.get() * Constants.anglePerValue;
-	}
-	
-	public boolean isLifted180() {
-		if(getLiftAngle() > 179.0 && armposition == ArmPosition.Top) {
-			return true;
-		}
-		else {
+		} else {
 			return (topLimit.get() == Constants.notPressed);
 		}
 	}
-		
-	
-	public boolean isLowered() {
-		if(getLiftAngle() < .1 && armposition == ArmPosition.Bottom) {
+
+	public double getLiftAngle() {
+		return pot.get() * Constants.anglePerValue;
+	}
+
+	public boolean isLiftedTop() {
+		if (getLiftAngle() > 179.0 && armposition == ArmPosition.Top) {
 			return true;
+		} else {
+			return (topLimit.get() == Constants.notPressed);
 		}
-		else {
-		return (bottomLimit.get() == Constants.notPressed);
-		}
-		}
-    // Put methods for controlling this subsystem
-    // here. Call these from Commands.
+	}
 
-    public void initDefaultCommand() {
-        // Set the default command for a subsystem here.
-        //setDefaultCommand(new MySpecialCommand());
-    }
-    
-    public boolean isGrabbed() {
-    	return armValve.get();
-    }
+	public boolean isLowered() {
+		if (getLiftAngle() < .1 && armposition == ArmPosition.Bottom) {
+			return true;
+		} else {
+			return (bottomLimit.get() == Constants.notPressed);
+		}
+	}
+	// Put methods for controlling this subsystem
+	// here. Call these from Commands.
 
-    
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		// setDefaultCommand(new MySpecialCommand());
+	}
+
+	public boolean isGrabbed() {
+		return armValve.get();
+	}
+
 }
-

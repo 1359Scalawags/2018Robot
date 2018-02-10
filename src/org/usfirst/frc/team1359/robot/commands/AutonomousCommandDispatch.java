@@ -49,17 +49,17 @@ public class AutonomousCommandDispatch extends CommandGroup {
 //    			//Don't drop a cube
 //    		}
     	}else if(driverStation.getLocation() == 2) {//center
-    		//get into position
+    		addSequential(new AutonomousMiddlePosition());//get into position
     		SmartDashboard.putString("Location", "Center");
     	}else if(driverStation.getLocation() == 3) {//right
-    		//get into position
+    		addSequential(new AutonomousRightPosition());//get into position
     		SmartDashboard.putString("Location", "Right");
-    		if(switchPosNear == 'R') {
-    			//Drop a cube
-    			SmartDashboard.putString("Close Switch", "Right");
-    		}else {
-    			//Don't drop a cube
-    		}
+//    		if(switchPosNear == 'R') {
+//    			//Drop a cube
+//    			SmartDashboard.putString("Close Switch", "Right");
+//    		}else {
+//    			//Don't drop a cube
+//    		}
     	}else {
     		
     	}
@@ -67,7 +67,6 @@ public class AutonomousCommandDispatch extends CommandGroup {
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());
         // these will run in order.
-    	addSequential(new TurnByAngle(90));
         // To run multiple commands at the same time,
         // use addParallel()
         // e.g. addParallel(new Command1());

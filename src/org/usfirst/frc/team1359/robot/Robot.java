@@ -50,11 +50,13 @@ public class Robot extends TimedRobot {
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	public static final Camera kcamera = new Camera();
 	public static String AutonomousPriority = "None";
+	public static String MiddlePriority = "None";
 	
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	SendableChooser<String> m_priority = new SendableChooser<String>();
+	SendableChooser<String> m_priorityMiddle = new SendableChooser<String>();
 
 	DriverStation driverStation;
 	
@@ -75,10 +77,14 @@ public class Robot extends TimedRobot {
 		
 		m_priority.addDefault("Switch", "Switch");
 		m_priority.addObject("Scale", "Scale");
+		
+		m_priorityMiddle.addDefault("Drop cube", "Yes");
+		m_priority.addObject("Drop Cube", "No");
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
-
+		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
+		
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
@@ -120,7 +126,7 @@ public class Robot extends TimedRobot {
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
 		this.AutonomousPriority = m_priority.getSelected();
-
+		this.MiddlePriority = m_priorityMiddle.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

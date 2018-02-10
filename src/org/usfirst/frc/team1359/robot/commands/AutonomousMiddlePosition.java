@@ -2,6 +2,7 @@ package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
+import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 
 /**
@@ -9,9 +10,46 @@ import edu.wpi.first.wpilibj.command.CommandGroup;
  */
 public class AutonomousMiddlePosition extends CommandGroup {
 
+	private char switchPos;
+	
     public AutonomousMiddlePosition() {
     	super("AutonomousMiddlePositionCommandGroup");
     	requires(Robot.kPIDDriveSystem);
+    	requires(Robot.kCubeLoader);
+    	DriverStation driverStation = DriverStation.getInstance();
+    	
+    	switchPos = driverStation.getGameSpecificMessage().charAt(0);
+    	
+    	if(switchPos == 'L') {
+    		addSequential(new CubeGrab());
+    		addSequential(new MoveForward(10));
+    		addSequential(new TurnByAngle(-45));
+    		addSequential(new MoveForward(10));
+    		addSequential(new TurnByAngle(45));
+    		addSequential(new MoveForward(10));
+    		if(Robot.MiddlePriority == "Yes") {
+    		addSequential(new CubeAtMiddle());
+    		addSequential(new CubeRelease());	
+    		}else {
+    			
+    		}
+    		
+    	}else {
+    		addSequential(new CubeGrab());
+    		addSequential(new MoveForward(10));
+    		addSequential(new TurnByAngle(45));
+    		addSequential(new MoveForward(10));
+    		addSequential(new TurnByAngle(-45));
+    		addSequential(new MoveForward(10));
+    		if(Robot.MiddlePriority == "Yes") {
+    		addSequential(new CubeAtMiddle());
+    		addSequential(new CubeRelease());	
+    		}else {
+    			
+    		}
+    		
+    	}
+    	
         // Add Commands here:
         // e.g. addSequential(new Command1());
         //      addSequential(new Command2());

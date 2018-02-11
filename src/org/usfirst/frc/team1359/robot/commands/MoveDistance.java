@@ -35,10 +35,10 @@ public class MoveDistance extends Command {
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
 		if(m_direction) {
-		Robot.kPIDDriveSystem.arcadeDrive(Constants.fullDriveSpeed, 0);
+		Robot.kPIDDriveSystem.arcadeDrive(Constants.autoDriveSpeed, 0);
 		}
 		else {
-			Robot.kPIDDriveSystem.arcadeDrive(-(Constants.fullDriveSpeed), 0);
+			Robot.kPIDDriveSystem.arcadeDrive(-(Constants.autoDriveSpeed), 0);
 		}
 	}
 

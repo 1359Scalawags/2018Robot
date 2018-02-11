@@ -20,6 +20,7 @@ public class Constants {
 	public static final double maxMotorSpeed = 0.95;
 	public static final double pulsesPerFoot = 229.183118052;
 	public static final double fullDriveSpeed = 8; //8.8634 reduced for PID
+	public static final double autoDriveSpeed = 1; // not accurate value
 		
 	public static final double cubeArmSpeed = 25;
 	public static final double shooterArmSpeed = 25;

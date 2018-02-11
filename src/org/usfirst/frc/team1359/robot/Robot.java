@@ -14,6 +14,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1359.deprecated.ExampleSubsystem;
 import org.usfirst.frc.team1359.robot.commands.AutonomousCommandDispatch;
 import org.usfirst.frc.team1359.robot.commands.ExampleCommand;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
@@ -22,7 +23,6 @@ import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 import org.usfirst.frc.team1359.robot.subsystems.CubeShooter;
 import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
-import org.usfirst.frc.team1359.robot.subsystems.ExampleSubsystem;
 import org.usfirst.frc.team1359.robot.subsystems.PIDDriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.PneumaticsSystem;
 

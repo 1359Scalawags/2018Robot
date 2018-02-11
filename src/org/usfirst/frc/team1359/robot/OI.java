@@ -16,6 +16,8 @@ import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.buttons.Button;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -31,24 +33,34 @@ public class OI {
 	//// joystick.
 	// You create one by telling it which joystick it's on and which button
 	// number it is.
-	Joystick stick1 = new Joystick(RobotMap.joystick1);
-	Joystick stick2 = new Joystick(RobotMap.joystick2);
-	Joystick stick3 = new Joystick(RobotMap.joystick3);
+//	Joystick stick1 = new Joystick(RobotMap.joystick1);
+//	Joystick stick2 = new Joystick(RobotMap.joystick2);
+//	Joystick stick3 = new Joystick(RobotMap.joystick3);
 	
-	
-	// Button button = new JoystickButton(stick, buttonNumber);
-	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
-	Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
-	Button extendClimberButton = new JoystickButton(stick3, RobotMap.extendbutton);
-	Button retractClimberButton = new JoystickButton(stick3, RobotMap.retractbutton);
-	Button enableClimberButton = new JoystickButton(stick3, RobotMap.climberbutton);
-	Button grabCubeButton = new JoystickButton(stick3, RobotMap.grabcube);
-	Button releaseCubeButton = new JoystickButton(stick3, RobotMap.releasecube);
-	Button liftCube90Button = new JoystickButton(stick3, RobotMap.liftcube90);
-	Button liftCube180Button = new JoystickButton(stick3, RobotMap.liftcube180);
-	Button lowerCubeButton = new JoystickButton(stick3, RobotMap.lowercube);
-	Button drawShooter = new JoystickButton(stick3, RobotMap.drawShooter);
-	Button releaseShooter = new JoystickButton(stick3, RobotMap.releaseShooter);
+	XboxController mainPad = new XboxController(RobotMap.mainController);
+	XboxController assistPad = new XboxController(RobotMap.assistController);
+		
+	Button grabCubeButton = new JoystickButton(assistPad, RobotMap.xboxX);
+	Button releaseCubeButton = new JoystickButton(assistPad, RobotMap.xboxB);
+	Button moveCubeMiddleButton = new JoystickButton(assistPad, RobotMap.xboxA);
+	Button moveCubeTopButton = new JoystickButton(assistPad, RobotMap.xboxY);
+	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
+	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
+	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
+	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
+//  Button button = new JoystickButton(stick, buttonNumber);
+//	Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
+//	Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
+//	Button extendClimberButton = new JoystickButton(stick3, RobotMap.extendbutton);
+//	Button retractClimberButton = new JoystickButton(stick3, RobotMap.retractbutton);
+//	Button enableClimberButton = new JoystickButton(stick3, RobotMap.climberbutton);
+//	Button grabCubeButton = new JoystickButton(stick3, RobotMap.grabcube);
+//	Button releaseCubeButton = new JoystickButton(stick3, RobotMap.releasecube);
+//	Button liftCube90Button = new JoystickButton(stick3, RobotMap.liftcube90);
+//	Button liftCube180Button = new JoystickButton(stick3, RobotMap.liftcube180);
+//	Button lowerCubeButton = new JoystickButton(stick3, RobotMap.lowercube);
+//	Button drawShooter = new JoystickButton(stick3, RobotMap.drawShooter);
+//	Button releaseShooter = new JoystickButton(stick3, RobotMap.releaseShooter);
 	// There are a few additional built in buttons you can use. Additionally,
 	// by subclassing Button you can create custom triggers and bind those to
 	// commands the same as any other Button.
@@ -69,33 +81,57 @@ public class OI {
 	// until it is finished as determined by it's isFinished method.
 	// button.whenReleased(new ExampleCommand());
 	public OI() {
-		turnButton.whenPressed(new TurnByAngle(90));
+		//turnButton.whenPressed(new TurnByAngle(90));
 		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
 		
 		
 		
 		enableClimberButton.whenPressed(new ClimbCommand());
 		
-		extendClimberButton.whenPressed(new ExtendClimberArm());
-		retractClimberButton.whenPressed(new RetractClimberArm());
+//		extendClimberButton.whenPressed(new ExtendClimberArm());
+//		retractClimberButton.whenPressed(new RetractClimberArm());
 		drawShooter.whenPressed(new PrepareToLaunchShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
 	}
-	public Joystick getJoystick1() {
-		return stick1;
+	
+	public double getTrigger() {
+		return Math.max(mainPad.getTriggerAxis(Hand.kLeft), mainPad.getTriggerAxis(Hand.kRight));
 	}
-	public Joystick getJoystick2() {
-		return stick2;
+	
+	public double getLStickY() {
+		if(Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
+			return mainPad.getY(Hand.kLeft) * (.5 * getTrigger() + .5);
+		} else {
+			return 0;
+		}
 	}
-	public Joystick getJoystick3() {
-		return stick3;
+	
+	public double getRStickY() {
+		if(Math.abs(mainPad.getY(Hand.kRight)) > Constants.controllerDeadZone) {
+			return mainPad.getY(Hand.kRight) * (.5 * getTrigger() + .5);
+		} else {
+			return 0;
+		}
 	}
-	public double getLeftSpeed() {
-   	SmartDashboard.putNumber("Left Motor", -stick1.getY());		
-		return stick1.getY();
+	
+	public double getArmStick() {
+		return assistPad.getY(Hand.kLeft);
 	}
-	public double getRightSpeed() {
-    	SmartDashboard.putNumber("Right Motor", -stick2.getY());		
-		return stick2.getY();
-	}
+//	public Joystick getJoystick1() {
+//		return stick1;
+//	}
+//	public Joystick getJoystick2() {
+//		return stick2;
+//	}
+//	public Joystick getJoystick3() {
+//		return stick3;
+//	}
+//	public double getLeftSpeed() {
+//   	SmartDashboard.putNumber("Left Motor", -stick1.getY());		
+//		return stick1.getY();
+//	}
+//	public double getRightSpeed() {
+//    	SmartDashboard.putNumber("Right Motor", -stick2.getY());		
+//		return stick2.getY();
+//	}
 }

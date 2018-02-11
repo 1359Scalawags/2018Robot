@@ -37,6 +37,22 @@ public class RobotMap {
 	public static final int shooterDownLimit = 4; //limit
 	public static final int strapunwoundlimit = 5; //limit
 	
+	//gameController
+	public static final int mainController = 0;
+	public static final int assistController = 1;
+	
+	public static final int xboxA = 1;
+	public static final int xboxB = 2;
+	public static final int xboxX = 3;
+	public static final int xboxY = 4;
+	public static final int lBumber = 5;
+	public static final int rBumber = 6;
+	public static final int backBtn = 7;
+	public static final int startBtn = 8;
+	public static final int lStickBtn = 9;
+	public static final int rStcikBtn = 10;
+			
+	
 	//JoyStick1
 	public static final int joystick1 = 0;
 	public static final int turnbutton = 3;

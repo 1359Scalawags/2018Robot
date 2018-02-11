@@ -24,7 +24,7 @@ public class DriveWithJoysticks extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.kDriveSystem.tankDrive(Robot.kOI.getLeftSpeed(), Robot.kOI.getRightSpeed());
+		Robot.kDriveSystem.tankDrive(Robot.kOI.getLStickY(), Robot.kOI.getRStickY());
 
 		SmartDashboard.putNumber("Gyro", Robot.kDriveSystem.getAngle());
 		SmartDashboard.putNumber("Encoder Distance", Robot.kDriveSystem.getLeftEncoder());

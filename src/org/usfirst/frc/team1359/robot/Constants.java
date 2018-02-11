@@ -29,4 +29,9 @@ public class Constants {
 	// conversion for potentiometer angles
 	public static final double anglePerValue = 200; //this is a random guess
 	public static final int samplesToAverage = 4;
+	
+	//gameController
+	public static final double controllerDeadZone = .05;
+
+
 }

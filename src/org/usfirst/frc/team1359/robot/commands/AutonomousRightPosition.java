@@ -26,38 +26,38 @@ public class AutonomousRightPosition extends CommandGroup {
     	
     	if (switchPosNear == 'R' && scalePos == 'L') { // drop cube in switch
     		addSequential(new CubeGrab());
-    		addSequential(new MoveForward(10)); // random value in MoveForward()
+    		addSequential(new MoveDistance(10,true)); // random value in MoveForward()
     		addSequential(new TurnByAngle(-90));
     		addSequential(new CubeAtMiddle());
     		addSequential(new CubeRelease());
     		SmartDashboard.putString("Switch Close", "Right");
     	}
     	else if (scalePos == 'R' && switchPosNear == 'L') { // drop cube in scale
-    		addSequential(new MoveForward(20)); // random value in MoveForward()
+    		addSequential(new MoveDistance(20,true)); // random value in MoveForward()
     		addSequential(new TurnByAngle(-90));
-    		addSequential(new MoveForward(-5)); // random value in MoveForward()
+    		addSequential(new MoveDistance(5,false)); // random value in MoveForward()
     		addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
     		SmartDashboard.putString("Scale Close", "Right");
     	}
     	else if (scalePos == 'R' && switchPosNear == 'R') { // determined by smartDashboard
     		if(Robot.AutonomousPriority == "Switch") { // drop cube in switch
     			addSequential(new CubeGrab());
-        		addSequential(new MoveForward(10)); // random value in MoveForward()
+        		addSequential(new MoveDistance(10,true)); // random value in MoveForward()
         		addSequential(new TurnByAngle(-90));
         		addSequential(new CubeAtMiddle());
         		addSequential(new CubeRelease());
         		SmartDashboard.putString("Switch Close", "Right");
     		}
     		else if (Robot.AutonomousPriority == "Scale") { // drop cube in scale
-    			addSequential(new MoveForward(20)); // random value in MoveForward()
+    			addSequential(new MoveDistance(20,true)); // random value in MoveForward()
         		addSequential(new TurnByAngle(-90));
-        		addSequential(new MoveForward(-5)); // random value in MoveForward()
+        		addSequential(new MoveDistance(5,false)); // random value in MoveForward()
         		addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
         		SmartDashboard.putString("Scale Close", "Right");
     		}
     	}
     	else { // don't drop cube, just cross line
-    		addSequential(new MoveForward(10)); // random value in MoveForward()
+    		addSequential(new MoveDistance(10,true)); // random value in MoveForward()
     		SmartDashboard.putString("Neither Close", "Right");
     	}
         // To run multiple commands at the same time,

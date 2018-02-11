@@ -22,11 +22,11 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		if (switchPos == 'L') { // left switch
 			addSequential(new CubeGrab());
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			if (Robot.MiddlePriority == "Yes") {
 				addSequential(new CubeAtMiddle());
 				addSequential(new CubeRelease());
@@ -36,11 +36,11 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		} else { // right switchS
 			addSequential(new CubeGrab());
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveForward(10));
+			addSequential(new MoveDistance(10,true));
 			if (Robot.MiddlePriority == "Yes") {
 				addSequential(new CubeAtMiddle());
 				addSequential(new CubeRelease());

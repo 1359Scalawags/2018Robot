@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.deprecated;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class LeonardoDisplayIdle extends Command {
+public class LeonardoControll extends Command {
 
-    public LeonardoDisplayIdle() {
-    	super("LeonardoDisplayIdle");
-    	requires(Robot.kAesthetics);
+    public LeonardoControll() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	super("LeonardoControll");
+    	requires(Robot.kAesthetics);
     }
 
     // Called just before this Command runs the first time

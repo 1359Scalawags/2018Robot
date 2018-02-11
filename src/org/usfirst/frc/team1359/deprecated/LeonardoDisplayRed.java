@@ -1,21 +1,17 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.deprecated;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
-import edu.wpi.first.wpilibj.I2C;
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LeonardoDisplayBlue extends Command {
+public class LeonardoDisplayRed extends Command {
 
-	private I2C i2c;
-	
-    public LeonardoDisplayBlue() {
-    	super("LeonardoDisplayBlue");
+    public LeonardoDisplayRed() {
+    	super("LeonardoDisplayRed");
     	requires(Robot.kAesthetics);
-    	//i2c = new I2C(I2C.Port.kOnboard, );
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

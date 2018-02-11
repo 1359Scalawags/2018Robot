@@ -1,17 +1,13 @@
-package org.usfirst.frc.team1359.robot.commands;
-
-import org.usfirst.frc.team1359.robot.Robot;
+package org.usfirst.frc.team1359.deprecated;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class LeonardoDisplayRed extends Command {
+public class AsciiArt extends Command {
 
-    public LeonardoDisplayRed() {
-    	super("LeonardoDisplayRed");
-    	requires(Robot.kAesthetics);
+    public AsciiArt() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }

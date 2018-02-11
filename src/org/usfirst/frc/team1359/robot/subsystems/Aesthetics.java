@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1359.robot.subsystems;
 
-import org.usfirst.frc.team1359.robot.commands.LeonardoControll;
+import org.usfirst.frc.team1359.deprecated.LeonardoControll;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 

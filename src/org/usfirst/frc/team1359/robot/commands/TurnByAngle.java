@@ -37,32 +37,34 @@ public class TurnByAngle extends Command {
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	Robot.kPIDDriveSystem.arcadeDrive(0, 10, m_startAngle);
+    	
     	m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kDriveSystem.getAngle() - m_startAngle));
     	//double turnSpeed = Math.max(-m_maxTurnRate, Math.min(m_maxTurnRate, m_turnRateMultiplier * -Math.pow(m_angleRemaining, .333)));
     	
-    	if(this.m_angleRemaining > RobotMap.ROTATE_TOLERANCE) {
-	    	if(Robot.kDriveSystem.getGyroRate() < 20) {
-	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
-	    	}else if(Robot.kDriveSystem.getGyroRate() > 40) {
-	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
-	    	}    		
-    	}else if(this.m_angleRemaining < RobotMap.ROTATE_TOLERANCE){
-	    	if(Robot.kDriveSystem.getGyroRate() < -20) {
-	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
-	    	}else if(Robot.kDriveSystem.getGyroRate() > -40) {
-	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
-	    	}    		
-    	}else {
-    		this.m_MotorSpeed = 0;
-    	}
-    	
-    	m_MotorSpeed = Math.max(-.5, Math.min(.5, m_MotorSpeed));
-    	
-    	Robot.kDriveSystem.arcadeDrive(.01, this.m_MotorSpeed);
-    	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
-    	SmartDashboard.putNumber("GyroRate", Robot.kDriveSystem.getGyroRate());
-
-    	
+//    	if(this.m_angleRemaining > RobotMap.ROTATE_TOLERANCE) {
+//	    	if(Robot.kDriveSystem.getGyroRate() < 20) {
+//	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
+//	    	}else if(Robot.kDriveSystem.getGyroRate() > 40) {
+//	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
+//	    	}    		
+//    	}else if(this.m_angleRemaining < RobotMap.ROTATE_TOLERANCE){
+//	    	if(Robot.kDriveSystem.getGyroRate() < -20) {
+//	    		this.m_MotorSpeed = this.m_MotorSpeed - .01;
+//	    	}else if(Robot.kDriveSystem.getGyroRate() > -40) {
+//	    		this.m_MotorSpeed = this.m_MotorSpeed + .01;
+//	    	}    		
+//    	}else {
+//    		this.m_MotorSpeed = 0;
+//    	}
+//    	
+//    	m_MotorSpeed = Math.max(-.5, Math.min(.5, m_MotorSpeed));
+//    	
+//    	Robot.kDriveSystem.arcadeDrive(.01, this.m_MotorSpeed);
+//    	SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
+//    	SmartDashboard.putNumber("GyroRate", Robot.kDriveSystem.getGyroRate());
+//
+//    	
     }
     
 

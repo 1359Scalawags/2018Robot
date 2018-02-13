@@ -41,16 +41,16 @@ public class RobotMap {
 	public static final int mainController = 0;
 	public static final int assistController = 1;
 	
-	public static final int xboxA = 1;
-	public static final int xboxB = 2;
-	public static final int xboxX = 3;
-	public static final int xboxY = 4;
-	public static final int lBumber = 5;
-	public static final int rBumber = 6;
-	public static final int backBtn = 7;
-	public static final int startBtn = 8;
-	public static final int lStickBtn = 9;
-	public static final int rStcikBtn = 10;
+	public static final int xboxA = 1; // liftCubeMiddle
+	public static final int xboxB = 2; // releaseCube
+	public static final int xboxX = 3; // grabCube
+	public static final int xboxY = 4; // liftCubeTop
+	public static final int lBumber = 5; // pullBackShooter
+	public static final int rBumber = 6; // releaseShooter
+	public static final int backBtn = 7; // climberButton
+	public static final int startBtn = 8; // lowerCube
+	public static final int lStickBtn = 9; // NOT USED	
+	public static final int rStickBtn = 10; // NOT USED
 			
 	
 	//JoyStick1

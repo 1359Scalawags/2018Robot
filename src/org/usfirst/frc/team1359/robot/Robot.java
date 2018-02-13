@@ -86,6 +86,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
 		
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
+		System.out.println("  hopefully the 1359 Scalawags can win this match  ");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
 		

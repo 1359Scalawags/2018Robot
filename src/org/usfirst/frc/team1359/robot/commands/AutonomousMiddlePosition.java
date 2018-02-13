@@ -27,7 +27,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(45));
 			addSequential(new MoveDistance(10,true));
-			if (Robot.MiddlePriority == "Yes") {
+			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new CubeAtMiddle());
 				addSequential(new CubeRelease());
 			} else {
@@ -41,7 +41,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 			addSequential(new MoveDistance(10,true));
 			addSequential(new TurnByAngle(-45));
 			addSequential(new MoveDistance(10,true));
-			if (Robot.MiddlePriority == "Yes") {
+			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new CubeAtMiddle());
 				addSequential(new CubeRelease());
 			} else {

@@ -40,7 +40,7 @@ public class AutonomousRightPosition extends CommandGroup {
     		SmartDashboard.putString("Scale Close", "Right");
     	}
     	else if (scalePos == 'R' && switchPosNear == 'R') { // determined by smartDashboard
-    		if(Robot.AutonomousPriority == "Switch") { // drop cube in switch
+    		if(Robot.AutonomousLeftOrRightPriority == "Switch") { // drop cube in switch
     			addSequential(new CubeGrab());
         		addSequential(new MoveDistance(10,true)); // random value in MoveForward()
         		addSequential(new TurnByAngle(-90));
@@ -48,7 +48,7 @@ public class AutonomousRightPosition extends CommandGroup {
         		addSequential(new CubeRelease());
         		SmartDashboard.putString("Switch Close", "Right");
     		}
-    		else if (Robot.AutonomousPriority == "Scale") { // drop cube in scale
+    		else if (Robot.AutonomousLeftOrRightPriority == "Scale") { // drop cube in scale
     			addSequential(new MoveDistance(20,true)); // random value in MoveForward()
         		addSequential(new TurnByAngle(-90));
         		addSequential(new MoveDistance(5,false)); // random value in MoveForward()

@@ -48,9 +48,11 @@ public class AutonomousCommandDispatch extends CommandGroup {
 //    		}else {
 //    			//Don't drop a cube
 //    		}
-    	}else if(driverStation.getLocation() == 2) {//center
+    	
+    	}else if(driverStation.getLocation() == 2) {//middle
     		addSequential(new AutonomousMiddlePosition());//get into position
-    		SmartDashboard.putString("Location", "Center");
+    		SmartDashboard.putString("Location", "Middle");
+    	
     	}else if(driverStation.getLocation() == 3) {//right
     		addSequential(new AutonomousRightPosition());//get into position
     		SmartDashboard.putString("Location", "Right");
@@ -60,6 +62,7 @@ public class AutonomousCommandDispatch extends CommandGroup {
 //    		}else {
 //    			//Don't drop a cube
 //    		}
+    	
     	}else {
     		
     	}

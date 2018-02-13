@@ -49,8 +49,8 @@ public class Robot extends TimedRobot {
 	public static final CubeShooter kCubeShooter = new CubeShooter();
 	public static final PneumaticsSystem kPneumatics = new PneumaticsSystem();
 	public static final Camera kcamera = new Camera();
-	public static String AutonomousPriority = "None";
-	public static String MiddlePriority = "None";
+	public static String AutonomousLeftOrRightPriority = "None";
+	public static String AutonomousMiddlePriority = "None";
 	
 
 	Command m_autonomousCommand;
@@ -125,8 +125,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		m_autonomousCommand = m_chooser.getSelected();
-		this.AutonomousPriority = m_priority.getSelected();
-		this.MiddlePriority = m_priorityMiddle.getSelected();
+		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
+		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector",
 		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand

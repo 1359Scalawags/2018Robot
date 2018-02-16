@@ -6,6 +6,7 @@
 /*----------------------------------------------------------------------------*/
 
 package org.usfirst.frc.team1359.robot;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
@@ -34,14 +35,12 @@ import org.usfirst.frc.team1359.robot.subsystems.PneumaticsSystem;
  * project.
  */
 /*
- Author: Destin
- Team: 1359 Scalawags
- Date: 1/10/18
+ * Author: Destin Team: 1359 Scalawags Date: 1/10/18
  */
 public class Robot extends TimedRobot {
 	public static final ExampleSubsystem kExampleSubsystem = new ExampleSubsystem();
 	public static final DriveSystem kDriveSystem = new DriveSystem();
-	public static final PIDDriveSystem kPIDDriveSystem = new PIDDriveSystem(); 
+	public static final PIDDriveSystem kPIDDriveSystem = new PIDDriveSystem();
 	public static final Aesthetics kAesthetics = new Aesthetics();
 	public static OI kOI;
 	public static final Climber kClimber = new Climber();
@@ -51,7 +50,6 @@ public class Robot extends TimedRobot {
 	public static final Camera kcamera = new Camera();
 	public static String AutonomousLeftOrRightPriority = "None";
 	public static String AutonomousMiddlePriority = "None";
-	
 
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
@@ -59,44 +57,45 @@ public class Robot extends TimedRobot {
 	SendableChooser<String> m_priorityMiddle = new SendableChooser<String>();
 
 	DriverStation driverStation;
-	
+
 	public Robot() {
 		super();
 		this.setPeriod(.025);
 	}
-	
+
 	/**
-	 * This function is run when the robot is first started up and should be
-	 * used for any initialization code.
+	 * This function is run when the robot is first started up and should be used
+	 * for any initialization code.
 	 */
 	@Override
 	public void robotInit() {
 		kOI = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
 		m_chooser.addObject("Turn", new AutonomousCommandDispatch());
-		
+
 		m_priority.addDefault("Switch", "Switch");
 		m_priority.addObject("Scale", "Scale");
-		
+
 		m_priorityMiddle.addDefault("Drop cube", "Yes");
 		m_priorityMiddle.addObject("Drop Cube", "No");
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
-		
+
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		System.out.println("The 1359 Scalawags can win this match!  ");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
-		
+
 	}
 
 	@Override
 	public void robotPeriodic() {
 		SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
-		
+
 	}
+
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
 	 */
@@ -112,14 +111,15 @@ public class Robot extends TimedRobot {
 
 	/**
 	 * This autonomous (along with the chooser code above) shows how to select
-	 * between different autonomous modes using the dashboard. The sendable
-	 * chooser code works with the Java SmartDashboard. If you prefer the
-	 * LabVIEW Dashboard, remove all of the chooser code and uncomment the
-	 * getString code to get the auto name from the text box below the Gyro
+	 * between different autonomous modes using the dashboard. The sendable chooser
+	 * code works with the Java SmartDashboard. If you prefer the LabVIEW Dashboard,
+	 * remove all of the chooser code and uncomment the getString code to get the
+	 * auto name from the text box below the Gyro
 	 *
-	 * <p>You can add additional auto modes by adding additional commands to the
-	 * chooser code above (like the commented example) or additional comparisons
-	 * to the switch structure below with additional strings & commands.
+	 * <p>
+	 * You can add additional auto modes by adding additional commands to the
+	 * chooser code above (like the commented example) or additional comparisons to
+	 * the switch structure below with additional strings & commands.
 	 */
 	@Override
 	public void autonomousInit() {
@@ -127,10 +127,10 @@ public class Robot extends TimedRobot {
 		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
 		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
 		/*
-		 * String autoSelected = SmartDashboard.getString("Auto Selector",
-		 * "Default"); switch(autoSelected) { case "My Auto": autonomousCommand
-		 * = new MyAutoCommand(); break; case "Default Auto": default:
-		 * autonomousCommand = new ExampleCommand(); break; }
+		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
+		 * switch(autoSelected) { case "My Auto": autonomousCommand = new
+		 * MyAutoCommand(); break; case "Default Auto": default: autonomousCommand = new
+		 * ExampleCommand(); break; }
 		 */
 
 		// schedule the autonomous command (example)
@@ -166,15 +166,14 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 	}
 
-
 	/**
 	 * This function is called once at the beginning of test mode.
 	 */
 	@Override
 	public void testInit() {
-		
+
 	}
-	
+
 	/**
 	 * This function is called periodically during test mode.
 	 */

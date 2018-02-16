@@ -15,6 +15,7 @@ public class MoveDistance extends Command {
 	private double m_deltaDistance;
 	private double m_motorSpeed = 0;
 	private boolean m_direction;
+
 	public MoveDistance(double distance, boolean direction) {
 
 		super("MoveForward");
@@ -34,21 +35,19 @@ public class MoveDistance extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if(m_direction) {
-		Robot.kPIDDriveSystem.arcadeDrive(Constants.autoDriveSpeed, 0);
-		}
-		else {
+		if (m_direction) {
+			Robot.kPIDDriveSystem.arcadeDrive(Constants.autoDriveSpeed, 0);
+		} else {
 			Robot.kPIDDriveSystem.arcadeDrive(-(Constants.autoDriveSpeed), 0);
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if(m_direction) {
-		return (Robot.kPIDDriveSystem.getAverageDistance()-m_startDistance) >= m_deltaDistance;
-		}
-		else {
-			return (Robot.kPIDDriveSystem.getAverageDistance()-m_startDistance) <= -m_deltaDistance;
+		if (m_direction) {
+			return (Robot.kPIDDriveSystem.getAverageDistance() - m_startDistance) >= m_deltaDistance;
+		} else {
+			return (Robot.kPIDDriveSystem.getAverageDistance() - m_startDistance) <= -m_deltaDistance;
 		}
 	}
 

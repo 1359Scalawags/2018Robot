@@ -24,9 +24,7 @@ public class CubeLoader extends Subsystem {
 	Potentiometer pot = new AnalogPotentiometer(0, 180, 0);
 
 	public enum ArmPosition {
-		TOP, 
-		MIDDLE, 
-		BOTTOM
+		TOP, MIDDLE, BOTTOM
 	}
 
 	ArmPosition armposition;
@@ -67,24 +65,22 @@ public class CubeLoader extends Subsystem {
 	}
 
 	private void goToBottom() {
-		if(!isAtBottom()) {
+		if (!isAtBottom()) {
 			lower();
 		} else {
 			stop();
 			armposition = ArmPosition.BOTTOM;
 		}
 	}
-	
+
 	private void goToMiddle() {
-		if(!isAtMiddle()) {
-			if(getLiftAngle() < 90) {
+		if (!isAtMiddle()) {
+			if (getLiftAngle() < 90) {
 				lift();
-			}
-			else if(getLiftAngle() > 90) {
+			} else if (getLiftAngle() > 90) {
 				lower();
 			}
-		}
-		 else {
+		} else {
 			stop();
 			armposition = ArmPosition.MIDDLE;
 		}

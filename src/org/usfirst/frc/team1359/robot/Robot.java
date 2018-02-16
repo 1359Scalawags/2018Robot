@@ -86,7 +86,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
 		
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
-		System.out.println("  hopefully the 1359 Scalawags can win this match  ");
+		System.out.println("The 1359 Scalawags can win this match!  ");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
 		
@@ -99,8 +99,6 @@ public class Robot extends TimedRobot {
 	}
 	/**
 	 * This function is called once each time the robot enters Disabled mode.
-	 * You can use it to reset any subsystem information you want to clear when
-	 * the robot is disabled.
 	 */
 	@Override
 	public void disabledInit() {
@@ -168,14 +166,18 @@ public class Robot extends TimedRobot {
 		Scheduler.getInstance().run();
 	}
 
+
 	/**
-	 * This function is called periodically during test mode.
+	 * This function is called once at the beginning of test mode.
 	 */
 	@Override
 	public void testInit() {
 		
 	}
 	
+	/**
+	 * This function is called periodically during test mode.
+	 */
 	@Override
 	public void testPeriodic() {
 	}

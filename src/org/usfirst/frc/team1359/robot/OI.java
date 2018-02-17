@@ -12,6 +12,7 @@ import org.usfirst.frc.team1359.robot.commands.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
+import org.usfirst.frc.team1359.robot.commands.ForceSullinoide;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
 import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
@@ -56,6 +57,8 @@ public class OI {
 	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
 	Button rockForwardButton = new JoystickButton(mainPad, RobotMap.xboxB);
 	Button rockBackwardButton = new JoystickButton(mainPad, RobotMap.xboxX);
+	
+	Button forceSullinoide = new JoystickButton(assistPad, RobotMap.xboxA);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	// Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
@@ -111,6 +114,8 @@ public class OI {
 		retractClimberButton.whenPressed(new RetractClimberArm());
 		rockForwardButton.whenPressed(new RockClimberArmForward());
 		rockBackwardButton.whenPressed(new RockClimberArmBackward());
+		
+		forceSullinoide.whenPressed(new ForceSullinoide());
 	}
 
 	public double getTrigger() {

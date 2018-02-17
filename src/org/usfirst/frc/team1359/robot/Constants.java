@@ -29,5 +29,6 @@ public class Constants {
 
 	// gameController
 	public static final double controllerDeadZone = .05;
+	public static final double angleTolerance = 2.5;
 
 }

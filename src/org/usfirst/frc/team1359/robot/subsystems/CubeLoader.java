@@ -109,10 +109,16 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public boolean isAtMiddle() {
-		if (armposition == ArmPosition.MIDDLE) {
+//		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {
+//			return true;
+//		} else {
+//			return (topLimit.get() == Constants.notPressed);
+//		}
+		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {
 			return true;
-		} else {
-			return (topLimit.get() == Constants.notPressed);
+		}
+		else {
+			return false;
 		}
 	}
 
@@ -121,19 +127,21 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public boolean isAtTop() {
-		if (getLiftAngle() > 179.0 && armposition == ArmPosition.TOP) {
-			return true;
-		} else {
-			return (topLimit.get() == Constants.notPressed);
-		}
+//		if (getLiftAngle() > 179.0 && armposition == ArmPosition.TOP) {
+//			return true;
+//		} else {
+//			return (topLimit.get() == Constants.notPressed);
+//		}
+		return (topLimit.get() == Constants.pressed);
 	}
 
 	public boolean isAtBottom() {
-		if (getLiftAngle() < .1 && armposition == ArmPosition.BOTTOM) {
-			return true;
-		} else {
-			return (bottomLimit.get() == Constants.notPressed);
-		}
+//		if (getLiftAngle() < .1 && armposition == ArmPosition.BOTTOM) {
+//			return true;
+//		} else {
+//			return (bottomLimit.get() == Constants.notPressed);
+//		}
+		return (bottomLimit.get() == Constants.pressed);
 	}
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.

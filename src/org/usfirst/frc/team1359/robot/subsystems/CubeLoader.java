@@ -64,15 +64,26 @@ public class CubeLoader extends Subsystem {
 //			stop();
 //		}
 	}
-
-//	private void goToBottom() {
-//		if (!isAtBottom()) {
-//			lower();
-//		} else {
-//			stop();
-//			armposition = ArmPosition.BOTTOM;
-//		}
-//	}
+	
+	public void moveAuto(ArmPosition pos) {
+		if (pos == ArmPosition.BOTTOM) {
+			goToBottom();
+		}
+		 else if (pos == ArmPosition.TOP) {
+				goToTop();
+			} else {
+				stop();
+			}
+	}
+	
+	private void goToBottom() {
+		if (!isAtBottom()) {
+			lower();
+		} else {
+			stop();
+			armposition = ArmPosition.BOTTOM;
+		}
+	}
 //
 //	private void goToMiddle() {
 //		if (!isAtMiddle()) {
@@ -87,27 +98,27 @@ public class CubeLoader extends Subsystem {
 //		}
 //	}
 
-//	private void goToTop() {
-//		if (!isAtTop()) {
-//			lift();
-//		} else {
-//			armposition = ArmPosition.TOP;
-//			stop();
-//		}
-//	}
+	private void goToTop() {
+		if (!isAtTop()) {
+			lift();
+		} else {
+			armposition = ArmPosition.TOP;
+			stop();
+		}
+	}
 
-//	private void lift() {
-//		liftMotor.set(Constants.cubeArmSpeed);
-//	}
-//
-//	private void lower() {
-//		liftMotor.set(-(Constants.cubeArmSpeed));
-//	}
-//
-//	public void stop() {
-//
-//		liftMotor.set(0);
-//	}
+	private void lift() {
+		liftMotor.set(Constants.cubeArmSpeed);
+	}
+
+	private void lower() {
+		liftMotor.set(-(Constants.cubeArmSpeed));
+	}
+
+	public void stop() {
+
+		liftMotor.set(0);
+	}
 
 //	public boolean isAtMiddle() {
 ////		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {

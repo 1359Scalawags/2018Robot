@@ -8,9 +8,6 @@
 package org.usfirst.frc.team1359.robot;
 
 import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
-import org.usfirst.frc.team1359.robot.commands.CubeAtBottom;
-import org.usfirst.frc.team1359.robot.commands.CubeAtMiddle;
-import org.usfirst.frc.team1359.robot.commands.CubeAtTop;
 import org.usfirst.frc.team1359.robot.commands.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
@@ -18,6 +15,8 @@ import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
 import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
+import org.usfirst.frc.team1359.robot.commands.RockClimberArmBackward;
+import org.usfirst.frc.team1359.robot.commands.RockClimberArmForward;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 
 import edu.wpi.first.wpilibj.Joystick;
@@ -55,6 +54,8 @@ public class OI {
 	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
 	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
 	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
+	Button rockForwardButton = new JoystickButton(mainPad, RobotMap.xboxB);
+	Button rockBackwardButton = new JoystickButton(mainPad, RobotMap.xboxX);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	// Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
@@ -108,6 +109,8 @@ public class OI {
 		enableClimberButton.whenPressed(new ClimbCommand());
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());
+		rockForwardButton.whenPressed(new RockClimberArmForward());
+		rockBackwardButton.whenPressed(new RockClimberArmBackward());
 	}
 
 	public double getTrigger() {

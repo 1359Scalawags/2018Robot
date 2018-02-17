@@ -7,10 +7,10 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CubeMove extends Command {
+public class RockClimberArmForward extends Command {
 
-    public CubeMove() {
-    	requires(Robot.kCubeLoader);
+    public RockClimberArmForward() {
+    	requires(Robot.kClimber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -21,13 +21,12 @@ public class CubeMove extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	
-    	Robot.kCubeLoader.move(Robot.kOI.getGrabberStick());
+    	Robot.kClimber.rockForward();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return Robot.kClimber.isRocked();
     }
 
     // Called once after isFinished returns true

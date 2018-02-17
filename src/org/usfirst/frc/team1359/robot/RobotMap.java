@@ -30,12 +30,15 @@ public class RobotMap {
 	public static final int cubeClamp = 1; // relay
 
 	// Limit Switches
-	public static final int lowerLimit = 0; // cube arm
-	public static final int upperLimit = 1; // cube arm
-	public static final int bottomLimit = 2; // climb arm
-	public static final int topLimit = 3; // climb arm
-	public static final int shooterDownLimit = 4; // limit
-	public static final int strapunwoundlimit = 5; // limit
+	public static final int grabLowerLimit = 9; // cube arm
+	public static final int grabUpperLimit = 8; // cube arm
+	public static final int shooterDownLimit = 7; // limit
+	public static final int strapunwoundlimit = 6; // limit
+	public static final int climbTopLimit = 5; // climb arm
+	public static final int climbBottomLimit = 4; // climb arm
+	
+	
+	
 
 	// gameController
 	public static final int mainController = 0;

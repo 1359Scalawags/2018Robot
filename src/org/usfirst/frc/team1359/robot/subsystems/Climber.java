@@ -25,8 +25,8 @@ public class Climber extends Subsystem {
 
 		climbMotor = new Talon(RobotMap.climbMotor);
 		elevatorMotor = new Relay(RobotMap.elevatorMotor);
-		lowerLimit = new DigitalInput(RobotMap.lowerLimit);
-		upperLimit = new DigitalInput(RobotMap.upperLimit);
+		lowerLimit = new DigitalInput(RobotMap.grabLowerLimit);
+		upperLimit = new DigitalInput(RobotMap.grabUpperLimit);
 		rocker = new Solenoid(RobotMap.rocker);
 	}
 

@@ -80,7 +80,5 @@ public class Climber extends Subsystem {
 		return (lowerLimit.get() == Constants.pressed);
 	}
 	
-	public boolean isRocked() {
-		return rocker.get();
-	}
+	
 }

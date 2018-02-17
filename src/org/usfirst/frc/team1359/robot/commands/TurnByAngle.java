@@ -21,7 +21,7 @@ public class TurnByAngle extends Command {
 	public TurnByAngle(double angle) {
 
 		super("TurnByAngle");
-		requires(Robot.kDriveSystem);
+		requires(Robot.kPIDDriveSystem);
 		m_deltaAngle = angle;
 
 		// Use requires() here to declare subsystem dependencies
@@ -30,7 +30,7 @@ public class TurnByAngle extends Command {
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		m_startAngle = Robot.kDriveSystem.getAngle();
+		m_startAngle = Robot.kPIDDriveSystem.getAngle();
 		SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
 
 	}
@@ -39,7 +39,7 @@ public class TurnByAngle extends Command {
 	protected void execute() {
 		Robot.kPIDDriveSystem.arcadeDrive(0, 10, m_startAngle);
 
-		m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kDriveSystem.getAngle() - m_startAngle));
+		m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));
 		// double turnSpeed = Math.max(-m_maxTurnRate, Math.min(m_maxTurnRate,
 		// m_turnRateMultiplier * -Math.pow(m_angleRemaining, .333)));
 
@@ -70,7 +70,7 @@ public class TurnByAngle extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kDriveSystem.getGyroRate()) < 5) {
+		if (Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kPIDDriveSystem.getGyroRate()) < 5) {
 			return true;
 		} else {
 			return false;
@@ -80,7 +80,7 @@ public class TurnByAngle extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
-		Robot.kDriveSystem.arcadeDrive(0, 0);
+		Robot.kPIDDriveSystem.arcadeDrive(0, 0);
 	}
 
 	// Called when another command which requires one or more of the same

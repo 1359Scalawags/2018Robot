@@ -67,5 +67,12 @@ public class DriveSystem extends Subsystem {
 	public void arcadeDrive(double moveSpeed, double turnSpeed) {
 		m_drive.arcadeDrive(moveSpeed, turnSpeed);
 	}
+	
+	public float getAverageDistance() {
+		return 0;
+	}
 
+	public void arcadeDrive(int one, int two, double three) {
+		
+	}
 }

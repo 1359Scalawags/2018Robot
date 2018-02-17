@@ -3,8 +3,8 @@ package org.usfirst.frc.team1359.robot;
 public class Constants {
 
 	// TODO Verify that these are not reversed with no motor power
-	public static final boolean pressed = true;
-	public static final boolean notPressed = false;
+	public static final boolean pressed = false;
+	public static final boolean notPressed = true;
 	public static final boolean locked = true;
 	public static final boolean unLocked = false;
 

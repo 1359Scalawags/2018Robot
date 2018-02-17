@@ -14,21 +14,21 @@ public class DriveWithJoysticks extends Command {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
 		super("DriveWithJoysticks");
-		requires(Robot.kDriveSystem);
+		requires(Robot.kPIDDriveSystem);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
-		Robot.kDriveSystem.resetGyro();
+		Robot.kPIDDriveSystem.resetGyro();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.kDriveSystem.tankDrive(Robot.kOI.getLStickY(), Robot.kOI.getRStickY());
+		Robot.kPIDDriveSystem.tankDrive(Robot.kOI.getLStickY(), Robot.kOI.getRStickY());
 
-		SmartDashboard.putNumber("Gyro", Robot.kDriveSystem.getAngle());
-		SmartDashboard.putNumber("Encoder Distance", Robot.kDriveSystem.getLeftEncoder());
-		SmartDashboard.putNumber("Encoder Distance", Robot.kDriveSystem.getRightEncoder());
+		SmartDashboard.putNumber("Gyro", Robot.kPIDDriveSystem.getAngle());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getLeftEncoder());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getRightEncoder());
 
 	}
 

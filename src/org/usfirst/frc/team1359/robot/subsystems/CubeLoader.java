@@ -39,9 +39,9 @@ public class CubeLoader extends Subsystem {
 
 	}
 
-	public double getPosition() {
-		return pot.get();
-	}
+//	public double getPosition() {
+//		return pot.get();
+//	}
 
 	public void grab() {
 		armValve.set(true);
@@ -52,79 +52,80 @@ public class CubeLoader extends Subsystem {
 		armValve.set(false);
 	}
 
-	public void move(ArmPosition pos) {
-		if (pos == ArmPosition.BOTTOM) {
-			goToBottom();
-		} else if (pos == ArmPosition.MIDDLE) {
-			goToMiddle();
-		} else if (pos == ArmPosition.TOP) {
-			goToTop();
-		} else {
-			stop();
-		}
+	public void move(double speed) {
+		liftMotor.set(speed);
+//		if (pos == ArmPosition.BOTTOM) {
+//			goToBottom();
+//		} else if (pos == ArmPosition.MIDDLE) {
+//			goToMiddle();
+//		} else if (pos == ArmPosition.TOP) {
+//			goToTop();
+//		} else {
+//			stop();
+//		}
 	}
 
-	private void goToBottom() {
-		if (!isAtBottom()) {
-			lower();
-		} else {
-			stop();
-			armposition = ArmPosition.BOTTOM;
-		}
-	}
+//	private void goToBottom() {
+//		if (!isAtBottom()) {
+//			lower();
+//		} else {
+//			stop();
+//			armposition = ArmPosition.BOTTOM;
+//		}
+//	}
+//
+//	private void goToMiddle() {
+//		if (!isAtMiddle()) {
+//			if (getLiftAngle() < 90) {
+//				lift();
+//			} else if (getLiftAngle() > 90) {
+//				lower();
+//			}
+//		} else {
+//			stop();
+//			armposition = ArmPosition.MIDDLE;
+//		}
+//	}
 
-	private void goToMiddle() {
-		if (!isAtMiddle()) {
-			if (getLiftAngle() < 90) {
-				lift();
-			} else if (getLiftAngle() > 90) {
-				lower();
-			}
-		} else {
-			stop();
-			armposition = ArmPosition.MIDDLE;
-		}
-	}
+//	private void goToTop() {
+//		if (!isAtTop()) {
+//			lift();
+//		} else {
+//			armposition = ArmPosition.TOP;
+//			stop();
+//		}
+//	}
 
-	private void goToTop() {
-		if (!isAtTop()) {
-			lift();
-		} else {
-			armposition = ArmPosition.TOP;
-			stop();
-		}
-	}
+//	private void lift() {
+//		liftMotor.set(Constants.cubeArmSpeed);
+//	}
+//
+//	private void lower() {
+//		liftMotor.set(-(Constants.cubeArmSpeed));
+//	}
+//
+//	public void stop() {
+//
+//		liftMotor.set(0);
+//	}
 
-	private void lift() {
-		liftMotor.set(Constants.cubeArmSpeed);
-	}
-
-	private void lower() {
-		liftMotor.set(-(Constants.cubeArmSpeed));
-	}
-
-	public void stop() {
-
-		liftMotor.set(0);
-	}
-
-	public boolean isAtMiddle() {
+//	public boolean isAtMiddle() {
+////		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {
+////			return true;
+////		} else {
+////			return (topLimit.get() == Constants.notPressed);
+////		}
 //		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {
 //			return true;
-//		} else {
-//			return (topLimit.get() == Constants.notPressed);
 //		}
-		if (Math.abs(getLiftAngle() - 90) < Constants.angleTolerance) {
-			return true;
-		}
-		else {
-			return false;
-		}
-	}
+//		else {
+//			return false;
+//		}
+//	}
 
-	public double getLiftAngle() {
-		return pot.get() * Constants.anglePerValue;
-	}
+//	public double getLiftAngle() {
+//		return pot.get() * Constants.anglePerValue;
+//	}
 
 	public boolean isAtTop() {
 //		if (getLiftAngle() > 179.0 && armposition == ArmPosition.TOP) {

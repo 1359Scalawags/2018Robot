@@ -8,6 +8,11 @@
 package org.usfirst.frc.team1359.robot;
 
 import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
+import org.usfirst.frc.team1359.robot.commands.CubeAtBottom;
+import org.usfirst.frc.team1359.robot.commands.CubeAtMiddle;
+import org.usfirst.frc.team1359.robot.commands.CubeAtTop;
+import org.usfirst.frc.team1359.robot.commands.CubeGrab;
+import org.usfirst.frc.team1359.robot.commands.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
@@ -48,6 +53,8 @@ public class OI {
 	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
 	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
 	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
+	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
+	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	// Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
@@ -85,14 +92,22 @@ public class OI {
 	// button.whenReleased(new ExampleCommand());
 	public OI() {
 		// turnButton.whenPressed(new TurnByAngle(90));
-		SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
-
-		enableClimberButton.whenPressed(new ClimbCommand());
+		//SmartDashboard.putData("Turn by 90", new TurnByAngle(90));
 
 		// extendClimberButton.whenPressed(new ExtendClimberArm());
 		// retractClimberButton.whenPressed(new RetractClimberArm());
 		drawShooter.whenPressed(new PrepareToLaunchShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
+		grabCubeButton.whenPressed(new CubeGrab());
+		releaseCubeButton.whenPressed(new CubeRelease());
+		moveCubeMiddleButton.whenPressed(new CubeAtMiddle());
+		moveCubeTopButton.whenPressed(new CubeAtTop());
+		moveCubeBottomButton.whenPressed(new CubeAtBottom());
+		drawShooter.whenPressed(new PullShooter());
+		releaseShooter.whenPressed(new ReleaseShooter());
+		enableClimberButton.whenPressed(new ClimbCommand());
+		extendClimberButton.whenPressed(new ExtendClimberArm());
+		retractClimberButton.whenPressed(new RetractClimberArm());
 	}
 
 	public double getTrigger() {
@@ -115,7 +130,7 @@ public class OI {
 		}
 	}
 
-	public double getArmStick() {
+	public double getArmStick() { // move climber strap
 		return assistPad.getY(Hand.kLeft);
 	}
 	// public Joystick getJoystick1() {

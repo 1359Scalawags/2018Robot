@@ -23,8 +23,8 @@ public class RobotMap {
 	public static final int rearRightMotor = 3;
 
 	public static final int climbMotor = 4;
-	public static final int liftMotor = 5;
-	public static final int shooterPull = 6;
+	public static final int liftMotor = 6;
+	public static final int shooterPull = 5;
 
 	public static final int elevatorMotor = 0; // relay
 	public static final int cubeClamp = 1; // relay

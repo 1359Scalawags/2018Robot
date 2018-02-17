@@ -26,17 +26,17 @@ public class ReleaseShooter extends Command {
 	protected void execute() {
 		if (Robot.kCubeShooter.shooterIsDown() && Robot.kCubeShooter.shooterIsUnwound()) {
 			Robot.kCubeShooter.unlockShooter();
-			failed = false;
-		} else {
-			failed = true;
+//			failed = false;
+//		} else {
+//			failed = true;
 		}
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (failed) {
-			return true;
-		}
+//		if (failed) {
+//			return true;
+//		}
 		return !Robot.kCubeShooter.shooterIsDown();
 	}
 

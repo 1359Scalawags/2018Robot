@@ -27,7 +27,7 @@ public class RobotMap {
 	public static final int shooterPull = 5;
 
 	public static final int elevatorMotor = 0; // relay
-	public static final int cubeClamp = 1; // relay NOT USED
+	// public static final int cubeClamp = 1; // 
 
 	// Limit Switches
 	public static final int lowerLimit = 0; // cube arm

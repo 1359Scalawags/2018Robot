@@ -31,8 +31,8 @@ public class CubeLoader extends Subsystem {
 
 	public CubeLoader() {
 
-		bottomLimit = new DigitalInput(RobotMap.bottomLimit);
-		topLimit = new DigitalInput(RobotMap.topLimit);
+		bottomLimit = new DigitalInput(RobotMap.climbBottomLimit);
+		topLimit = new DigitalInput(RobotMap.climbTopLimit);
 		liftMotor = new Talon(RobotMap.liftMotor);
 		// cubeClamp = new Relay(RobotMap.cubeClamp);
 		armValve = new Solenoid(RobotMap.armValve);

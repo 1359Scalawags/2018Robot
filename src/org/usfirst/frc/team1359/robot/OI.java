@@ -116,7 +116,7 @@ public class OI {
 
 	public double getLStickY() {
 		if (Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
-			return mainPad.getY(Hand.kLeft) * (.5 * getTrigger() + .5);
+			return -(mainPad.getY(Hand.kLeft) * (.5 * getTrigger() + .5));
 		} else {
 			return 0;
 		}
@@ -124,7 +124,7 @@ public class OI {
 
 	public double getRStickY() {
 		if (Math.abs(mainPad.getY(Hand.kRight)) > Constants.controllerDeadZone) {
-			return mainPad.getY(Hand.kRight) * (.5 * getTrigger() + .5);
+			return -(mainPad.getY(Hand.kRight) * (.5 * getTrigger() + .5));
 		} else {
 			return 0;
 		}

@@ -47,9 +47,9 @@ public class OI {
 
 	Button grabCubeButton = new JoystickButton(assistPad, RobotMap.xboxX);
 	Button releaseCubeButton = new JoystickButton(assistPad, RobotMap.xboxB);
-	Button moveCubeMiddleButton = new JoystickButton(assistPad, RobotMap.xboxA);
-	Button moveCubeTopButton = new JoystickButton(assistPad, RobotMap.xboxY);
-	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
+//	Button moveCubeMiddleButton = new JoystickButton(assistPad, RobotMap.xboxA);
+//	Button moveCubeTopButton = new JoystickButton(assistPad, RobotMap.xboxY);
+//	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
 	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
 	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
 	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
@@ -100,9 +100,9 @@ public class OI {
 		releaseShooter.whenPressed(new ReleaseShooter());
 		grabCubeButton.whenPressed(new CubeGrab());
 		releaseCubeButton.whenPressed(new CubeRelease());
-		moveCubeMiddleButton.whenPressed(new CubeAtMiddle());
-		moveCubeTopButton.whenPressed(new CubeAtTop());
-		moveCubeBottomButton.whenPressed(new CubeAtBottom());
+//		moveCubeMiddleButton.whenPressed(new CubeAtMiddle());
+//		moveCubeTopButton.whenPressed(new CubeAtTop());
+//		moveCubeBottomButton.whenPressed(new CubeAtBottom());
 		drawShooter.whenPressed(new PullShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
 		enableClimberButton.whenPressed(new ClimbCommand());
@@ -132,6 +132,10 @@ public class OI {
 
 	public double getArmStick() { // move climber strap
 		return assistPad.getY(Hand.kLeft);
+	}
+	
+	public double getGrabberStick() {
+		return assistPad.getY(Hand.kRight);
 	}
 	// public Joystick getJoystick1() {
 	// return stick1;

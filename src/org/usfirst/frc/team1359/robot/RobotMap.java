@@ -86,7 +86,7 @@ public class RobotMap {
 	public static final int compressor = 0;
 	public static final int shooterLock = 2; // solenoid
 	public static final int armValve = 0; // solenoid
-	public static final int rocker = 3; // solenoid
+	public static final int rocker = 1; // solenoid
 
 	// If you are using multiple modules, make sure to define both the port
 	// number and the module. For example you with a rangefinder:

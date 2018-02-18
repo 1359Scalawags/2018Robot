@@ -44,6 +44,10 @@ public class Climber extends Subsystem {
 		climberLocked = false;
 	}
 	
+	public boolean getClimberLock() {
+		return climberLocked;
+	}
+	
 	public void extendArm() {
 		if (!isElevated() && !climberLocked) {
 			elevatorMotor.set(Relay.Value.kForward);

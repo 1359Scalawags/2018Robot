@@ -7,13 +7,13 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RockClimberArmBackward extends Command {
+public class UnLockElevator extends Command {
 
-    public RockClimberArmBackward() {
-    	super("RockClimberArmBackward");
-    	requires(Robot.kClimber);
+    public UnLockElevator() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
+    	super("UnLockElevator");
+    	requires(Robot.kClimber);
     }
 
     // Called just before this Command runs the first time
@@ -22,12 +22,12 @@ public class RockClimberArmBackward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kClimber.rockBackward();
+    	Robot.kClimber.unlockClimber();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return true;
+        return !Robot.kClimber.getClimberLock();
     }
 
     // Called once after isFinished returns true

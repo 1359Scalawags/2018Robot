@@ -15,6 +15,7 @@ import org.usfirst.frc.team1359.robot.commands.climber.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.climber.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmBackward;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
+import org.usfirst.frc.team1359.robot.commands.climber.UnLockElevator;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceLockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceUnlockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.LockShooter;
@@ -54,7 +55,7 @@ public class OI {
 //	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
 	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
 	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
-	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
+	Button enableClimberButton = new JoystickButton(mainPad, RobotMap.backBtn);
 	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
 	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
 	Button rockForwardButton = new JoystickButton(mainPad, RobotMap.xboxB);
@@ -111,7 +112,7 @@ public class OI {
 //		moveCubeBottomButton.whenPressed(new CubeAtBottom());
 		drawShooter.whenPressed(new PullShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
-		enableClimberButton.whenPressed(new ClimbCommand());
+		enableClimberButton.whenPressed(new UnLockElevator());
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());
 		rockForwardButton.whenPressed(new RockClimberArmForward());

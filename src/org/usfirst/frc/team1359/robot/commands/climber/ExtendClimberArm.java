@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ExtendClimberArm extends Command {
 
 	public ExtendClimberArm() {
-
+		super("ExtendClimberArm");
 		requires(Robot.kClimber);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);

@@ -21,7 +21,7 @@ public class AutonomousRightPosition extends CommandGroup {
 	private char scalePos;
 
 	public AutonomousRightPosition() {
-		super("AutonomousRightPositionCommandGroup");
+		super("AutonomousRightPosition");
 		requires(Robot.kPIDDriveSystem);
 		requires(Robot.kCubeLoader);
 		requires(Robot.kCubeShooter);

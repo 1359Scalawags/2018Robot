@@ -89,8 +89,8 @@ public class Robot extends TimedRobot {
 		System.out.println("The 1359 Scalawags can win this match!  ");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
-		LiveWindow.add(new Talon(1));
-		LiveWindow.add(new Talon(2));
+		//LiveWindow.add(new Talon(1));
+		//LiveWindow.add(new Talon(2));
        
 	}
 

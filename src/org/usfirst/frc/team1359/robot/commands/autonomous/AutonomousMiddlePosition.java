@@ -17,7 +17,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 	private char switchPos;
 
 	public AutonomousMiddlePosition() {
-		super("AutonomousMiddlePositionCommandGroup");
+		super("AutonomousMiddlePosition");
 		requires(Robot.kPIDDriveSystem);
 		requires(Robot.kCubeLoader);
 		DriverStation driverStation = DriverStation.getInstance();

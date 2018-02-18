@@ -17,9 +17,9 @@ public class AutonomousCommandDispatch extends CommandGroup {
 	private DriverStation.Alliance alliance;
 	private String userPriority;
 
-	public enum AutoStates {
-		GoPastLineLeft, GoPastLineRight, GoPastLineCenter, DropCubeSwitchLeft, DropCubeSwitchRight, DropCubeScaleLeft, DropCubeScaleRight
-	}
+//	public enum AutoStates {
+//		GoPastLineLeft, GoPastLineRight, GoPastLineCenter, DropCubeSwitchLeft, DropCubeSwitchRight, DropCubeScaleLeft, DropCubeScaleRight
+//	}
 
 	public AutonomousCommandDispatch() {
 		super("AutonomousCommandDispatch");

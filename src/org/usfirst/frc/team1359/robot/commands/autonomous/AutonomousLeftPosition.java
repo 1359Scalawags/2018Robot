@@ -20,7 +20,7 @@ public class AutonomousLeftPosition extends CommandGroup {
 	private char scalePos;
 
 	public AutonomousLeftPosition() {
-		super("AutonomousLeftPositionCommandGroup");
+		super("AutonomousLeftPosition");
 		requires(Robot.kPIDDriveSystem);
 		requires(Robot.kCubeLoader);
 		requires(Robot.kCubeShooter);

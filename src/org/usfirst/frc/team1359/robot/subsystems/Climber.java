@@ -19,16 +19,16 @@ public class Climber extends Subsystem {
 	// here. Call these from Commands.
 	DigitalInput lowerLimit, upperLimit;
 	Talon climbMotor;
-	Relay elevatorMotor;
-	//Talon elevatorMotor;
+	//Relay elevatorMotor;
+	Talon elevatorMotor;
 	Solenoid rocker;
 	boolean climberLocked;
 
 	public Climber() {
 
 		climbMotor = new Talon(RobotMap.climbMotor);
-		elevatorMotor = new Relay(RobotMap.elevatorMotor);
-		//elevatorMotor = new Talon(RobotMap.elevatorMotor);
+		//elevatorMotor = new Relay(RobotMap.elevatorMotor);
+		elevatorMotor = new Talon(RobotMap.elevatorMotor);
 		lowerLimit = new DigitalInput(RobotMap.grabLowerLimit);
 		upperLimit = new DigitalInput(RobotMap.grabUpperLimit);
 		rocker = new Solenoid(RobotMap.rocker);
@@ -50,21 +50,21 @@ public class Climber extends Subsystem {
 	
 	public void extendArm() {
 		if (!isElevated() && !climberLocked) {
-			elevatorMotor.set(Relay.Value.kForward);
-			//elevatorMotor.set(Constants.elevatorSpeed);
+			//elevatorMotor.set(Relay.Value.kForward);
+			elevatorMotor.set(Constants.elevatorSpeed);
 		} else {
-			elevatorMotor.set(Relay.Value.kOff);
-			//elevatorMotor.set(0);
+			//elevatorMotor.set(Relay.Value.kOff);
+			elevatorMotor.set(0);
 		}
 	}
 
 	public void retractArm() {
 		if (!isRetracted()) {
-			elevatorMotor.set(Relay.Value.kReverse);
-			//elevatorMotor.set(-(Constants.elevatorSpeed));
+			//elevatorMotor.set(Relay.Value.kReverse);
+			elevatorMotor.set(-(Constants.elevatorSpeed));
 		} else {
-			elevatorMotor.set(Relay.Value.kOff);
-			//elevatorMotor.set(0);
+			//elevatorMotor.set(Relay.Value.kOff);
+			elevatorMotor.set(0);
 		}
 	}
 
@@ -89,8 +89,8 @@ public class Climber extends Subsystem {
 	}
 
 	public void stopArm() {
-		elevatorMotor.set(Relay.Value.kOff);
-		//elevatorMotor.set(0);
+		//elevatorMotor.set(Relay.Value.kOff);
+		elevatorMotor.set(0);
 	}
 
 	public boolean isElevated() {

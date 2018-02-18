@@ -3,7 +3,7 @@ package org.usfirst.frc.team1359.robot.subsystems;
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
 import org.usfirst.frc.team1359.robot.Utilities;
-import org.usfirst.frc.team1359.robot.commands.DriveWithJoysticks;
+import org.usfirst.frc.team1359.robot.commands.drive.DriveWithJoysticks;
 
 import edu.wpi.first.wpilibj.ADXRS450_Gyro;
 import edu.wpi.first.wpilibj.AnalogPotentiometer;

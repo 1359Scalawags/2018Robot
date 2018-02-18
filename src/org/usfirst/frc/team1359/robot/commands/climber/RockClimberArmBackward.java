@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.robot.commands.climber;
 
 import org.usfirst.frc.team1359.robot.Robot;
 
@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class RockClimberArmForward extends Command {
+public class RockClimberArmBackward extends Command {
 
-    public RockClimberArmForward() {
+    public RockClimberArmBackward() {
     	requires(Robot.kClimber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -21,7 +21,7 @@ public class RockClimberArmForward extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kClimber.rockForward();
+    	Robot.kClimber.rockBackward();
     }
 
     // Make this return true when this Command no longer needs to run execute()

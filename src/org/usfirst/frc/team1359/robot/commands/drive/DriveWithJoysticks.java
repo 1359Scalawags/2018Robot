@@ -1,33 +1,40 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.robot.commands.drive;
 
 import org.usfirst.frc.team1359.robot.Robot;
-
+import org.usfirst.frc.team1359.robot.OI;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
  */
-public class ForceLockShooter extends Command {
+public class DriveWithJoysticks extends Command {
 
-	public ForceLockShooter() {
-		super("ForceLockShooter");
-		requires(Robot.kCubeShooter);
+	public DriveWithJoysticks() {
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
+		super("DriveWithJoysticks");
+		requires(Robot.kPIDDriveSystem);
 	}
 
 	// Called just before this Command runs the first time
 	protected void initialize() {
+		Robot.kPIDDriveSystem.resetGyro();
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.kCubeShooter.forceShooterLock();
+		Robot.kPIDDriveSystem.tankDrive(Robot.kOI.getLStickY(), Robot.kOI.getRStickY());
+
+		SmartDashboard.putNumber("Gyro", Robot.kPIDDriveSystem.getAngle());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getLeftEncoder());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getRightEncoder());
+
 	}
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return true;
+		return false;
 	}
 
 	// Called once after isFinished returns true

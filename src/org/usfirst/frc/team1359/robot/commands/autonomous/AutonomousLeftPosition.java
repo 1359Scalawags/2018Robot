@@ -1,9 +1,11 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.robot.commands.autonomous;
 
 import org.usfirst.frc.team1359.deprecated.CubeAtTop;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
+import org.usfirst.frc.team1359.robot.commands.drive.MoveDistance;
+import org.usfirst.frc.team1359.robot.commands.shooter.ReleaseShooter;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;

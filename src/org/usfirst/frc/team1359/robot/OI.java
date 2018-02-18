@@ -7,20 +7,20 @@
 
 package org.usfirst.frc.team1359.robot;
 
-import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
-import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
-import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
-import org.usfirst.frc.team1359.robot.commands.ForceLockShooter;
-import org.usfirst.frc.team1359.robot.commands.ForceUnlockShooter;
-import org.usfirst.frc.team1359.robot.commands.LockShooter;
-import org.usfirst.frc.team1359.robot.commands.PullShooter;
-import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
-import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
-import org.usfirst.frc.team1359.robot.commands.RockClimberArmBackward;
-import org.usfirst.frc.team1359.robot.commands.RockClimberArmForward;
-import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
+import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
+import org.usfirst.frc.team1359.robot.commands.climber.ClimbCommand;
+import org.usfirst.frc.team1359.robot.commands.climber.ExtendClimberArm;
+import org.usfirst.frc.team1359.robot.commands.climber.RetractClimberArm;
+import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmBackward;
+import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
+import org.usfirst.frc.team1359.robot.commands.shooter.ForceLockShooter;
+import org.usfirst.frc.team1359.robot.commands.shooter.ForceUnlockShooter;
+import org.usfirst.frc.team1359.robot.commands.shooter.LockShooter;
+import org.usfirst.frc.team1359.robot.commands.shooter.PrepareToLaunchShooter;
+import org.usfirst.frc.team1359.robot.commands.shooter.PullShooter;
+import org.usfirst.frc.team1359.robot.commands.shooter.ReleaseShooter;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;

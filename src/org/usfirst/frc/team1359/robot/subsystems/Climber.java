@@ -49,7 +49,7 @@ public class Climber extends Subsystem {
 	}
 	
 	public void extendArm() {
-		if (!isElevated() && !climberLocked) {
+		if (!isElevated() && !climberLocked && isRockedForward()) {
 			//elevatorMotor.set(Relay.Value.kForward);
 			elevatorMotor.set(Constants.elevatorSpeed);
 		} else {
@@ -59,13 +59,17 @@ public class Climber extends Subsystem {
 	}
 
 	public void retractArm() {
-		if (!isRetracted()) {
+		if (!isRetracted() && isRockedForward()) {
 			//elevatorMotor.set(Relay.Value.kReverse);
 			elevatorMotor.set(-(Constants.elevatorSpeed));
 		} else {
 			//elevatorMotor.set(Relay.Value.kOff);
 			elevatorMotor.set(0);
 		}
+	}
+	
+	public boolean isRockedForward( ) {
+		return rocker.get();
 	}
 
 	public void rockForward() {

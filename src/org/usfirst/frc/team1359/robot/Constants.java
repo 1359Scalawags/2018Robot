@@ -20,9 +20,9 @@ public class Constants {
 	public static final double fullDriveSpeed = 8; // 8.8634 reduced for PID
 	public static final double autoDriveSpeed = 1; // not accurate value
 
-	public static final double cubeArmSpeed = 25;
-	public static final double shooterArmSpeed = 25;
-	public static final double elevatorSpeed = 25;
+	public static final double cubeArmSpeed = 0.75;
+	public static final double shooterArmSpeed = 0.75;
+	public static final double elevatorSpeed = 0.5;
 
 	// conversion for potentiometer angles
 	public static final double anglePerValue = 200; // this is a random guess

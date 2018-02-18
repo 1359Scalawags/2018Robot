@@ -31,7 +31,7 @@ public class AutonomousCommandDispatch extends CommandGroup {
 		switchPosFar = driverStation.getGameSpecificMessage().charAt(2);
 		scalePos = driverStation.getGameSpecificMessage().charAt(1);
 
-		SmartDashboard.putString("Alliance", alliance.toString());
+		SmartDashboard.putString("FMS", alliance.toString() + "\n" + driverStation.getGameSpecificMessage());
 
 		if (driverStation.getLocation() == 1) { // left
 			addSequential(new AutonomousLeftPosition()); // get into position

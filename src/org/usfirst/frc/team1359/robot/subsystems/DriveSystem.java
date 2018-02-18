@@ -19,14 +19,15 @@ public class DriveSystem extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	Talon m_frontLeft = new Talon(RobotMap.frontleftMotor);
-	Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
-	SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+	//Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
+	//SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
 
 	Talon m_frontRight = new Talon(RobotMap.frontRightMotor);
-	Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
-	SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-	DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
-
+	//Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
+	//SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+	//DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+	DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
+	
 	ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
 	Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
 	Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);

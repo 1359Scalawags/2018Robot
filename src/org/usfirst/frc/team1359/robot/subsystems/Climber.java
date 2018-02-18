@@ -2,6 +2,7 @@ package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
+import org.usfirst.frc.team1359.robot.commands.climber.ClimbCommand;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
@@ -21,6 +22,7 @@ public class Climber extends Subsystem {
 	Relay elevatorMotor;
 	//Talon elevatorMotor;
 	Solenoid rocker;
+	boolean climberLocked;
 
 	public Climber() {
 
@@ -30,15 +32,20 @@ public class Climber extends Subsystem {
 		lowerLimit = new DigitalInput(RobotMap.grabLowerLimit);
 		upperLimit = new DigitalInput(RobotMap.grabUpperLimit);
 		rocker = new Solenoid(RobotMap.rocker);
+		climberLocked = true;
 	}
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
+		setDefaultCommand(new ClimbCommand());
 	}
 
+	public void unlockClimber() {
+		climberLocked = false;
+	}
+	
 	public void extendArm() {
-		if (!isElevated()) {
+		if (!isElevated() && !climberLocked) {
 			elevatorMotor.set(Relay.Value.kForward);
 			//elevatorMotor.set(Constants.elevatorSpeed);
 		} else {
@@ -69,7 +76,12 @@ public class Climber extends Subsystem {
 
 	public void climb(double speed) {
 		// warning: this motor is under user control...no protections at this point
-		climbMotor.set(speed);
+		if(climberLocked) {
+			climbMotor.set(0);
+		}else {
+			climbMotor.set(speed);
+		}
+		
 	}
 
 	public void stopArm() {

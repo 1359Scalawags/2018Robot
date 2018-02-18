@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1359.robot.commands;
 
+import org.usfirst.frc.team1359.deprecated.CubeAtTop;
 import org.usfirst.frc.team1359.robot.Robot;
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;

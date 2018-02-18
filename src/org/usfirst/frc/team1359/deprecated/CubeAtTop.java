@@ -1,4 +1,4 @@
-package org.usfirst.frc.team1359.robot.commands;
+package org.usfirst.frc.team1359.deprecated;
 
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;

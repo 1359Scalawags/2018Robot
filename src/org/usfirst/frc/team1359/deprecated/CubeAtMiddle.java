@@ -1,3 +1,4 @@
+package org.usfirst.frc.team1359.deprecated;
 //package org.usfirst.frc.team1359.robot.commands;
 //
 //import org.usfirst.frc.team1359.robot.Robot;

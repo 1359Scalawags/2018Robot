@@ -8,10 +8,12 @@
 package org.usfirst.frc.team1359.robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
+import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.CameraServer;
 import edu.wpi.first.wpilibj.TimedRobot;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
@@ -51,7 +53,6 @@ public class Robot extends TimedRobot {
 	public static final Camera kcamera = new Camera();
 	public static String AutonomousLeftOrRightPriority = "None";
 	public static String AutonomousMiddlePriority = "None";
-
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	SendableChooser<String> m_priority = new SendableChooser<String>();
@@ -88,7 +89,9 @@ public class Robot extends TimedRobot {
 		System.out.println("The 1359 Scalawags can win this match!  ");
 		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
-
+		LiveWindow.add(new Talon(0));
+		LiveWindow.add(new Talon(2));
+       
 	}
 
 	@Override
@@ -180,5 +183,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+	  
 	}
 }

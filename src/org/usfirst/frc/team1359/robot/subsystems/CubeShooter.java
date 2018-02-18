@@ -40,7 +40,11 @@ public class CubeShooter extends Subsystem {
 		}
 	}
 	public void forceShooterUnlock() {
-		lockValve.set(true);
+		lockValve.set(Constants.unLocked);
+	}
+	
+	public void forceShooterLock() {
+		lockValve.set(Constants.locked);
 	}
 
 	public boolean isLocked() {

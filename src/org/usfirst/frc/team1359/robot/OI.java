@@ -12,7 +12,8 @@ import org.usfirst.frc.team1359.robot.commands.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
-import org.usfirst.frc.team1359.robot.commands.ForceSullinoide;
+import org.usfirst.frc.team1359.robot.commands.ForceLockShooter;
+import org.usfirst.frc.team1359.robot.commands.ForceUnlockShooter;
 import org.usfirst.frc.team1359.robot.commands.LockShooter;
 import org.usfirst.frc.team1359.robot.commands.PullShooter;
 import org.usfirst.frc.team1359.robot.commands.ReleaseShooter;
@@ -116,7 +117,8 @@ public class OI {
 		rockForwardButton.whenPressed(new RockClimberArmForward());
 		rockBackwardButton.whenPressed(new RockClimberArmBackward());
 		
-		forceSullinoide.whenPressed(new LockShooter());
+		forceSullinoide.whenPressed(new ForceUnlockShooter());
+		forceSullinoide.whenReleased(new ForceLockShooter());
 	}
 
 	public double getTrigger() {

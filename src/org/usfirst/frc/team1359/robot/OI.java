@@ -8,8 +8,6 @@
 package org.usfirst.frc.team1359.robot;
 
 import org.usfirst.frc.team1359.robot.commands.ClimbCommand;
-import org.usfirst.frc.team1359.robot.commands.CubeGrab;
-import org.usfirst.frc.team1359.robot.commands.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.ForceLockShooter;
@@ -21,6 +19,8 @@ import org.usfirst.frc.team1359.robot.commands.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.RockClimberArmBackward;
 import org.usfirst.frc.team1359.robot.commands.RockClimberArmForward;
 import org.usfirst.frc.team1359.robot.commands.TurnByAngle;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
 
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;

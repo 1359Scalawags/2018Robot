@@ -2,6 +2,9 @@ package org.usfirst.frc.team1359.robot.commands;
 
 import org.usfirst.frc.team1359.deprecated.CubeAtTop;
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
+
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;

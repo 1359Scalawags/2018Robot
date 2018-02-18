@@ -2,7 +2,7 @@ package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
-import org.usfirst.frc.team1359.robot.commands.CubeMove;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeMove;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;

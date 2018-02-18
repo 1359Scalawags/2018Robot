@@ -53,7 +53,15 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public void move(double speed) {
-		liftMotor.set(speed);
+		if (!isAtBottom()) {
+			liftMotor.set(-speed);
+		}
+		else if(!isAtTop()) {
+			liftMotor.set(speed);
+		}
+		else {
+			liftMotor.set(0);
+		}
 //		if (pos == ArmPosition.BOTTOM) {
 //			goToBottom();
 //		} else if (pos == ArmPosition.MIDDLE) {

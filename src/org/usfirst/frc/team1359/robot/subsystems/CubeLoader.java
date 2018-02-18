@@ -2,6 +2,7 @@ package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
+import org.usfirst.frc.team1359.robot.commands.CubeMove;
 
 import edu.wpi.first.wpilibj.AnalogPotentiometer;
 import edu.wpi.first.wpilibj.DigitalInput;
@@ -30,7 +31,7 @@ public class CubeLoader extends Subsystem {
 	ArmPosition armposition;
 
 	public CubeLoader() {
-
+		
 		bottomLimit = new DigitalInput(RobotMap.climbBottomLimit);
 		topLimit = new DigitalInput(RobotMap.climbTopLimit);
 		liftMotor = new Talon(RobotMap.liftMotor);
@@ -39,6 +40,11 @@ public class CubeLoader extends Subsystem {
 
 	}
 
+	public void initDefaultCommand() {
+		// Set the default command for a subsystem here.
+		setDefaultCommand(new CubeMove());
+	}
+	
 //	public double getPosition() {
 //		return pot.get();
 //	}
@@ -53,7 +59,15 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public void move(double speed) {
-		liftMotor.set(speed);
+		if (!isAtBottom()) {
+			liftMotor.set(-speed);
+		}
+		else if(!isAtTop()) {
+			liftMotor.set(speed);
+		}
+		else {
+			liftMotor.set(0);
+		}
 //		if (pos == ArmPosition.BOTTOM) {
 //			goToBottom();
 //		} else if (pos == ArmPosition.MIDDLE) {
@@ -157,11 +171,6 @@ public class CubeLoader extends Subsystem {
 	}
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-
-	public void initDefaultCommand() {
-		// Set the default command for a subsystem here.
-		// setDefaultCommand(new MySpecialCommand());
-	}
 
 	public boolean isGrabbed() {
 		return armValve.get();

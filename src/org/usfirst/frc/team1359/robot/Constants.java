@@ -5,8 +5,8 @@ public class Constants {
 	// TODO Verify that these are not reversed with no motor power
 	public static final boolean pressed = false;
 	public static final boolean notPressed = true;
-	public static final boolean locked = true;
-	public static final boolean unLocked = false;
+	public static final boolean locked = false;
+	public static final boolean unLocked = true;
 
 	/***
 	 * US Digital E4P Quadrature Encoder 100 to 360 cycles per revolution (CPR) 400

@@ -68,11 +68,7 @@ public class CubeShooter extends Subsystem {
 	}
 
 	public boolean shooterIsDown() {
-		if (shooterDownLimit.get() == Constants.pressed) {
-			return true;
-		} else {
-			return false;
-		}
+		return (shooterDownLimit.get() == Constants.pressed);
 	}
 
 	public boolean shooterIsUnwound() {

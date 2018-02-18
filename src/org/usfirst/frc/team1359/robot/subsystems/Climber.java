@@ -19,12 +19,14 @@ public class Climber extends Subsystem {
 	DigitalInput lowerLimit, upperLimit;
 	Talon climbMotor;
 	Relay elevatorMotor;
+	//Talon elevatorMotor;
 	Solenoid rocker;
 
 	public Climber() {
 
 		climbMotor = new Talon(RobotMap.climbMotor);
 		elevatorMotor = new Relay(RobotMap.elevatorMotor);
+		//elevatorMotor = new Talon(RobotMap.elevatorMotor);
 		lowerLimit = new DigitalInput(RobotMap.grabLowerLimit);
 		upperLimit = new DigitalInput(RobotMap.grabUpperLimit);
 		rocker = new Solenoid(RobotMap.rocker);
@@ -38,16 +40,20 @@ public class Climber extends Subsystem {
 	public void extendArm() {
 		if (!isElevated()) {
 			elevatorMotor.set(Relay.Value.kForward);
+			//elevatorMotor.set(Constants.elevatorSpeed);
 		} else {
 			elevatorMotor.set(Relay.Value.kOff);
+			//elevatorMotor.set(0);
 		}
 	}
 
 	public void retractArm() {
 		if (!isRetracted()) {
 			elevatorMotor.set(Relay.Value.kReverse);
+			//elevatorMotor.set(-(Constants.elevatorSpeed));
 		} else {
 			elevatorMotor.set(Relay.Value.kOff);
+			//elevatorMotor.set(0);
 		}
 	}
 
@@ -68,6 +74,7 @@ public class Climber extends Subsystem {
 
 	public void stopArm() {
 		elevatorMotor.set(Relay.Value.kOff);
+		//elevatorMotor.set(0);
 	}
 
 	public boolean isElevated() {

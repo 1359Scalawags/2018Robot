@@ -27,8 +27,8 @@ public class DriveWithJoysticks extends Command {
 		Robot.kPIDDriveSystem.tankDrive(Robot.kOI.getLStickY(), Robot.kOI.getRStickY());
 
 		SmartDashboard.putNumber("Gyro", Robot.kPIDDriveSystem.getAngle());
-		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getLeftEncoder());
-		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getRightEncoder());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getDistanceLeft());
+		SmartDashboard.putNumber("Encoder Distance", Robot.kPIDDriveSystem.getDistanceRight());
 
 	}
 

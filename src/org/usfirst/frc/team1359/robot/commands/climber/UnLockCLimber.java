@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class UnLockElevator extends Command {
+public class UnLockCLimber extends Command {
 
-    public UnLockElevator() {
+    public UnLockCLimber() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     	super("UnLockElevator");
@@ -27,7 +27,7 @@ public class UnLockElevator extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return !Robot.kClimber.getClimberLock();
+        return true;
     }
 
     // Called once after isFinished returns true

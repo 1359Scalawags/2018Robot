@@ -15,7 +15,7 @@ import org.usfirst.frc.team1359.robot.commands.climber.ExtendClimberArm;
 import org.usfirst.frc.team1359.robot.commands.climber.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmBackward;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
-import org.usfirst.frc.team1359.robot.commands.climber.UnLockElevator;
+import org.usfirst.frc.team1359.robot.commands.climber.UnLockCLimber;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceLockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceUnlockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.LockShooter;
@@ -112,7 +112,7 @@ public class OI {
 //		moveCubeBottomButton.whenPressed(new CubeAtBottom());
 		drawShooter.whenPressed(new PullShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
-		enableClimberButton.whenPressed(new UnLockElevator());
+		enableClimberButton.whenPressed(new UnLockCLimber());
 		extendClimberButton.whenPressed(new ExtendClimberArm());
 		retractClimberButton.whenPressed(new RetractClimberArm());
 		rockForwardButton.whenPressed(new RockClimberArmForward());

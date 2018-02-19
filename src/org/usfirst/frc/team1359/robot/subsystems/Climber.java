@@ -63,7 +63,7 @@ public class Climber extends Subsystem {
 	public void retractArm() {
 		if (!isRetracted() && isRockedForward()) {
 			//elevatorMotor.set(Relay.Value.kReverse);
-			elevatorMotor.set(-(Constants.elevatorSpeed));
+			elevatorMotor.set(-(Constants.elevatorSpeed * .8));
 		} else {
 			//elevatorMotor.set(Relay.Value.kOff);
 			elevatorMotor.set(0);

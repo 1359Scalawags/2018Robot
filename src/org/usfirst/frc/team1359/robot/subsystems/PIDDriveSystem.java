@@ -33,8 +33,8 @@ public class PIDDriveSystem extends Subsystem {
 	DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
 
 	ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
-	Encoder leftEncoder = new Encoder(0, 1, false, Encoder.EncodingType.k4X);
-	Encoder rightEncoder = new Encoder(2, 3, false, Encoder.EncodingType.k4X);
+	Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB, false, Encoder.EncodingType.k4X);
+	Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
 
 	PIDControl leftControl = new PIDControl(1.0, 1.0, 0.1);
 	PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);

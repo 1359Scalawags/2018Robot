@@ -9,6 +9,7 @@ import edu.wpi.first.wpilibj.Relay;
 import edu.wpi.first.wpilibj.Solenoid;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  * Author: Rebecca Munk
@@ -29,10 +30,11 @@ public class Climber extends Subsystem {
 		climbMotor = new Talon(RobotMap.climbMotor);
 		//elevatorMotor = new Relay(RobotMap.elevatorMotor);
 		elevatorMotor = new Talon(RobotMap.elevatorMotor);
-		lowerLimit = new DigitalInput(RobotMap.grabLowerLimit);
-		upperLimit = new DigitalInput(RobotMap.grabUpperLimit);
+		lowerLimit = new DigitalInput(RobotMap.climbBottomLimit);
+		upperLimit = new DigitalInput(RobotMap.climbTopLimit);
 		rocker = new Solenoid(RobotMap.rocker);
 		climberLocked = true;
+		LiveWindow.add(elevatorMotor);
 	}
 
 	public void initDefaultCommand() {

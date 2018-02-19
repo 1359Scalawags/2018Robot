@@ -3,6 +3,7 @@ package org.usfirst.frc.team1359.robot.commands.shooter;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -14,7 +15,7 @@ public class ShooterUnwind extends Command {
 		requires(Robot.kCubeShooter);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		setInterruptible(false);
+		//setInterruptible(false);
 	}
 
 	// Called just before this Command runs the first time
@@ -28,11 +29,13 @@ public class ShooterUnwind extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+
 		return Robot.kCubeShooter.shooterIsUnwound();
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
+		SmartDashboard.putString("Shooter", "Ready to Fire");
 		Robot.kCubeShooter.stopShooterMotor();
 	}
 

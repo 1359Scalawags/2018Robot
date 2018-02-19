@@ -3,6 +3,7 @@ package org.usfirst.frc.team1359.robot.commands.shooter;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -37,13 +38,14 @@ public class ReleaseShooter extends Command {
 //		if (failed) {
 //			return true;
 //		}
+
 		return !Robot.kCubeShooter.shooterIsDown();
 	}
 
 	// Called once after isFinished returns true
 	protected void end() {
 		Robot.kCubeShooter.lockShooter();
-
+		SmartDashboard.putString("Shooter", "Fired");
 	}
 
 	// Called when another command which requires one or more of the same

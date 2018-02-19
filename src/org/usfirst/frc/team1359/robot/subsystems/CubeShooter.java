@@ -52,19 +52,19 @@ public class CubeShooter extends Subsystem {
 	}
 
 	public void pullShooter() {
-		if (!shooterIsDown()) {
+//		if (!shooterIsDown()) {
 			shooterPull.set(Constants.shooterArmSpeed);
-		} else {
-			stopShooterMotor();
-		}
+//		} else {
+//			stopShooterMotor();
+//		}
 	}
 
 	public void unwindShooter() {
-		if (!shooterIsUnwound()) {
+//		if (!shooterIsUnwound()) {
 			shooterPull.set(-(Constants.shooterArmSpeed));
-		} else {
-			stopShooterMotor();
-		}
+//		} else {
+//			stopShooterMotor();
+//		}
 	}
 
 	public boolean shooterIsDown() {

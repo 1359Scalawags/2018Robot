@@ -3,6 +3,7 @@ package org.usfirst.frc.team1359.robot.commands.climber;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -22,6 +23,7 @@ public class UnLockCLimber extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	SmartDashboard.putBoolean("Climber Locked", false);
     	Robot.kClimber.unlockClimber();
     }
 

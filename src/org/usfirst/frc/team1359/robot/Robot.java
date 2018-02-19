@@ -84,6 +84,7 @@ public class Robot extends TimedRobot {
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
+		
 
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		System.out.println("The 1359 Scalawags can win this match!  ");
@@ -91,6 +92,7 @@ public class Robot extends TimedRobot {
 		driverStation = DriverStation.getInstance();
 		//LiveWindow.add(new Talon(1));
 		//LiveWindow.add(new Talon(2));
+		
        
 	}
 
@@ -157,6 +159,10 @@ public class Robot extends TimedRobot {
 		// teleop starts running. If you want the autonomous to
 		// continue until interrupted by another command, remove
 		// this line or comment it out.
+		SmartDashboard.putString("Shooter", "Ready to Fire");
+		SmartDashboard.putBoolean("Climber Locked", true);
+		kPIDDriveSystem.resetEncoders();
+		
 		if (m_autonomousCommand != null) {
 			m_autonomousCommand.cancel();
 		}

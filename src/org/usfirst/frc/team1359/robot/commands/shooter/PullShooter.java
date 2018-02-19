@@ -3,6 +3,7 @@ package org.usfirst.frc.team1359.robot.commands.shooter;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -14,7 +15,7 @@ public class PullShooter extends Command {
 		requires(Robot.kCubeShooter);
 		// Use requires() here to declare subsystem dependencies
 		// eg. requires(chassis);
-		setInterruptible(false);
+		//setInterruptible(false);
 	}
 
 	// Called just before this Command runs the first time
@@ -33,6 +34,7 @@ public class PullShooter extends Command {
 
 	// Called once after isFinished returns true
 	protected void end() {
+		SmartDashboard.putString("Shooter", "Pulled Down");
 		Robot.kCubeShooter.stopShooterMotor();
 	}
 

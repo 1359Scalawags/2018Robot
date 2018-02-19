@@ -22,22 +22,22 @@ public class PIDDriveSystem extends Subsystem {
 
 	// left side
 	Talon m_frontLeft = new Talon(RobotMap.frontleftMotor);
-	Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
-	SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
+	//Talon m_rearLeft = new Talon(RobotMap.rearLeftMotor);
+	//SpeedControllerGroup m_left = new SpeedControllerGroup(m_frontLeft, m_rearLeft);
 
 	// right side
 	Talon m_frontRight = new Talon(RobotMap.frontRightMotor);
-	Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
-	SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
+	//Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
+	//SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
 
-	DifferentialDrive m_drive = new DifferentialDrive(m_left, m_right);
+	DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
 
 	ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
-	Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB, false, Encoder.EncodingType.k4X);
+	Encoder leftEncoder = new Encoder(RobotMap.leftEncoderA, RobotMap.leftEncoderB, true, Encoder.EncodingType.k4X);
 	Encoder rightEncoder = new Encoder(RobotMap.rightEncoderA, RobotMap.rightEncoderB, false, Encoder.EncodingType.k4X);
 
-	PIDControl leftControl = new PIDControl(1.0, 1.0, 0.1);
-	PIDControl rightControl = new PIDControl(1.0, 1.0, 0.1);
+	PIDControl leftControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
+	PIDControl rightControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
 	PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
 
 	public PIDDriveSystem() {
@@ -47,6 +47,11 @@ public class PIDDriveSystem extends Subsystem {
 		rightEncoder.setSamplesToAverage(Constants.samplesToAverage);
 	}
 
+	public void resetEncoders() {
+		leftEncoder.reset();
+		rightEncoder.reset();
+	}
+	
 	public double getAngle() {
 		return m_Gyro.getAngle();
 	}
@@ -64,7 +69,7 @@ public class PIDDriveSystem extends Subsystem {
 	}
 
 	public double getRateLeft() {
-		return leftEncoder.getRate();
+		return -leftEncoder.getRate();
 	}
 
 	public double getDistanceRight() {
@@ -72,7 +77,7 @@ public class PIDDriveSystem extends Subsystem {
 	}
 
 	public double getRateRight() {
-		return rightEncoder.getRate();
+		return -rightEncoder.getRate();
 	}
 
 	public double getAverageDistance() {
@@ -85,23 +90,26 @@ public class PIDDriveSystem extends Subsystem {
 	}
 
 	public void tankDrive(double leftSpeed, double rightSpeed) {
-
+		
 		// get the encoder input
-		double leftInput = leftEncoder.getRate();
-		double rightInput = rightEncoder.getRate();
-
-		// set the target point
-		leftControl.SetPoint(convertToEncoderRate(leftSpeed));
-		rightControl.SetPoint(convertToEncoderRate(rightSpeed));
-
-		// compute the output that gives us that target...clamp values
-		double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.maxMotorSpeed,
-				Constants.maxMotorSpeed);
-		double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.maxMotorSpeed,
-				Constants.maxMotorSpeed);
-
+//		double leftInput = getRateLeft();
+//		double rightInput = getRateRight();
+//
+//		// set the target point
+//		leftControl.SetPoint(convertToEncoderRate(leftSpeed));
+//		rightControl.SetPoint(convertToEncoderRate(rightSpeed));
+//
+//		// compute the output that gives us that target...clamp values
+//		double leftOutput = Utilities.Clamp(leftControl.Compute(leftInput), -Constants.maxMotorSpeed,
+//				Constants.maxMotorSpeed);
+//		double rightOutput = Utilities.Clamp(rightControl.Compute(rightInput), -Constants.maxMotorSpeed,
+//				Constants.maxMotorSpeed);
+//
+//		if(leftSpeed == 0) leftOutput = 0;
+//		if(rightSpeed ==0) rightOutput = 0;
 		// run the tank drive
-		m_drive.tankDrive(leftOutput, rightOutput);
+//		m_drive.tankDrive(leftOutput, rightOutput);
+		m_drive.tankDrive(leftSpeed, rightSpeed);
 
 	}
 

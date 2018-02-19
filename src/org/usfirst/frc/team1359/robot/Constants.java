@@ -21,15 +21,19 @@ public class Constants {
 	public static final double autoDriveSpeed = 1; // not accurate value
 
 	public static final double cubeArmSpeed = 0.75;
-	public static final double shooterArmSpeed = 0.75;
+	public static final double shooterArmSpeed = 0.35;
 	public static final double elevatorSpeed = 0.3;
 
 	// conversion for potentiometer angles
 	public static final double anglePerValue = 200; // this is a random guess
-	public static final int samplesToAverage = 4;
+	public static final int samplesToAverage = 2;
 
 	// gameController
-	public static final double controllerDeadZone = .05;
+	public static final double controllerDeadZone = .1;
 	public static final double angleTolerance = 2.5;
+	
+	public static final double drivePID_P = 1.0;
+	public static final double drivePID_I = 0.0;
+	public static final double drivePID_D = 0.0;
 
 }

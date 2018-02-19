@@ -57,7 +57,6 @@ public class Climber extends Subsystem {
 		} else {
 			//elevatorMotor.set(Relay.Value.kOff);
 			elevatorMotor.set(0);
-			System.out.println("Climber::extendArm(): elevatorMotor.set(0)");
 		}
 	}
 
@@ -68,7 +67,6 @@ public class Climber extends Subsystem {
 		} else {
 			//elevatorMotor.set(Relay.Value.kOff);
 			elevatorMotor.set(0);
-			System.out.println("Climber::retractArm(): elevatorMotor.set(0)");
 		}
 	}
 	
@@ -77,13 +75,17 @@ public class Climber extends Subsystem {
 	}
 
 	public void rockForward() {
-
+		
 		rocker.set(true);
 	}
 
 	public void rockBackward() {
-
+		if(isRetracted()) {
 		rocker.set(false);
+		}
+		else {
+			rocker.set(true);
+		}
 	}
 
 	public void climb(double speed) {
@@ -102,13 +104,11 @@ public class Climber extends Subsystem {
 
 	public boolean isElevated() {
 		boolean value = (upperLimit.get() == Constants.pressed);
-		System.out.println("Climber::isElevated(): " + value);
 		return value;
 	}
 
 	public boolean isRetracted() {
 		boolean value = (lowerLimit.get() == Constants.pressed);
-		System.out.println("Climber::isElevated(): " + value);
 		return value;
 	}
 	

@@ -28,6 +28,8 @@ public class RetractClimberArm extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
+		System.out.println("is Rocked Forward" + Robot.kClimber.isRockedForward());
+		System.out.println("Finished Retracting");
 		return Robot.kClimber.isRetracted();
 	}
 

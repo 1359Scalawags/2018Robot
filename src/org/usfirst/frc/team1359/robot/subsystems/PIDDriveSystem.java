@@ -38,7 +38,7 @@ public class PIDDriveSystem extends Subsystem {
 
 	PIDControl leftControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
 	PIDControl rightControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
-	PIDControl gyroControl = new PIDControl(1.0, 1.0, 0.1);
+	PIDControl gyroControl = new PIDControl(1.0, 0.1, 0.0);
 
 	public PIDDriveSystem() {
 		leftEncoder.setDistancePerPulse(Constants.feetPerPulse);
@@ -90,13 +90,13 @@ public class PIDDriveSystem extends Subsystem {
 	}
 	
 	public void driveForward(double speed, double targetHeading) {
-		final double scale = 0.005;
+		final double scale = .01;
 		double leftSpeed;
 		double rightSpeed;
 		double headingError = getAngle() - targetHeading;
 		
-		leftSpeed = Math.abs(speed) - headingError * scale;
-		rightSpeed = Math.abs(speed) + headingError * scale;
+		leftSpeed =Utilities.Clamp(Math.abs(speed) - headingError * scale, -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
+		rightSpeed = Utilities.Clamp(Math.abs(speed) + headingError * scale, -Constants.maxMotorSpeed, Constants.maxMotorSpeed);
 		tankDrive(leftSpeed, rightSpeed);		
 	}
 	

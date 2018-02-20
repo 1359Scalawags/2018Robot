@@ -22,12 +22,13 @@ public class DriveStraightDistance extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	Robot.kPIDDriveSystem.resetEncoders();
     	targetHeading = Robot.kPIDDriveSystem.getAngle();
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kPIDDriveSystem.driveForward(Constants.maxMotorSpeed, targetHeading);
+    	Robot.kPIDDriveSystem.driveForward(0.8, targetHeading);
     }
 
     // Make this return true when this Command no longer needs to run execute()
@@ -42,6 +43,7 @@ public class DriveStraightDistance extends Command {
 
     // Called once after isFinished returns true
     protected void end() {
+    	System.out.println("Traveled Left: " + Robot.kPIDDriveSystem.getDistanceLeft() + "  Right: " + Robot.kPIDDriveSystem.getDistanceRight());
     	Robot.kPIDDriveSystem.stop();
     }
 

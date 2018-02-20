@@ -53,7 +53,7 @@ public class CubeShooter extends Subsystem {
 
 	public void pullShooter() {
 //		if (!shooterIsDown()) {
-			shooterPull.set(Constants.shooterArmSpeed);
+			shooterPull.set(Constants.shooterPullSpeed);
 //		} else {
 //			stopShooterMotor();
 //		}
@@ -61,7 +61,7 @@ public class CubeShooter extends Subsystem {
 
 	public void unwindShooter() {
 //		if (!shooterIsUnwound()) {
-			shooterPull.set(-(Constants.shooterArmSpeed));
+			shooterPull.set(-(Constants.shooterPullSpeed));
 //		} else {
 //			stopShooterMotor();
 //		}

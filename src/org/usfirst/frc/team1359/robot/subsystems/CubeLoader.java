@@ -59,11 +59,11 @@ public class CubeLoader extends Subsystem {
 	}
 
 	public void move(double speed) {
-		if (speed < 0 && !isAtBottom()) {
-			liftMotor.set(speed * 0.8);
+		if (speed > 0 && !isAtBottom()) {
+			liftMotor.set(speed * 0.5);
 		}
-		else if(speed > 0 && !isAtTop()) {
-			liftMotor.set(speed);
+		else if(speed < 0 && !isAtTop()) {
+			liftMotor.set(speed * 0.7);
 		}
 		else {
 			liftMotor.set(0);

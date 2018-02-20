@@ -20,6 +20,8 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1359.deprecated.ExampleCommand;
 import org.usfirst.frc.team1359.deprecated.ExampleSubsystem;
 import org.usfirst.frc.team1359.robot.commands.autonomous.AutonomousCommandDispatch;
+import org.usfirst.frc.team1359.robot.commands.autonomous.DriveStraightDistance;
+import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.Camera;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
@@ -129,7 +131,9 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void autonomousInit() {
-		m_autonomousCommand = m_chooser.getSelected();
+		//m_autonomousCommand = m_chooser.getSelected();
+	//	m_autonomousCommand = new DriveStraightDistance(100);
+		m_autonomousCommand = new TurnByAngle(90);
 		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
 		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
 		/*
@@ -181,7 +185,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testInit() {
-
+		
 	}
 
 	/**
@@ -189,6 +193,6 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
-	  
+		
 	}
 }

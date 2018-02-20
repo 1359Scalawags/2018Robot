@@ -88,6 +88,21 @@ public class PIDDriveSystem extends Subsystem {
 	public void initDefaultCommand() {
 		setDefaultCommand(new DriveWithJoysticks());
 	}
+	
+	public void driveForward(double speed, double targetHeading) {
+		final double scale = 0.005;
+		double leftSpeed;
+		double rightSpeed;
+		double headingError = getAngle() - targetHeading;
+		
+		leftSpeed = Math.abs(speed) - headingError * scale;
+		rightSpeed = Math.abs(speed) + headingError * scale;
+		tankDrive(leftSpeed, rightSpeed);		
+	}
+	
+	public void stop() {
+		tankDrive(0,0);
+	}
 
 	public void tankDrive(double leftSpeed, double rightSpeed) {
 		

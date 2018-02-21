@@ -95,6 +95,8 @@ public class Robot extends TimedRobot {
 		//LiveWindow.add(new Talon(1));
 		//LiveWindow.add(new Talon(2));
 		
+		Robot.kCubeShooter.setReadyToFire(true);
+		
        
 	}
 

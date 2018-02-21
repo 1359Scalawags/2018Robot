@@ -37,6 +37,7 @@ public class ShooterUnwind extends Command {
 	protected void end() {
 		SmartDashboard.putString("Shooter", "Ready to Fire");
 		Robot.kCubeShooter.stopShooterMotor();
+		Robot.kCubeShooter.setReadyToFire(true);
 	}
 
 	// Called when another command which requires one or more of the same

@@ -25,8 +25,9 @@ public class ReleaseShooter extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		if (Robot.kCubeShooter.shooterIsDown() && Robot.kCubeShooter.shooterIsUnwound()) {
+		if (Robot.kCubeShooter.isReadyToFire() && Robot.kCubeShooter.shooterIsUnwound()) {
 			Robot.kCubeShooter.unlockShooter();
+			Robot.kCubeShooter.setReadyToFire(false);
 //			failed = false;
 //		} else {
 //			failed = true;
@@ -39,7 +40,7 @@ public class ReleaseShooter extends Command {
 //			return true;
 //		}
 
-		return !Robot.kCubeShooter.shooterIsDown();
+		return !Robot.kCubeShooter.isReadyToFire();
 	}
 
 	// Called once after isFinished returns true

@@ -17,6 +17,7 @@ public class CubeShooter extends Subsystem {
 	Solenoid lockValve;
 	DigitalInput shooterDownLimit;
 	DigitalInput strapUnwoundLimit;
+	boolean readyToFire;
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
@@ -26,6 +27,7 @@ public class CubeShooter extends Subsystem {
 		lockValve = new Solenoid(RobotMap.shooterLock);
 		shooterDownLimit = new DigitalInput(RobotMap.shooterDownLimit);
 		strapUnwoundLimit = new DigitalInput(RobotMap.strapunwoundlimit);
+		readyToFire = true;
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
@@ -35,10 +37,9 @@ public class CubeShooter extends Subsystem {
 	}
 
 	public void unlockShooter() {
-		if (shooterIsDown()) {
 			lockValve.set(Constants.unLocked);
-		}
 	}
+	
 	public void forceShooterUnlock() {
 		lockValve.set(Constants.unLocked);
 	}
@@ -67,8 +68,12 @@ public class CubeShooter extends Subsystem {
 //		}
 	}
 
-	public boolean shooterIsDown() {
-		return (shooterDownLimit.get() == Constants.pressed);
+	public boolean isReadyToFire() {
+		return readyToFire;
+	}  
+	
+	public void setReadyToFire(boolean isReady) {
+		readyToFire = isReady;
 	}
 
 	public boolean shooterIsUnwound() {

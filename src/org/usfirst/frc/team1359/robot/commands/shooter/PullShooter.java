@@ -29,7 +29,7 @@ public class PullShooter extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		return Robot.kCubeShooter.shooterIsDown();
+		return Robot.kCubeShooter.isReadyToFire();
 	}
 
 	// Called once after isFinished returns true

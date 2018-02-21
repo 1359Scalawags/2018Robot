@@ -38,7 +38,7 @@ public class PIDDriveSystem extends Subsystem {
 
 	PIDControl leftControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
 	PIDControl rightControl = new PIDControl(Constants.drivePID_P, Constants.drivePID_I, Constants.drivePID_D);
-	PIDControl gyroControl = new PIDControl(1.0, 0.1, 0.0);
+	PIDControl gyroControl = new PIDControl(0.5, 0.0, 0.0);
 
 	public PIDDriveSystem() {
 		leftEncoder.setDistancePerPulse(Constants.feetPerPulse);

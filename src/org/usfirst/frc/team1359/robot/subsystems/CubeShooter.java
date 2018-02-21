@@ -73,9 +73,14 @@ public class CubeShooter extends Subsystem {
 	}  
 	
 	public void setReadyToFire(boolean isReady) {
+		System.out.println("setReadyToFire: " + isReady);
 		readyToFire = isReady;
 	}
 
+	public boolean isDown() {
+		return shooterDownLimit.get() == Constants.pressed;
+	}
+	
 	public boolean shooterIsUnwound() {
 		return (strapUnwoundLimit.get() == Constants.pressed);
 

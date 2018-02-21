@@ -134,8 +134,8 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		//m_autonomousCommand = m_chooser.getSelected();
-	//	m_autonomousCommand = new DriveStraightDistance(100);
-		m_autonomousCommand = new TurnByAngle(90);
+		m_autonomousCommand = new DriveStraightDistance(10);
+		//m_autonomousCommand = new TurnByAngle(90);
 		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
 		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
 		/*

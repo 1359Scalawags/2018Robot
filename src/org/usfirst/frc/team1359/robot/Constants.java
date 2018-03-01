@@ -42,5 +42,8 @@ public class Constants {
 	public static final double approachScaleEnd = 0;
 	public static final double distanceToSwitchWall = 0; 
 	public static final double approachSwitchEnd = 0;
+	public static final double avoidSwitchDistance = 0;
+	
+	public static final double timeArmSpeed = .4;
 
 }

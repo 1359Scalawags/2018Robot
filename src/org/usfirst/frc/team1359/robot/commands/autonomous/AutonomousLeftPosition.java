@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
 import org.usfirst.frc.team1359.deprecated.CubeAtTop;
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
@@ -35,29 +36,29 @@ public class AutonomousLeftPosition extends CommandGroup {
 		// these will run in order.
 		if (switchPosNear == 'L' && scalePos == 'R') { // Drop cube in switch
 			addSequential(new CubeGrab());
-			addSequential(new MoveDistance(10, true)); // random value in MoveForward()
+			addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 			addSequential(new TurnByAngle(90));
 			addSequential(new CubeAtTop()); // CHANGE THIS
 			addSequential(new CubeRelease());
 			SmartDashboard.putString("Close Switch", "Left");
 		} else if (scalePos == 'L' && switchPosNear == 'R') { // drop cube in scale
-			addSequential(new MoveDistance(20, true)); // random value in MoveForward()
+			addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 			addSequential(new TurnByAngle(90));
-			addSequential(new MoveDistance(5, false)); // random value in MoveForward()
+			addSequential(new MoveDistance(Constants.approachSwitchEnd, false)); // random value in MoveForward()
 			addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
 			SmartDashboard.putString("Close Scale", "Left");
 		} else if (scalePos == 'L' && switchPosNear == 'L') {
 			if (Robot.AutonomousLeftOrRightPriority == "Switch") {
-				addSequential(new MoveDistance(10, true)); // random value in MoveForward()
+				addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 				addSequential(new TurnByAngle(90));
 				addSequential(new CubeGrab());
 				addSequential(new CubeAtTop()); // CHANGE THIS
 				addSequential(new CubeRelease());
 				SmartDashboard.putString("Close Switch", "Left");
 			} else if (Robot.AutonomousLeftOrRightPriority == "Scale") {
-				addSequential(new MoveDistance(20, true)); // random value in MoveForward()
+				addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 				addSequential(new TurnByAngle(90));
-				addSequential(new MoveDistance(5, false)); // random value in MoveForward()
+				addSequential(new MoveDistance(Constants.approachSwitchEnd, false)); // random value in MoveForward()
 				addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
 				SmartDashboard.putString("Close Scale", "Left");
 			}

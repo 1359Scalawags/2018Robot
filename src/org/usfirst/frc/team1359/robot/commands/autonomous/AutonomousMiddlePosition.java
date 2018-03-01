@@ -1,6 +1,7 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
 import org.usfirst.frc.team1359.deprecated.CubeAtTop;
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
@@ -26,11 +27,11 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		if (switchPos == 'L') { // left switch
 			addSequential(new CubeGrab());
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new CubeAtTop()); // CHANGE THIS
 				addSequential(new CubeRelease());
@@ -40,11 +41,11 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		} else { // right switchS
 			addSequential(new CubeGrab());
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveDistance(10, true));
+			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new CubeAtTop()); // CHANGE THIS
 				addSequential(new CubeRelease());

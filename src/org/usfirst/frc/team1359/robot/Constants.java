@@ -35,5 +35,10 @@ public class Constants {
 	public static final double drivePID_P = 1.0;
 	public static final double drivePID_I = 0.0;
 	public static final double drivePID_D = 0.0;
+	
+	// autonomous
+	public static final double distanceToSwitchCenterline = 0;
+	public static final double distanceToSwitchWall = 0; 
+	public static final double approachSwitchEnd = 0;
 
 }

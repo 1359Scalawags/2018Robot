@@ -38,6 +38,8 @@ public class Constants {
 	
 	// autonomous
 	public static final double distanceToSwitchCenterline = 0;
+	public static final double distanceToScaleCenterline = 0;
+	public static final double approachScaleEnd = 0;
 	public static final double distanceToSwitchWall = 0; 
 	public static final double approachSwitchEnd = 0;
 

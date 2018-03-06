@@ -14,8 +14,8 @@ public class TurnByAngle extends Command {
 	private double m_startAngle;
 	private double m_deltaAngle;
 	private double m_angleRemaining;
-	private final double m_turnRateMultiplier = 0.5;
-	private final double m_maxTurnRate = 0.55;
+	private final double m_turnRateMultiplier = 0.75;
+	private final double m_maxTurnRate = 0.75;
 	private double m_MotorSpeed = 0;
 
 	public TurnByAngle(double angle) {
@@ -31,15 +31,16 @@ public class TurnByAngle extends Command {
 	// Called just before this Command runs the first time
 	protected void initialize() {
 		m_startAngle = Robot.kPIDDriveSystem.getAngle();
-		SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
+		
 
 	}
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.kPIDDriveSystem.arcadeDrive(0, .5, m_startAngle + m_deltaAngle);
-
-		m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));
+		Robot.kPIDDriveSystem.arcadeDrive(0, m_maxTurnRate, m_startAngle + m_deltaAngle);
+		m_angleRemaining = (m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));
+		SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
+		//m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));
 		// double turnSpeed = Math.max(-m_maxTurnRate, Math.min(m_maxTurnRate,
 		// m_turnRateMultiplier * -Math.pow(m_angleRemaining, .333)));
 

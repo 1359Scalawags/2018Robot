@@ -17,6 +17,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
+import org.usfirst.frc.team1359.deprecated.DriveSystem;
 import org.usfirst.frc.team1359.deprecated.ExampleCommand;
 import org.usfirst.frc.team1359.deprecated.ExampleSubsystem;
 import org.usfirst.frc.team1359.robot.commands.autonomous.AutonomousCommandDispatch;
@@ -27,7 +28,6 @@ import org.usfirst.frc.team1359.robot.subsystems.Camera;
 import org.usfirst.frc.team1359.robot.subsystems.Climber;
 import org.usfirst.frc.team1359.robot.subsystems.CubeLoader;
 import org.usfirst.frc.team1359.robot.subsystems.CubeShooter;
-import org.usfirst.frc.team1359.robot.subsystems.DriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.PIDDriveSystem;
 import org.usfirst.frc.team1359.robot.subsystems.PneumaticsSystem;
 
@@ -134,10 +134,11 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousInit() {
 		//m_autonomousCommand = m_chooser.getSelected();
-		m_autonomousCommand = new DriveStraightDistance(10);
+		//m_autonomousCommand = new DriveStraightDistance(10);
 		//m_autonomousCommand = new TurnByAngle(90);
 		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
 		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
+		m_autonomousCommand = new AutonomousCommandDispatch();
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		 * switch(autoSelected) { case "My Auto": autonomousCommand = new

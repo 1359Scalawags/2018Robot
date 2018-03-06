@@ -65,6 +65,7 @@ public class ReleaseShooter extends Command {
 		
 		if (Robot.kCubeShooter.isReadyToFire() && Robot.kCubeShooter.shooterIsUnwound()) {
 			Robot.kCubeShooter.unlockShooter();
+			Robot.kCubeShooter.setReadyToFire(false);
 		}
 		}
 		

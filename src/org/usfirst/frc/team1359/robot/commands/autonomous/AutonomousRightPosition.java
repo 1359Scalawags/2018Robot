@@ -1,6 +1,6 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
-import org.usfirst.frc.team1359.deprecated.CubeAtTop;
+import org.usfirst.frc.team1359.robot.commands.arm.MoveToMiddle;
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
@@ -35,7 +35,7 @@ public class AutonomousRightPosition extends CommandGroup {
 			addSequential(new CubeGrab());
 			addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 			addSequential(new TurnByAngle(-90));
-			addSequential(new CubeAtTop()); // CHANGE THIS 
+			addSequential(new MoveToMiddle());  
 			addSequential(new CubeRelease());
 			SmartDashboard.putString("Switch Close", "Right");
 		} else if (scalePos == 'R' && switchPosNear == 'L') { // drop cube in scale
@@ -49,18 +49,18 @@ public class AutonomousRightPosition extends CommandGroup {
 				addSequential(new CubeGrab());
 				addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 				addSequential(new TurnByAngle(-90));
-				addSequential(new CubeAtTop()); // CHANGE THIS
+				addSequential(new MoveToMiddle()); // CHANGE THIS
 				addSequential(new CubeRelease());
 				SmartDashboard.putString("Switch Close", "Right");
 			} else if (Robot.AutonomousLeftOrRightPriority == "Scale") { // drop cube in scale
-				addSequential(new MoveDistance(Constatns.distanceToScaleCenterline, true)); // random value in MoveForward()
+				addSequential(new MoveDistance(Constants.distanceToScaleCenterline, true)); // random value in MoveForward()
 				addSequential(new TurnByAngle(-90));
 				addSequential(new MoveDistance(Constants.approachScaleEnd, false)); // random value in MoveForward()
 				addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
 				SmartDashboard.putString("Scale Close", "Right");
 			}
 		} else { // don't drop cube, just cross line
-			addSequential(new MoveDistance(10, true)); // random value in MoveForward()
+			addSequential(new MoveDistance(Constants.distanceToSwitchCenterline, true)); // random value in MoveForward()
 			SmartDashboard.putString("Neither Close", "Right");
 		}
 		// To run multiple commands at the same time,

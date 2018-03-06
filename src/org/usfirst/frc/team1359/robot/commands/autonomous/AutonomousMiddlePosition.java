@@ -1,11 +1,11 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
-import org.usfirst.frc.team1359.deprecated.CubeAtTop;
+import org.usfirst.frc.team1359.robot.commands.arm.MoveToMiddle;
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
-import org.usfirst.frc.team1359.robot.commands.drive.MoveDistance;
+import org.usfirst.frc.team1359.robot.commands.autonomous.DriveStraightDistance;
 
 import edu.wpi.first.wpilibj.DriverStation;
 import edu.wpi.first.wpilibj.command.CommandGroup;
@@ -27,13 +27,13 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		if (switchPos == 'L') { // left switch
 			addSequential(new CubeGrab());
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceLong, Constants.autoDriveShortSpeed));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveShortSpeed));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
-				addSequential(new CubeAtTop()); // CHANGE THIS
+				addSequential(new MoveToMiddle()); 
 				addSequential(new CubeRelease());
 			} else {
 
@@ -41,13 +41,13 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 		} else { // right switchS
 			addSequential(new CubeGrab());
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
 			addSequential(new TurnByAngle(45));
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceLong, Constants.autoDriveShortSpeed));
 			addSequential(new TurnByAngle(-45));
-			addSequential(new MoveDistance(Constants.avoidSwitchDistance, true));
+			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
-				addSequential(new CubeAtTop()); // CHANGE THIS
+				addSequential(new MoveToMiddle()); 
 				addSequential(new CubeRelease());
 			} else {
 

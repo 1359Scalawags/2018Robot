@@ -12,12 +12,14 @@ public class DriveStraightDistance extends Command {
 
 	double targetHeading;
 	double targetDistance;
+	double speed;
 	
-    public DriveStraightDistance(double distance) {
+    public DriveStraightDistance(double distance, double speed) {
     	super("DriveStraightDistance");
         // Use requires() here to declare subsystem dependencies
         requires(Robot.kPIDDriveSystem);
         targetDistance = distance;
+        this.speed = speed;
     }
 
     // Called just before this Command runs the first time
@@ -28,7 +30,7 @@ public class DriveStraightDistance extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kPIDDriveSystem.driveForward(0.8, targetHeading);
+    	Robot.kPIDDriveSystem.driveForward(speed, targetHeading);
     }
 
     // Make this return true when this Command no longer needs to run execute()

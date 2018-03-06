@@ -33,7 +33,7 @@ public class MoveToMiddle extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(moveArmTimer.get() > 750) {
+    	if(moveArmTimer.get() > 2.25) {
         return true;
     }
     	else {

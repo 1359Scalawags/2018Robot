@@ -21,13 +21,16 @@ public class CubeShooter extends Subsystem {
 
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
-
-	public void initDefaultCommand() {
+	public CubeShooter(){
 		shooterPull = new Talon(RobotMap.shooterPull);
 		lockValve = new Solenoid(RobotMap.shooterLock);
 		shooterDownLimit = new DigitalInput(RobotMap.shooterDownLimit);
 		strapUnwoundLimit = new DigitalInput(RobotMap.strapunwoundlimit);
 		readyToFire = true;
+	}
+
+	public void initDefaultCommand() {
+	
 		// Set the default command for a subsystem here.
 		// setDefaultCommand(new MySpecialCommand());
 	}
@@ -53,11 +56,11 @@ public class CubeShooter extends Subsystem {
 	}
 
 	public void pullShooter() {
-//		if (!shooterIsDown()) {
+		if (!isDown()) {
 			shooterPull.set(Constants.shooterPullSpeed);
-//		} else {
-//			stopShooterMotor();
-//		}
+		} else {
+			stopShooterMotor();
+		}
 	}
 
 	public void unwindShooter() {
@@ -73,7 +76,7 @@ public class CubeShooter extends Subsystem {
 	}  
 	
 	public void setReadyToFire(boolean isReady) {
-		System.out.println("setReadyToFire: " + isReady);
+		//System.out.println("setReadyToFire: " + isReady);
 		readyToFire = isReady;
 	}
 

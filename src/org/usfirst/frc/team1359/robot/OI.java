@@ -18,7 +18,7 @@ import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
 import org.usfirst.frc.team1359.robot.commands.climber.UnLockCLimber;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceLockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceUnlockShooter;
-import org.usfirst.frc.team1359.robot.commands.shooter.LaunchShooter;
+//import org.usfirst.frc.team1359.robot.commands.shooter.LaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.LockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.PrepareToLaunchShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.PullShooter;
@@ -105,7 +105,7 @@ public class OI {
 		// extendClimberButton.whenPressed(new ExtendClimberArm());
 		// retractClimberButton.whenPressed(new RetractClimberArm());
 		drawShooter.whenPressed(new PrepareToLaunchShooter());
-		releaseShooter.whenPressed(new LaunchShooter());
+		//releaseShooter.whenPressed(new ReleaseShooter());
 		grabCubeButton.whenPressed(new CubeGrab());
 		releaseCubeButton.whenPressed(new CubeRelease());
 //		moveCubeMiddleButton.whenPressed(new CubeAtMiddle());
@@ -129,7 +129,7 @@ public class OI {
 
 	public double getLStickY() {
 		if (Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
-			return -(mainPad.getY(Hand.kLeft) * (.5 * getTrigger() + .5));
+			return -(mainPad.getY(Hand.kLeft) * (.3 * getTrigger() + .7));
 		} else {
 			return 0;
 		}
@@ -137,7 +137,7 @@ public class OI {
 
 	public double getRStickY() {
 		if (Math.abs(mainPad.getY(Hand.kRight)) > Constants.controllerDeadZone) {
-			return -(mainPad.getY(Hand.kRight) * (.5 * getTrigger() + .5));
+			return -(mainPad.getY(Hand.kRight) * (.3 * getTrigger() + .7));
 		} else {
 			return 0;
 		}

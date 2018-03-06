@@ -18,10 +18,11 @@ public class Constants {
 	public static final double maxMotorSpeed = 0.95;
 	public static final double pulsesPerFoot = 229.183118052;
 	public static final double fullDriveSpeed = 8; // 8.8634 reduced for PID
-	public static final double autoDriveSpeed = 1; // not accurate value
+	public static final double autoDriveSpeed = .8; // not accurate value
+	public static final double autoDriveShortSpeed = .6;
 
 	public static final double cubeArmSpeed = 0.75;
-	public static final double shooterPullSpeed = 0.35;
+	public static final double shooterPullSpeed = 0.55;
 	public static final double elevatorSpeed = 0.5;
 
 	// conversion for potentiometer angles
@@ -30,20 +31,26 @@ public class Constants {
 
 	// gameController
 	public static final double controllerDeadZone = .1;
-	public static final double angleTolerance = 2.5;
+	public static final double angleTolerance = 5.0;
 	
-	public static final double drivePID_P = 1.0;
+	public static final double drivePID_P = 1;
 	public static final double drivePID_I = 0.0;
 	public static final double drivePID_D = 0.0;
 	
-	// autonomous
-	public static final double distanceToSwitchCenterline = 0;
-	public static final double distanceToScaleCenterline = 0;
-	public static final double approachScaleEnd = 0;
-	public static final double distanceToSwitchWall = 0; 
-	public static final double approachSwitchEnd = 0;
-	public static final double avoidSwitchDistance = 0;
+	public static final double gyroPID_P = 0.2;
+	public static final double gyroPID_I = 0.0;
+	public static final double gyroPID_D = 0.05;
 	
-	public static final double timeArmSpeed = .4;
+	// autonomous
+	public static final double distanceToSwitchCenterline = 12; //14 ft
+	public static final double distanceToScaleCenterline = 27;
+	public static final double distanceToFirstLine = 10;
+	public static final double approachScaleEnd = 5;
+	public static final double distanceToSwitchWall = 5; 
+	public static final double approachSwitchEnd = 0.25;
+	public static final double avoidSwitchDistanceShort = 3;
+	public static final double avoidSwitchDistanceLong = 5;
+	
+	public static final double timeArmSpeed = 0;
 
 }

@@ -28,10 +28,10 @@ public class AutonomousMiddlePosition extends CommandGroup {
 		if (switchPos == 'L') { // left switch
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
-			addSequential(new TurnByAngle(-45));
+			addSequential(new TurnByAngle(-90));
+			addSequential(new DriveStraightDistance(Constants.avoidCubesMiddle, Constants.autoDriveShortSpeed));
+			addSequential(new TurnByAngle(90));
 			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceLong, Constants.autoDriveShortSpeed));
-			addSequential(new TurnByAngle(45));
-			addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveShortSpeed));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new MoveToMiddle()); 
 				addSequential(new CubeRelease());
@@ -42,10 +42,15 @@ public class AutonomousMiddlePosition extends CommandGroup {
 		} else { // right switchS
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
-			addSequential(new TurnByAngle(45));
+			addSequential(new TurnByAngle(90));
+			addSequential(new DriveStraightDistance(Constants.avoidCubesMiddle, Constants.autoDriveShortSpeed));
+			addSequential(new TurnByAngle(-90));
 			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceLong, Constants.autoDriveShortSpeed));
-			addSequential(new TurnByAngle(-45));
-			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
+//			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
+//			addSequential(new TurnByAngle(90));
+//			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceLong, Constants.autoDriveShortSpeed));
+//			addSequential(new TurnByAngle(-90));
+//			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
 			if (Robot.AutonomousMiddlePriority == "Yes") {
 				addSequential(new MoveToMiddle()); 
 				addSequential(new CubeRelease());

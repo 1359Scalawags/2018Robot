@@ -80,12 +80,13 @@ public class Climber extends Subsystem {
 	}
 
 	public void rockBackward() {
-		if(isRetracted()) {
 		rocker.set(false);
-		}
-		else {
-			rocker.set(true);
-		}
+//		if(isRetracted()) {
+//		rocker.set(false);
+//		}
+//		else {
+//			rocker.set(true);
+//		}
 	}
 
 	public void climb(double speed) {

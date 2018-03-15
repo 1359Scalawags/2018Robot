@@ -20,6 +20,7 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1359.deprecated.DriveSystem;
 import org.usfirst.frc.team1359.deprecated.ExampleCommand;
 import org.usfirst.frc.team1359.deprecated.ExampleSubsystem;
+import org.usfirst.frc.team1359.robot.commands.arm.MoveToMiddle;
 import org.usfirst.frc.team1359.robot.commands.autonomous.AutonomousCommandDispatch;
 import org.usfirst.frc.team1359.robot.commands.autonomous.DriveStraightDistance;
 import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
@@ -55,6 +56,8 @@ public class Robot extends TimedRobot {
 	public static final Camera kcamera = new Camera();
 	public static String AutonomousLeftOrRightPriority = "None";
 	public static String AutonomousMiddlePriority = "None";
+//	public static boolean AutonomousInput1;
+//	public static boolean AutonomousInput2;
 	Command m_autonomousCommand;
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	SendableChooser<String> m_priority = new SendableChooser<String>();
@@ -75,7 +78,7 @@ public class Robot extends TimedRobot {
 	public void robotInit() {
 		kOI = new OI();
 		m_chooser.addDefault("Default Auto", new ExampleCommand());
-		m_chooser.addObject("Turn", new AutonomousCommandDispatch());
+		//m_chooser.addObject("Turn", new AutonomousCommandDispatch());
 
 		m_priority.addDefault("Switch", "Switch");
 		m_priority.addObject("Scale", "Scale");
@@ -90,7 +93,7 @@ public class Robot extends TimedRobot {
 
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");
 		System.out.println("The 1359 Scalawags can win this match!  ");
-		//CameraServer.getInstance().startAutomaticCapture();
+		CameraServer.getInstance().startAutomaticCapture();
 		driverStation = DriverStation.getInstance();
 		//LiveWindow.add(new Talon(1));
 		//LiveWindow.add(new Talon(2));
@@ -102,7 +105,7 @@ public class Robot extends TimedRobot {
 
 	@Override
 	public void robotPeriodic() {
-		SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
+		//SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
 
 	}
 
@@ -158,6 +161,7 @@ public class Robot extends TimedRobot {
 	@Override
 	public void autonomousPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
 	}
 
 	@Override
@@ -177,18 +181,22 @@ public class Robot extends TimedRobot {
 
 	/**
 	 * This function is called periodically during operator control.
-	 */
+	 */ 
 	@Override
 	public void teleopPeriodic() {
 		Scheduler.getInstance().run();
+		SmartDashboard.putNumber("Oh No It's Match Time!", driverStation.getMatchTime());
 	}
 
 	/**
 	 * This function is called once at the beginning of test mode.
-	 */
+	 */ 
+	private Command test;
+	
 	@Override
 	public void testInit() {
-		
+		this.test = new MoveToMiddle();
+		this.test.start();
 	}
 
 	/**
@@ -196,6 +204,7 @@ public class Robot extends TimedRobot {
 	 */
 	@Override
 	public void testPeriodic() {
+		Scheduler.getInstance().run();
 		
 	}
 }

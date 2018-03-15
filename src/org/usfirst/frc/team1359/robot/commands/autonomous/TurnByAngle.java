@@ -71,7 +71,7 @@ public class TurnByAngle extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE && Math.abs(Robot.kPIDDriveSystem.getGyroRate()) < 5) {
+		if (Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE /*&& Math.abs(Robot.kPIDDriveSystem.getGyroRate()) < 20*/) {
 			return true;
 		} else {
 			return false;

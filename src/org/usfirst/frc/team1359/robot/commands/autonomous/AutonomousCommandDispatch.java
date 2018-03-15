@@ -33,7 +33,7 @@ public class AutonomousCommandDispatch extends CommandGroup {
 
 		SmartDashboard.putString("FMS", alliance.toString() + "\n" + driverStation.getGameSpecificMessage());
 
-		if (true) { // left
+		if (driverStation.getLocation() == 1) { // left
 			addSequential(new AutonomousLeftPosition()); // get into position
 			SmartDashboard.putString("Location", "Left");
 			// if(switchPosNear == 'L') {
@@ -43,19 +43,19 @@ public class AutonomousCommandDispatch extends CommandGroup {
 			// //Don't drop a cube
 			// }
 
-//		} else if (driverStation.getLocation() == 2) {// middle
-//			addSequential(new AutonomousMiddlePosition());// get into position
-//			SmartDashboard.putString("Location", "Middle");
-//
-//		} else if (driverStation.getLocation() == 3) {// right
-//			addSequential(new AutonomousRightPosition());// get into position
-//			SmartDashboard.putString("Location", "Right");
-//			// if(switchPosNear == 'R') {
-//			// //Drop a cube
-//			// SmartDashboard.putString("Close Switch", "Right");
-//			// }else {
-//			// //Don't drop a cube
-//			// }
+		} else if (driverStation.getLocation() == 2) {// middle
+			addSequential(new AutonomousMiddlePosition());// get into position
+			SmartDashboard.putString("Location", "Middle");
+
+		} else if (driverStation.getLocation() == 3) {// right
+			addSequential(new AutonomousRightPosition());// get into position
+			SmartDashboard.putString("Location", "Right");
+			// if(switchPosNear == 'R') {
+			// //Drop a cube
+			// SmartDashboard.putString("Close Switch", "Right");
+			// }else {
+			// //Don't drop a cube
+			// }
 
 		} else {
 

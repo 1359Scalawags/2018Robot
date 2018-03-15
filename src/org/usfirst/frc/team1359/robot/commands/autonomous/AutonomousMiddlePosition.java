@@ -39,7 +39,7 @@ public class AutonomousMiddlePosition extends CommandGroup {
 
 			}
 
-		} else { // right switchS
+		} else { // right switch
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.avoidSwitchDistanceShort, Constants.autoDriveShortSpeed));
 			addSequential(new TurnByAngle(90));

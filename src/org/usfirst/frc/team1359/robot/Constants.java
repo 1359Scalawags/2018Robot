@@ -51,7 +51,8 @@ public class Constants {
 	public static final double avoidSwitchDistanceShort = 3.0;
 	public static final double avoidSwitchDistanceLong = 5.0;
 	public static final double avoidCubesMiddle = 5;
-	
-	public static final double timeArmSpeed = 0;
+	// MoveToMiddle autonomous
+	public static final double moveToMiddleArmTime = 2.25;
+	public static final double moveToMiddleArmSpeed = .5;
 
 }

@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1359.robot.commands.arm;
 
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.Timer;
@@ -28,12 +29,12 @@ public class MoveToMiddle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kCubeLoader.move(.5);
+    	Robot.kCubeLoader.move(Constants.moveToMiddleArmSpeed);
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(moveArmTimer.get() > 2.25) {
+    	if(moveArmTimer.get() > Constants.moveToMiddleArmTime) {
         return true;
     }
     	else {

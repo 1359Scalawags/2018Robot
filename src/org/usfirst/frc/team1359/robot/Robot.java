@@ -62,6 +62,7 @@ public class Robot extends TimedRobot {
 	SendableChooser<Command> m_chooser = new SendableChooser<>();
 	SendableChooser<String> m_priority = new SendableChooser<String>();
 	SendableChooser<String> m_priorityMiddle = new SendableChooser<String>();
+	SendableChooser<String> m_override = new SendableChooser<String>();
 
 	DriverStation driverStation;
 
@@ -85,10 +86,16 @@ public class Robot extends TimedRobot {
 
 		m_priorityMiddle.addDefault("Drop cube", "Yes");
 		m_priorityMiddle.addObject("Drop Cube", "No");
+		
+		m_override.addDefault("Auton Override", "Auto");
+		m_override.addObject("Auton Override", "Left");
+		m_override.addObject("Auton Override", "Middle");
+		m_override.addObject("Auton Override", "Right");
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
+		SmartDashboard.putData("Auton Override", m_override);
 		
 
 		System.out.println("====The 1359 Scalawags are ready to set sail!====");

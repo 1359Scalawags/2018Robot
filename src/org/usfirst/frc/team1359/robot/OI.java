@@ -123,13 +123,16 @@ public class OI {
 		forceSullinoide.whenReleased(new ForceLockShooter());
 	}
 
-	public double getTrigger() {
+	public double getMainTriggers() {
 		return Math.max(mainPad.getTriggerAxis(Hand.kLeft), mainPad.getTriggerAxis(Hand.kRight));
+	}
+	public double getAssistTriggers() {
+		return Math.max(assistPad.getTriggerAxis(Hand.kLeft), assistPad.getTriggerAxis(Hand.kRight));
 	}
 
 	public double getLStickY() {
 		if (Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
-			return -(mainPad.getY(Hand.kLeft) * (.3 * getTrigger() + .7));
+			return -(mainPad.getY(Hand.kLeft) * (.3 * getMainTriggers() + .7));
 		} else {
 			return 0;
 		}
@@ -137,7 +140,7 @@ public class OI {
 
 	public double getRStickY() {
 		if (Math.abs(mainPad.getY(Hand.kRight)) > Constants.controllerDeadZone) {
-			return -(mainPad.getY(Hand.kRight) * (.3 * getTrigger() + .7));
+			return -(mainPad.getY(Hand.kRight) * (.3 * getMainTriggers() + .7));
 		} else {
 			return 0;
 		}

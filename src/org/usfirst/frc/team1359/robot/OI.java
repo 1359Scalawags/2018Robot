@@ -59,8 +59,8 @@ public class OI {
 	Button enableClimberButton = new JoystickButton(mainPad, RobotMap.backBtn);
 	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
 	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
-	Button rockForwardButton = new JoystickButton(mainPad, RobotMap.xboxB);
-	Button rockBackwardButton = new JoystickButton(mainPad, RobotMap.xboxX);
+	Button rockForwardButton = new JoystickButton(assistPad, RobotMap.xboxY);
+	Button rockBackwardButton = new JoystickButton(assistPad, RobotMap.xboxA);
 	
 	Button forceSullinoide = new JoystickButton(assistPad, RobotMap.xboxA);
 	// Button button = new JoystickButton(stick, buttonNumber);

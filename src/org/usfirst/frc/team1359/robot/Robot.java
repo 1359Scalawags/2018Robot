@@ -87,10 +87,10 @@ public class Robot extends TimedRobot {
 		m_priorityMiddle.addDefault("Drop cube", "Yes");
 		m_priorityMiddle.addObject("Drop Cube", "No");
 		
-		m_override.addDefault("Auton Override", "Auto");
-		m_override.addObject("Auton Override", "Left");
-		m_override.addObject("Auton Override", "Middle");
-		m_override.addObject("Auton Override", "Right");
+		m_override.addDefault("Auton Override", Constants.autoModeAuto);
+		m_override.addObject("Auton Override", Constants.autoModeLeft);
+		m_override.addObject("Auton Override", Constants.autoModeMiddle);
+		m_override.addObject("Auton Override", Constants.autoModeRight);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
@@ -148,7 +148,7 @@ public class Robot extends TimedRobot {
 		//m_autonomousCommand = new TurnByAngle(90);
 		this.AutonomousLeftOrRightPriority = m_priority.getSelected();
 		this.AutonomousMiddlePriority = m_priorityMiddle.getSelected();
-		m_autonomousCommand = new AutonomousCommandDispatch();
+		m_autonomousCommand = new AutonomousCommandDispatch(m_override.getSelected());
 		/*
 		 * String autoSelected = SmartDashboard.getString("Auto Selector", "Default");
 		 * switch(autoSelected) { case "My Auto": autonomousCommand = new

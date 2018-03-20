@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 
 import edu.wpi.first.wpilibj.DriverStation;
@@ -16,12 +17,20 @@ public class AutonomousCommandDispatch extends CommandGroup {
 	private char scalePos;
 	private DriverStation.Alliance alliance;
 	private String userPriority;
+	private String autonOverride;
+	private AutoModes autoMode;
 
 //	public enum AutoStates {
 //		GoPastLineLeft, GoPastLineRight, GoPastLineCenter, DropCubeSwitchLeft, DropCubeSwitchRight, DropCubeScaleLeft, DropCubeScaleRight
 //	}
+	public enum AutoModes {
+		left,
+		right,
+		middle,
+		other
+	}
 
-	public AutonomousCommandDispatch() {
+	public AutonomousCommandDispatch(String override) {
 		super("AutonomousCommandDispatch");
 		requires(Robot.kPIDDriveSystem);
 		DriverStation driverStation = DriverStation.getInstance();
@@ -30,10 +39,29 @@ public class AutonomousCommandDispatch extends CommandGroup {
 		switchPosNear = driverStation.getGameSpecificMessage().charAt(0);
 		switchPosFar = driverStation.getGameSpecificMessage().charAt(2);
 		scalePos = driverStation.getGameSpecificMessage().charAt(1);
+		autonOverride = override;
+		if(autonOverride.equals(Constants.autoModeLeft)) {
+			autoMode = AutoModes.left;
+		}else if(autonOverride.equals(Constants.autoModeMiddle)) {
+			autoMode = AutoModes.middle;
+		}else if(autonOverride.equals(Constants.autoModeRight)) {
+			autoMode = AutoModes.right;
+		}else {
+			if(driverStation.getLocation() == 1) {
+				autoMode = AutoModes.left;
+			}else if(driverStation.getLocation() == 2) {
+				autoMode = AutoModes.middle;
+			}else if(driverStation.getLocation() == 3) {
+				autoMode = AutoModes.right;
+			}else {
+				
+			}
+		}
 
 		SmartDashboard.putString("FMS", alliance.toString() + "\n" + driverStation.getGameSpecificMessage());
 
-		if (driverStation.getLocation() == 1) { // left
+		
+		if (autoMode == AutoModes.left) { // left
 			addSequential(new AutonomousLeftPosition()); // get into position
 			SmartDashboard.putString("Location", "Left");
 			// if(switchPosNear == 'L') {
@@ -43,11 +71,11 @@ public class AutonomousCommandDispatch extends CommandGroup {
 			// //Don't drop a cube
 			// }
 
-		} else if (driverStation.getLocation() == 2) {// middle
+		} else if (autoMode == AutoModes.middle) {// middle
 			addSequential(new AutonomousMiddlePosition());// get into position
 			SmartDashboard.putString("Location", "Middle");
 
-		} else if (driverStation.getLocation() == 3) {// right
+		} else if (autoMode == AutoModes.right) {// right
 			addSequential(new AutonomousRightPosition());// get into position
 			SmartDashboard.putString("Location", "Right");
 			// if(switchPosNear == 'R') {

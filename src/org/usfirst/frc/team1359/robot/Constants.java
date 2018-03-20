@@ -54,5 +54,11 @@ public class Constants {
 	// MoveToMiddle autonomous
 	public static final double moveToMiddleArmTime = 2.25;
 	public static final double moveToMiddleArmSpeed = .5;
+	
+	public static final String autoModeAuto = "Auto";
+	public static final String autoModeLeft = "Left";
+	public static final String autoModeMiddle = "Middle";
+	public static final String autoModeRight = "Right";
+	
 
 }

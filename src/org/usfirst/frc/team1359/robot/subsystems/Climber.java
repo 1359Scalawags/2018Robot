@@ -2,7 +2,7 @@ package org.usfirst.frc.team1359.robot.subsystems;
 
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.RobotMap;
-import org.usfirst.frc.team1359.robot.commands.climber.ClimbCommand;
+import org.usfirst.frc.team1359.robot.commands.climber.ClimberStrap;
 
 import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Relay;
@@ -19,7 +19,7 @@ public class Climber extends Subsystem {
 	// Put methods for controlling this subsystem
 	// here. Call these from Commands.
 	DigitalInput lowerLimit, upperLimit;
-	Talon climbMotor;
+	Talon climbMotorStrap;
 	//Relay elevatorMotor;
 	Talon elevatorMotor;
 	Solenoid rocker;
@@ -27,7 +27,7 @@ public class Climber extends Subsystem {
 
 	public Climber() {
 
-		climbMotor = new Talon(RobotMap.climbMotor);
+		climbMotorStrap = new Talon(RobotMap.climbMotor);
 		//elevatorMotor = new Relay(RobotMap.elevatorMotor);
 		elevatorMotor = new Talon(RobotMap.elevatorMotor);
 		lowerLimit = new DigitalInput(RobotMap.climbBottomLimit);
@@ -39,7 +39,7 @@ public class Climber extends Subsystem {
 
 	public void initDefaultCommand() {
 		// Set the default command for a subsystem here.
-		setDefaultCommand(new ClimbCommand());
+		setDefaultCommand(new ClimberStrap());
 	}
 
 	public void unlockClimber() {
@@ -50,25 +50,33 @@ public class Climber extends Subsystem {
 		return climberLocked;
 	}
 	
-	public void extendArm() {
-		if (!isElevated() && !climberLocked && isRockedForward()) {
-			//elevatorMotor.set(Relay.Value.kForward);
-			elevatorMotor.set(Constants.elevatorSpeed);
-		} else {
-			//elevatorMotor.set(Relay.Value.kOff);
+//	public void extendArm() {
+//		if (!isElevated() && !climberLocked && isRockedForward()) {
+//			//elevatorMotor.set(Relay.Value.kForward);
+//			elevatorMotor.set(Constants.elevatorSpeed);
+//		} else {
+//			//elevatorMotor.set(Relay.Value.kOff);
+//			elevatorMotor.set(0);
+//		}
+//	}
+	public void ClimberArm(double speed) {
+		if(climberLocked) {
 			elevatorMotor.set(0);
 		}
-	}
-
-	public void retractArm() {
-		if (!isRetracted() && isRockedForward()) {
-			//elevatorMotor.set(Relay.Value.kReverse);
-			elevatorMotor.set(-(Constants.elevatorSpeed * .8));
-		} else {
-			//elevatorMotor.set(Relay.Value.kOff);
-			elevatorMotor.set(0);
+		else {
+			elevatorMotor.set(speed);
 		}
 	}
+	
+//	public void retractArm() {
+//		if (!isRetracted() && isRockedForward()) {
+//			//elevatorMotor.set(Relay.Value.kReverse);
+//			elevatorMotor.set(-(Constants.elevatorSpeed * .8));
+//		} else {
+//			//elevatorMotor.set(Relay.Value.kOff);
+//			elevatorMotor.set(0);
+//		}
+//	}
 	
 	public boolean isRockedForward( ) {
 		return rocker.get();
@@ -89,12 +97,12 @@ public class Climber extends Subsystem {
 //		}
 	}
 
-	public void climb(double speed) {
+	public void climberStrap(double speed) {
 		// warning: this motor is under user control...no protections at this point
 		if(climberLocked) {
-			climbMotor.set(0);
+			climbMotorStrap.set(0);
 		}else {
-			climbMotor.set(speed);
+			climbMotorStrap.set(speed);
 		}
 	}
 

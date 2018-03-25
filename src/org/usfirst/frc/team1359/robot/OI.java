@@ -10,9 +10,9 @@ package org.usfirst.frc.team1359.robot;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
-import org.usfirst.frc.team1359.robot.commands.climber.ClimbCommand;
-import org.usfirst.frc.team1359.robot.commands.climber.ExtendClimberArm;
-import org.usfirst.frc.team1359.robot.commands.climber.RetractClimberArm;
+import org.usfirst.frc.team1359.robot.commands.climber.ClimberStrap;
+//import org.usfirst.frc.team1359.robot.commands.climber.ExtendClimberArm;
+//import org.usfirst.frc.team1359.robot.commands.climber.RetractClimberArm;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmBackward;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
 import org.usfirst.frc.team1359.robot.commands.climber.UnLockCLimber;
@@ -56,7 +56,7 @@ public class OI {
 //	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
 	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
 	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
-	Button enableClimberButton = new JoystickButton(mainPad, RobotMap.backBtn);
+	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
 	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
 	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
 	Button rockForwardButton = new JoystickButton(assistPad, RobotMap.xboxY);
@@ -114,8 +114,8 @@ public class OI {
 		drawShooter.whenPressed(new PullShooter());
 		releaseShooter.whenPressed(new ReleaseShooter());
 		enableClimberButton.whenPressed(new UnLockCLimber());
-		extendClimberButton.whenPressed(new ExtendClimberArm());
-		retractClimberButton.whenPressed(new RetractClimberArm());
+//		extendClimberButton.whenPressed(new ExtendClimberArm());
+//		retractClimberButton.whenPressed(new RetractClimberArm());
 		rockForwardButton.whenPressed(new RockClimberArmForward());
 		rockBackwardButton.whenPressed(new RockClimberArmBackward());
 		
@@ -126,10 +126,13 @@ public class OI {
 	public double getMainTriggers() {
 		return Math.max(mainPad.getTriggerAxis(Hand.kLeft), mainPad.getTriggerAxis(Hand.kRight));
 	}
-	public double getAssistTriggers() {
-		return Math.max(assistPad.getTriggerAxis(Hand.kLeft), assistPad.getTriggerAxis(Hand.kRight));
+	public double getAssistTriggerLeft() { // move climber Strap
+		return assistPad.getTriggerAxis(Hand.kLeft);
 	}
-
+	public double getAssistTriggerRight() {
+		return  assistPad.getTriggerAxis(Hand.kRight);
+	}
+	
 	public double getLStickY() {
 		if (Math.abs(mainPad.getY(Hand.kLeft)) > Constants.controllerDeadZone) {
 			return -(mainPad.getY(Hand.kLeft) * (.3 * getMainTriggers() + .7));
@@ -146,7 +149,7 @@ public class OI {
 		}
 	}
 
-	public double getArmStick() { // move climber strap
+	public double getArmStick() { // move climber Arm
 		return assistPad.getY(Hand.kLeft);
 	}
 	

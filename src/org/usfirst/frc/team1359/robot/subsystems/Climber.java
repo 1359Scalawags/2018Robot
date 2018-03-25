@@ -60,11 +60,24 @@ public class Climber extends Subsystem {
 //		}
 //	}
 	public void ClimberArm(double speed) {
+		//if speed is positive and top limit is not pressed...go up
+		
+		//if speed is negative and bottom limit is not pressed...go down
+		
+		//otherwise, stop
 		if(climberLocked) {
 			elevatorMotor.set(0);
 		}
 		else {
-			elevatorMotor.set(speed);
+			if(speed > 0 && !isElevated()) {
+				elevatorMotor.set(speed);
+			}
+			else if(speed < 0 && !isRetracted()) {
+				elevatorMotor.set(speed);
+			}
+			else {
+				elevatorMotor.set(0);
+			}
 		}
 	}
 	

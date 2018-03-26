@@ -84,7 +84,7 @@ public class RobotMap {
 
 	// Extra
 	public static final int leonardo = 0;
-	public static final double ROTATE_TOLERANCE = 0.5;
+
 	public static final float cubeloaderpot = 0; // potentiometer
 
 	// Pneumatics

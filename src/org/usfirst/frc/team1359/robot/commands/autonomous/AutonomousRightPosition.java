@@ -41,7 +41,7 @@ public class AutonomousRightPosition extends CommandGroup {
 			SmartDashboard.putString("Switch Close", "Right");
 		} else if (scalePos == 'R' && switchPosNear == 'L') { // drop cube in scale
 			addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-			addSequential(new TurnByAngle(-90));
+			addSequential(new TurnByAngle(90));
 			addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveShortSpeed)); // random value in MoveForward()
 			addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
 			SmartDashboard.putString("Scale Close", "Right");

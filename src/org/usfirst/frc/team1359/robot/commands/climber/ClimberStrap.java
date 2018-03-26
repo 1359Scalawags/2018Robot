@@ -22,7 +22,7 @@ public class ClimberStrap extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-
+		Robot.kClimber.ClimberArm(Robot.kOI.getArmStick());
 		Robot.kClimber.climberStrap(-Math.abs(Robot.kOI.getAssistTriggerLeft()));
 	}
 

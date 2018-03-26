@@ -1,5 +1,6 @@
 package org.usfirst.frc.team1359.robot.commands.autonomous;
 
+import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
 import org.usfirst.frc.team1359.robot.RobotMap;
 import org.usfirst.frc.team1359.robot.Utilities;
@@ -19,7 +20,6 @@ public class TurnByAngle extends Command {
 	private double m_MotorSpeed = 0;
 
 	public TurnByAngle(double angle) {
-
 		super("TurnByAngle");
 		requires(Robot.kPIDDriveSystem);
 		m_deltaAngle = angle;
@@ -71,7 +71,7 @@ public class TurnByAngle extends Command {
 
 	// Make this return true when this Command no longer needs to run execute()
 	protected boolean isFinished() {
-		if (Math.abs(m_angleRemaining) < RobotMap.ROTATE_TOLERANCE /*&& Math.abs(Robot.kPIDDriveSystem.getGyroRate()) < 20*/) {
+		if (Math.abs(m_angleRemaining) < Constants.ROTATE_TOLERANCE /*&& Math.abs(Robot.kPIDDriveSystem.getGyroRate()) < 20*/) {
 			return true;
 		} else {
 			return false;

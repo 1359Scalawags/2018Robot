@@ -32,13 +32,14 @@ public class Constants {
 	// gameController
 	public static final double controllerDeadZone = .1;
 	public static final double angleTolerance = 5.0;
+	public static final double ROTATE_TOLERANCE = 0.5;
 	
 	public static final double drivePID_P = 1.0;
 	public static final double drivePID_I = 0.0;
 	public static final double drivePID_D = 0.0;
 	
-	public static final double gyroPID_P = 0.45;
-	public static final double gyroPID_I = 0.0;
+	public static final double gyroPID_P = 0.35; // was .45
+	public static final double gyroPID_I = 0.05; // was 0
 	public static final double gyroPID_D = 0.05;
 	
 	// autonomous
@@ -53,7 +54,7 @@ public class Constants {
 	public static final double avoidCubesMiddle = 5;
 	// MoveToMiddle autonomous
 	public static final double moveToMiddleArmTime = 2.25;
-	public static final double moveToMiddleArmSpeed = .5;
+	public static final double moveToMiddleArmSpeed = .50; // original value .5
 	
 	public static final String autoModeAuto = "Auto";
 	public static final String autoModeLeft = "Left";

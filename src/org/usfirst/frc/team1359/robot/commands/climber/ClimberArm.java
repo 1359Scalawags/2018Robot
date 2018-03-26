@@ -10,7 +10,7 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ClimberArm extends Command {
 
     public ClimberArm() {
-    	super("CLimerArm");
+    	super("CLimberArm");
     	requires(Robot.kClimber);
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -18,11 +18,12 @@ public class ClimberArm extends Command {
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Robot.kClimber.ClimberArm(Robot.kOI.getArmStick());
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

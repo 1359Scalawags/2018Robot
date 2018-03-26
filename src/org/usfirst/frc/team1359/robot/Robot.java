@@ -20,9 +20,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 import org.usfirst.frc.team1359.deprecated.DriveSystem;
 import org.usfirst.frc.team1359.deprecated.ExampleCommand;
 import org.usfirst.frc.team1359.deprecated.ExampleSubsystem;
+import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.MoveToMiddle;
 import org.usfirst.frc.team1359.robot.commands.autonomous.AutonomousCommandDispatch;
 import org.usfirst.frc.team1359.robot.commands.autonomous.DriveStraightDistance;
+import org.usfirst.frc.team1359.robot.commands.autonomous.TestGroup;
 import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
 import org.usfirst.frc.team1359.robot.subsystems.Aesthetics;
 import org.usfirst.frc.team1359.robot.subsystems.Camera;
@@ -84,13 +86,13 @@ public class Robot extends TimedRobot {
 		m_priority.addDefault("Switch", "Switch");
 		m_priority.addObject("Scale", "Scale");
 
-		m_priorityMiddle.addDefault("Drop cube", "Yes");
-		m_priorityMiddle.addObject("Drop Cube", "No");
+		m_priorityMiddle.addDefault("Yes", "Yes");
+		m_priorityMiddle.addObject("No", "No");
 		
-		m_override.addDefault("Auton Override", Constants.autoModeAuto);
-		m_override.addObject("Auton Override", Constants.autoModeLeft);
-		m_override.addObject("Auton Override", Constants.autoModeMiddle);
-		m_override.addObject("Auton Override", Constants.autoModeRight);
+		m_override.addDefault("Auto", Constants.autoModeAuto);
+		m_override.addObject("Override Left", Constants.autoModeLeft);
+		m_override.addObject("Override Middle", Constants.autoModeMiddle);
+		m_override.addObject("Override Right", Constants.autoModeRight);
 		// chooser.addObject("My Auto", new MyAutoCommand());
 		SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
@@ -202,8 +204,9 @@ public class Robot extends TimedRobot {
 	
 	@Override
 	public void testInit() {
-		this.test = new MoveToMiddle();
-		this.test.start();
+		Scheduler.getInstance().add(new TurnByAngle(90));
+//		test = new TurnByAngle(90);
+//		this.test.start();
 	}
 
 	/**

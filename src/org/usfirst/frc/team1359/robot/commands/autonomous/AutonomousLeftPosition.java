@@ -39,7 +39,7 @@ public class AutonomousLeftPosition extends CommandGroup {
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
 			addSequential(new TurnByAngle(90));
-			addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveSpeed));
+			addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveSpeed*.75));
 			addSequential(new MoveToMiddle());
 			addSequential(new CubeRelease());
 			SmartDashboard.putString("Close Switch", "Left");

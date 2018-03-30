@@ -48,7 +48,7 @@ public class Constants {
 	public static final double distanceToFirstLine = 10;
 	public static final double approachScaleEnd = 5;
 	public static final double distanceToSwitchWall = 5; 
-	public static final double approachSwitchEnd = 0.5;
+	public static final double approachSwitchEnd = 2.0;
 	public static final double avoidSwitchDistanceShort = 3.0;
 	public static final double avoidSwitchDistanceLong = 5.0;
 	public static final double avoidCubesMiddle = 5;

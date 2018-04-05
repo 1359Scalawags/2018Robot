@@ -20,6 +20,7 @@ public class Constants {
 	public static final double fullDriveSpeed = 8; // 8.8634 reduced for PID
 	public static final double autoDriveSpeed = .8; // not accurate value
 	public static final double autoDriveShortSpeed = .6;
+	public static final double driveStraightSpeed = -.7;
 
 	public static final double cubeArmSpeed = 0.75;
 	public static final double shooterPullSpeed = 0.75;
@@ -44,14 +45,16 @@ public class Constants {
 	
 	// autonomous
 	public static final double distanceToSwitchCenterline = 12; //14 ft
-	public static final double distanceToScaleCenterline = 20;
+	public static final double distanceToScaleCenterline = 23;
 	public static final double distanceToFirstLine = 10;
-	public static final double approachScaleEnd = 5;
+	public static final double approachScaleEnd = -1;
 	public static final double distanceToSwitchWall = 5; 
-	public static final double approachSwitchEnd = 2.0;
+	public static final double approachSwitchEnd = 1.0;
 	public static final double avoidSwitchDistanceShort = 3.0;
 	public static final double avoidSwitchDistanceLong = 5.0;
 	public static final double avoidCubesMiddle = 5;
+	public static final double approachSwitchSpeed = .5;
+	public static final double maxTurnRate = 0.75;
 	// MoveToMiddle autonomous
 	public static final double moveToMiddleArmTime = 2.25;
 	public static final double moveToMiddleArmSpeed = .50; // original value .5

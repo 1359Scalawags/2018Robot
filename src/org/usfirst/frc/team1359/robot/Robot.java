@@ -61,7 +61,7 @@ public class Robot extends TimedRobot {
 //	public static boolean AutonomousInput1;
 //	public static boolean AutonomousInput2;
 	Command m_autonomousCommand;
-	SendableChooser<Command> m_chooser = new SendableChooser<>();
+	//SendableChooser<Command> m_chooser = new SendableChooser<>();
 	SendableChooser<String> m_priority = new SendableChooser<String>();
 	SendableChooser<String> m_priorityMiddle = new SendableChooser<String>();
 	SendableChooser<String> m_override = new SendableChooser<String>();
@@ -80,12 +80,14 @@ public class Robot extends TimedRobot {
 	@Override
 	public void robotInit() {
 		kOI = new OI();
-		m_chooser.addDefault("Default Auto", new ExampleCommand());
+		//m_chooser.addDefault("Default Auto", new ExampleCommand());
 		//m_chooser.addObject("Turn", new AutonomousCommandDispatch());
-
+		
 		m_priority.addDefault("Switch", "Switch");
 		m_priority.addObject("Scale", "Scale");
-
+		
+		m_priority.addObject("Cross Line Only", "Neither");
+		
 		m_priorityMiddle.addDefault("Yes", "Yes");
 		m_priorityMiddle.addObject("No", "No");
 		
@@ -94,7 +96,7 @@ public class Robot extends TimedRobot {
 		m_override.addObject("Override Middle", Constants.autoModeMiddle);
 		m_override.addObject("Override Right", Constants.autoModeRight);
 		// chooser.addObject("My Auto", new MyAutoCommand());
-		SmartDashboard.putData("Auto mode", m_chooser);
+		//SmartDashboard.putData("Auto mode", m_chooser);
 		SmartDashboard.putData("Auto priority", m_priority);
 		SmartDashboard.putData("Auto Middle", m_priorityMiddle);
 		SmartDashboard.putData("Auton Override", m_override);

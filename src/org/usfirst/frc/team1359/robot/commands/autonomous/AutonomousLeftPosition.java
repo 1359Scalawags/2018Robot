@@ -3,6 +3,7 @@ package org.usfirst.frc.team1359.robot.commands.autonomous;
 import org.usfirst.frc.team1359.deprecated.CubeAtTop;
 import org.usfirst.frc.team1359.robot.Constants;
 import org.usfirst.frc.team1359.robot.Robot;
+import org.usfirst.frc.team1359.robot.commands.Delay;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.arm.MoveToMiddle;
@@ -45,23 +46,29 @@ public class AutonomousLeftPosition extends CommandGroup {
 			SmartDashboard.putString("Close Switch", "Left");
 		} else if (scalePos == 'L' && switchPosNear == 'R') { // drop cube in scale
 			addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-			addSequential(new TurnByAngle(-90));
+			addSequential(new TurnByAngle(-115));
 			addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveSpeed)); // random value in MoveForward()
 			addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
+			// ==== mirrored from left side
+			addSequential(new Delay());
+			addSequential(new DriveStraightDistance(2.5, Constants.autoDriveSpeed*.5)); // add to right side
 			SmartDashboard.putString("Close Scale", "Left");
 		} else if (scalePos == 'L' && switchPosNear == 'L') {
-			if (Robot.AutonomousLeftOrRightPriority == "Switch") {
+			if (Robot.AutonomousLeftOrRightPriority.equals("Switch")) {
 				addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
 				addSequential(new TurnByAngle(90));
 				addSequential(new CubeGrab());
 				addSequential(new MoveToMiddle()); // CHANGE THIS
 				addSequential(new CubeRelease());
 				SmartDashboard.putString("Close Switch", "Left");
-			} else if (Robot.AutonomousLeftOrRightPriority == "Scale") {
+			} else if (Robot.AutonomousLeftOrRightPriority.equals("Scale")) {
 				addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-				addSequential(new TurnByAngle(90));
+				addSequential(new TurnByAngle(-115));
 				addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveSpeed)); // random value in MoveForward()
 				addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
+				// ==== mirrored from left side
+				addSequential(new Delay());
+				addSequential(new DriveStraightDistance(2.5, Constants.autoDriveSpeed*.5));
 				SmartDashboard.putString("Close Scale", "Left");
 			}
 		}

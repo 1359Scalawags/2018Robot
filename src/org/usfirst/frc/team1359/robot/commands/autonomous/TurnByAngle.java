@@ -16,7 +16,6 @@ public class TurnByAngle extends Command {
 	private double m_deltaAngle;
 	private double m_angleRemaining;
 	private final double m_turnRateMultiplier = 0.75;
-	private final double m_maxTurnRate = 0.75;
 	private double m_MotorSpeed = 0;
 
 	public TurnByAngle(double angle) {
@@ -37,7 +36,7 @@ public class TurnByAngle extends Command {
 
 	// Called repeatedly when this Command is scheduled to run
 	protected void execute() {
-		Robot.kPIDDriveSystem.arcadeDrive(0, m_maxTurnRate, m_startAngle + m_deltaAngle);
+		Robot.kPIDDriveSystem.arcadeDrive(0, Constants.maxTurnRate, m_startAngle + m_deltaAngle);
 		m_angleRemaining = (m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));
 		SmartDashboard.putNumber("AngleRemaining", m_angleRemaining);
 		//m_angleRemaining = Utilities.NormalizeAngle(m_deltaAngle - (Robot.kPIDDriveSystem.getAngle() - m_startAngle));

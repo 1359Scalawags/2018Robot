@@ -29,7 +29,9 @@ public class PIDDriveSystem extends Subsystem {
 	Talon m_frontRight = new Talon(RobotMap.frontRightMotor);
 	//Talon m_rearRight = new Talon(RobotMap.rearRightMotor);
 	//SpeedControllerGroup m_right = new SpeedControllerGroup(m_frontRight, m_rearRight);
-
+	
+	boolean reverse = false;
+	
 	DifferentialDrive m_drive = new DifferentialDrive(m_frontLeft, m_frontRight);
 
 	ADXRS450_Gyro m_Gyro = new ADXRS450_Gyro();
@@ -45,6 +47,14 @@ public class PIDDriveSystem extends Subsystem {
 		rightEncoder.setDistancePerPulse(Constants.feetPerPulse);
 		leftEncoder.setSamplesToAverage(Constants.samplesToAverage);
 		rightEncoder.setSamplesToAverage(Constants.samplesToAverage);
+	}
+	public void reverseDirection() {
+		if(reverse) {
+			reverse = false;
+		}
+		else {
+			reverse = true;
+		}
 	}
 
 	public void resetEncoders() {
@@ -124,7 +134,12 @@ public class PIDDriveSystem extends Subsystem {
 //		if(rightSpeed ==0) rightOutput = 0;
 		// run the tank drive
 //		m_drive.tankDrive(leftOutput, rightOutput);
-		m_drive.tankDrive(leftSpeed, rightSpeed);
+		if(reverse) {
+		m_drive.tankDrive(-rightSpeed, -leftSpeed);
+		}
+		else {
+			m_drive.tankDrive(leftSpeed, rightSpeed);
+		}
 
 	}
 

@@ -7,6 +7,7 @@
 
 package org.usfirst.frc.team1359.robot;
 
+import org.usfirst.frc.team1359.robot.commands.SwitchDriveDirection;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeGrab;
 import org.usfirst.frc.team1359.robot.commands.arm.CubeRelease;
 import org.usfirst.frc.team1359.robot.commands.autonomous.TurnByAngle;
@@ -16,6 +17,7 @@ import org.usfirst.frc.team1359.robot.commands.climber.ClimberStrap;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmBackward;
 import org.usfirst.frc.team1359.robot.commands.climber.RockClimberArmForward;
 import org.usfirst.frc.team1359.robot.commands.climber.UnLockCLimber;
+import org.usfirst.frc.team1359.robot.commands.drive.EnableDriveStraight;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceLockShooter;
 import org.usfirst.frc.team1359.robot.commands.shooter.ForceUnlockShooter;
 //import org.usfirst.frc.team1359.robot.commands.shooter.LaunchShooter;
@@ -53,16 +55,18 @@ public class OI {
 	Button releaseCubeButton = new JoystickButton(assistPad, RobotMap.xboxB);
 //	Button moveCubeMiddleButton = new JoystickButton(assistPad, RobotMap.xboxA);
 //	Button moveCubeTopButton = new JoystickButton(assistPad, RobotMap.xboxY);
-//	Button moveCubeBottomButton = new JoystickButton(assistPad, RobotMap.startBtn);
 	Button drawShooter = new JoystickButton(assistPad, RobotMap.lBumber);
 	Button releaseShooter = new JoystickButton(assistPad, RobotMap.rBumber);
 	Button enableClimberButton = new JoystickButton(assistPad, RobotMap.backBtn);
-	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
-	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
 	Button rockForwardButton = new JoystickButton(assistPad, RobotMap.xboxY);
 	Button rockBackwardButton = new JoystickButton(assistPad, RobotMap.xboxA);
 	
-	Button forceSullinoide = new JoystickButton(assistPad, RobotMap.xboxA);
+	Button reverseDriverButton = new JoystickButton(mainPad, RobotMap.startBtn);
+	Button driveStraightEnable = new JoystickButton(mainPad, RobotMap.xboxX);
+	//Button driveStraightDisable = new JoystickButton(mainPad, RobotMap.xboxB);
+	Button extendClimberButton = new JoystickButton(mainPad, RobotMap.xboxY);
+	Button retractClimberButton = new JoystickButton(mainPad, RobotMap.xboxA);
+	//Button forceSullinoide = new JoystickButton(assistPad, RobotMap.xboxA);
 	// Button button = new JoystickButton(stick, buttonNumber);
 	// Button lightButton = new JoystickButton(stick2, RobotMap.lightbutton);
 	// Button turnButton = new JoystickButton(stick1, RobotMap.turnbutton);
@@ -118,9 +122,13 @@ public class OI {
 //		retractClimberButton.whenPressed(new RetractClimberArm());
 		rockForwardButton.whenPressed(new RockClimberArmForward());
 		rockBackwardButton.whenPressed(new RockClimberArmBackward());
+		reverseDriverButton.whenPressed(new SwitchDriveDirection());
 		
-		forceSullinoide.whenPressed(new ForceUnlockShooter());
-		forceSullinoide.whenReleased(new ForceLockShooter());
+		driveStraightEnable.whenPressed(new EnableDriveStraight());
+		//driveStraightEnable.whenReleased(command);
+		
+//		forceSullinoide.whenPressed(new ForceUnlockShooter());
+//		forceSullinoide.whenReleased(new ForceLockShooter());
 	}
 
 	public double getMainTriggers() {
@@ -155,6 +163,10 @@ public class OI {
 	
 	public double getGrabberStick() {
 		return assistPad.getY(Hand.kRight);
+	}
+	
+	public boolean getDriveStraightButton() {
+		return driveStraightEnable.get();
 	}
 	// public Joystick getJoystick1() {
 	// return stick1;

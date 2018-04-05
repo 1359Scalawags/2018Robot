@@ -11,10 +11,12 @@ import edu.wpi.first.wpilibj.command.Command;
 public class Delay extends Command {
 	
 	Timer timer;
+	private double time;
 
-    public Delay() {
+    public Delay(double time) {
     	super("Delay");
     	timer = new Timer();
+    	this.time = time;
     	
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -32,7 +34,7 @@ public class Delay extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-    	if(timer.get() > 1) {
+    	if(timer.get() > this.time) {
             return true;
         }
         	else {

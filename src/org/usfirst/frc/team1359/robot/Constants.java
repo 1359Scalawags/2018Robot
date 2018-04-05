@@ -55,6 +55,9 @@ public class Constants {
 	public static final double avoidCubesMiddle = 5;
 	public static final double approachSwitchSpeed = .5;
 	public static final double maxTurnRate = 0.75;
+	public static final double distanceToCenterPassage = 18.5; //random values
+	public static final double distanceAcrossCenterPassage = 17; //random values
+	
 	// MoveToMiddle autonomous
 	public static final double moveToMiddleArmTime = 2.25;
 	public static final double moveToMiddleArmSpeed = .50; // original value .5

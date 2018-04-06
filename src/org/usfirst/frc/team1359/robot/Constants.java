@@ -32,16 +32,16 @@ public class Constants {
 
 	// gameController
 	public static final double controllerDeadZone = .1;
-	public static final double angleTolerance = 5.0;
+	//public static final double angleTolerance = 4.0; // was 5.0
 	public static final double ROTATE_TOLERANCE = 0.5;
 	
 	public static final double drivePID_P = 1.0;
 	public static final double drivePID_I = 0.0;
 	public static final double drivePID_D = 0.0;
 	
-	public static final double gyroPID_P = 0.35; // was .45
-	public static final double gyroPID_I = 0.05; // was 0
-	public static final double gyroPID_D = 0.05;
+	public static final double gyroPID_P = 0.3325; // was .35
+	public static final double gyroPID_I = 0.0525; // was .05
+	public static final double gyroPID_D = 0.05; // was .05
 	
 	// autonomous
 	public static final double distanceToSwitchCenterline = 12; //14 ft

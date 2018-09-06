@@ -32,29 +32,31 @@ public class Constants {
 
 	// gameController
 	public static final double controllerDeadZone = .1;
-	public static final double angleTolerance = 5.0;
+	//public static final double angleTolerance = 5.0;
 	public static final double ROTATE_TOLERANCE = 0.5;
 	
 	public static final double drivePID_P = 1.0;
 	public static final double drivePID_I = 0.0;
 	public static final double drivePID_D = 0.0;
 	
-	public static final double gyroPID_P = 0.35; // was .45
-	public static final double gyroPID_I = 0.05; // was 0
+	public static final double gyroPID_P = 0.4; // was .35
+	public static final double gyroPID_I = 0.05; // was 0.05
 	public static final double gyroPID_D = 0.05;
 	
 	// autonomous
 	public static final double distanceToSwitchCenterline = 12; //14 ft
 	public static final double distanceToScaleCenterline = 23;
 	public static final double distanceToFirstLine = 10;
-	public static final double approachScaleEnd = -1;
+	public static final double approachScaleEnd = -1.4;
 	public static final double distanceToSwitchWall = 5; 
 	public static final double approachSwitchEnd = 1.0;
-	public static final double avoidSwitchDistanceShort = 3.0;
+	public static final double avoidSwitchDistanceShort = 3.0; // was 3
 	public static final double avoidSwitchDistanceLong = 5.0;
 	public static final double avoidCubesMiddle = 5;
 	public static final double approachSwitchSpeed = .5;
 	public static final double maxTurnRate = 0.75;
+	public static final double distanceAcrossScale = 15; // random value. for new autonomous
+	public static final double distanceToMiddle = 19; // random value. for new autonomous
 	// MoveToMiddle autonomous
 	public static final double moveToMiddleArmTime = 2.25;
 	public static final double moveToMiddleArmSpeed = .50; // original value .5

@@ -36,7 +36,7 @@ public class AutonomousLeftPosition extends CommandGroup {
 		// e.g. addSequential(new Command1());
 		// addSequential(new Command2());
 		// these will run in order.
-		if (switchPosNear == 'L' ) { // Drop cube in switch
+		if (switchPosNear == 'L' && scalePos == 'R') { // Drop cube in switch
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
 			addSequential(new TurnByAngle(90));
@@ -45,14 +45,7 @@ public class AutonomousLeftPosition extends CommandGroup {
 			addSequential(new CubeRelease());
 			SmartDashboard.putString("Close Switch", "Left");
 		} else if (scalePos == 'L' && switchPosNear == 'R') { // drop cube in scale
-			addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-			addSequential(new TurnByAngle(-115));
-			addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveSpeed)); // random value in MoveForward()
-			addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
-			// ==== mirrored from left side
-			addSequential(new Delay());
-			addSequential(new DriveStraightDistance(2.5, Constants.autoDriveSpeed*.5)); // add to right side
-			SmartDashboard.putString("Close Scale", "Left");
+			shootLeftScale();
 		} else if (scalePos == 'L' && switchPosNear == 'L') {
 			if (Robot.AutonomousLeftOrRightPriority.equals("Switch")) {
 				addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
@@ -62,23 +55,42 @@ public class AutonomousLeftPosition extends CommandGroup {
 				addSequential(new CubeRelease());
 				SmartDashboard.putString("Close Switch", "Left");
 			} else if (Robot.AutonomousLeftOrRightPriority.equals("Scale")) {
-				addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-				addSequential(new TurnByAngle(-115));
-				addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveSpeed)); // random value in MoveForward()
-				addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
-				// ==== mirrored from left side
-				addSequential(new Delay());
-				addSequential(new DriveStraightDistance(2.5, Constants.autoDriveSpeed*.5));
-				SmartDashboard.putString("Close Scale", "Left");
+				shootLeftScale();
 			}
 		}
 
 		 else { // cross line, don't drop cube
-		 addSequential(new CubeGrab());
-			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); 
-			addSequential(new TurnByAngle(90));
+//		 addSequential(new CubeGrab());
+//			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); 
+//			addSequential(new TurnByAngle(90));
+			shootOppositeScale();
 			SmartDashboard.putString("Neither Close", "Left");
 		}
+	}
+	
+	public void shootLeftScale() {
+		addSequential(new CubeGrab());
+		addSequential(new DriveStraightDistance(Constants.distanceToScaleCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
+		addSequential(new TurnByAngle(-115));
+		addSequential(new DriveStraightDistance(Constants.approachScaleEnd, Constants.autoDriveSpeed)); // random value in MoveForward()
+		addSequential(new CubeRelease());
+		addSequential(new Delay());
+		addSequential(new ReleaseShooter()); // assuming PrepareToLaunchShooter was already ran
+		addSequential(new Delay());
+		addSequential(new DriveStraightDistance(2.5, Constants.autoDriveSpeed*.5));
+		SmartDashboard.putString("Close Scale", "Left");
+		
+	}
+	
+	public void shootOppositeScale() {
+		addSequential(new CubeGrab());
+		addSequential(new DriveStraightDistance(Constants.distanceToMiddle, Constants.autoDriveSpeed));
+		addSequential(new TurnByAngle(90));
+		addSequential(new DriveStraightDistance(Constants.distanceAcrossScale, Constants.autoDriveSpeed));
+		addSequential(new TurnByAngle(45)); // random value
+		addSequential(new CubeRelease());
+		addSequential(new Delay());
+		addSequential(new ReleaseShooter());
 	}
 }
 		

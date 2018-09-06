@@ -33,6 +33,11 @@ public class AutonomousRightPosition extends CommandGroup {
 		scalePos = driverStation.getGameSpecificMessage().charAt(1);
 
 		if (switchPosNear == 'R' && scalePos == 'L') { // drop cube in switch
+			if(Robot.AutonomousLeftOrRightPriority.equals("Scale")) {
+				shootOppositeScale();
+				SmartDashboard.putString("Switch Close", "Right");
+			}
+			else {
 			addSequential(new CubeGrab());
 			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
 			addSequential(new TurnByAngle(-90));
@@ -40,6 +45,7 @@ public class AutonomousRightPosition extends CommandGroup {
 			addSequential(new MoveToMiddle());  
 			addSequential(new CubeRelease());
 			SmartDashboard.putString("Switch Close", "Right");
+			}
 		} else if (scalePos == 'R' && switchPosNear == 'L') { // drop cube in scale
 				shootRightScale();
 		} else if (scalePos == 'R' && switchPosNear == 'R') { // determined by smartDashboard

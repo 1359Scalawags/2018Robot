@@ -37,13 +37,19 @@ public class AutonomousLeftPosition extends CommandGroup {
 		// addSequential(new Command2());
 		// these will run in order.
 		if (switchPosNear == 'L' && scalePos == 'R') { // Drop cube in switch
-			addSequential(new CubeGrab());
-			addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
-			addSequential(new TurnByAngle(90));
-			addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveSpeed*.75));
-			addSequential(new MoveToMiddle());
-			addSequential(new CubeRelease());
+			if(Robot.AutonomousLeftOrRightPriority.equals("Scale")){
+				shootOppositeScale();
 			SmartDashboard.putString("Close Switch", "Left");
+			}
+			else {
+				addSequential(new CubeGrab());
+				addSequential(new DriveStraightDistance(Constants.distanceToSwitchCenterline, Constants.autoDriveSpeed)); // random value in MoveForward()
+				addSequential(new TurnByAngle(90));
+				addSequential(new DriveStraightDistance(Constants.approachSwitchEnd, Constants.autoDriveSpeed*.75));
+				addSequential(new MoveToMiddle());
+				addSequential(new CubeRelease());
+				SmartDashboard.putString("Close Switch", "Left");
+			}
 		} else if (scalePos == 'L' && switchPosNear == 'R') { // drop cube in scale
 			shootLeftScale();
 		} else if (scalePos == 'L' && switchPosNear == 'L') {
